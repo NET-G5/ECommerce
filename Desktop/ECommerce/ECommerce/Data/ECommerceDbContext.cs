@@ -19,10 +19,9 @@ public class ECommerceDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Data Source=DESKTOP-VVIF9HI\\RAMADAN;Initial Catalog=ecommerce_management_system_ef;Integrated Security=True;Pooling=False;Encrypt=True;Trust Server Certificate=True");
+        optionsBuilder.UseSqlServer("Data Source=DESKTOP-J7QN3MV\\SQLEXPRESS;Initial Catalog=ecommerce_management_system_ef;Integrated Security=True;Pooling=False;Encrypt=True;Trust Server Certificate=True");
         base.OnConfiguring(optionsBuilder);
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<UserAccount>()

@@ -45,7 +45,7 @@ public class UsersService
             return false;
         }
 
-        _context.Doctors.Remove(userToDelete);
+        _context.Users.Remove(userToDelete);
 
         int affectedRows = _context.SaveChanges();
         return affectedRows > 0;

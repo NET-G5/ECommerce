@@ -1,0 +1,526 @@
+﻿<UserControl
+    x:Class="ECommerce.Views.Views.HomePageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ECommerce.Views.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid Background="WhiteSmoke">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <!--  Categories  -->
+        <materialDesign:Card
+            Grid.RowSpan="5"
+            Grid.Column="0"
+            Background="AliceBlue">
+            <StackPanel>
+                <Button
+                    Height="60"
+                    Margin="5,20"
+                    materialDesign:ButtonAssist.CornerRadius="30"
+                    Content="Category 1"
+                    FontSize="22"
+                    FontWeight="Bold" />
+                <Button
+                    Height="60"
+                    Margin="5,20"
+                    materialDesign:ButtonAssist.CornerRadius="30"
+                    Content="Category 2"
+                    FontSize="22"
+                    FontWeight="Bold" />
+                <Button
+                    Height="60"
+                    Margin="5,20"
+                    materialDesign:ButtonAssist.CornerRadius="30"
+                    Content="Category 3"
+                    FontSize="22"
+                    FontWeight="Bold" />
+                <Button
+                    Height="60"
+                    Margin="5,20"
+                    materialDesign:ButtonAssist.CornerRadius="30"
+                    Content="Category 4"
+                    FontSize="22"
+                    FontWeight="Bold" />
+                <Button
+                    Height="60"
+                    Margin="5,20"
+                    materialDesign:ButtonAssist.CornerRadius="30"
+                    Content="Category 5"
+                    FontSize="22"
+                    FontWeight="Bold" />
+                <Button
+                    Height="60"
+                    Margin="5,20"
+                    materialDesign:ButtonAssist.CornerRadius="30"
+                    Content="Category 6"
+                    FontSize="22"
+                    FontWeight="Bold" />
+                <Button
+                    Height="60"
+                    Margin="5,20"
+                    materialDesign:ButtonAssist.CornerRadius="30"
+                    Content="Category 7"
+                    FontSize="22"
+                    FontWeight="Bold" />
+            </StackPanel>
+        </materialDesign:Card>
+        <ComboBox
+            Grid.Row="0"
+            Grid.Column="1"
+            Width="256"
+            Height="60"
+            Margin="0,20"
+            Padding="10"
+            materialDesign:HintAssist.Hint="Select Category"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            FontSize="22"
+            ItemsSource="{Binding Categories}"
+            SelectedItem="{Binding SelectedCategorie}"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+        <TextBox
+            Grid.Row="0"
+            Grid.Column="2"
+            Width="256"
+            Height="60"
+            Margin="0,20"
+            Padding="10"
+            materialDesign:HintAssist.Hint="Search..."
+            AcceptsReturn="True"
+            FontSize="22"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+            Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextWrapping="Wrap" />
+        <materialDesign:Card
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="20"
+            Style="{StaticResource MaterialDesignOutlinedCard}">
+            <materialDesign:Card.Effect>
+                <DropShadowEffect
+                    BlurRadius="25"
+                    Direction="270"
+                    Opacity="1"
+                    ShadowDepth="2"
+                    Color="Black" />
+            </materialDesign:Card.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Image Source="C:\Users\User\OneDrive\Desktop\photo_2024-06-05_23-23-09.jpg" Stretch="Uniform" />
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="8,24,8,0"
+                    VerticalAlignment="Center"
+                    Text="new Product" />
+                <Grid Grid.Row="2" Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel
+                        Grid.Column="1"
+                        Width="auto"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <Button
+                            Margin="5"
+                            Padding="1"
+                            materialDesign:RippleAssist.IsCentered="True"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                Foreground="Black"
+                                Kind="ShareVariant" />
+                        </Button>
+                        <Button
+                            Margin="5"
+                            Padding="1"
+                            materialDesign:RippleAssist.IsCentered="True"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                Foreground="#e31b23"
+                                Kind="Heart" />
+                        </Button>
+                    </StackPanel>
+                    <Button
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Content="show more" />
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card
+            Grid.Row="1"
+            Grid.Column="2"
+            Margin="20"
+            Style="{StaticResource MaterialDesignOutlinedCard}">
+            <materialDesign:Card.Effect>
+                <DropShadowEffect
+                    BlurRadius="25"
+                    Direction="270"
+                    Opacity="1"
+                    ShadowDepth="2"
+                    Color="Black" />
+            </materialDesign:Card.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Image Source="C:\Users\User\OneDrive\Desktop\photo_2024-06-05_23-23-09.jpg" Stretch="Uniform" />
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="8,24,8,0"
+                    VerticalAlignment="Center"
+                    Text="new Product" />
+                <Grid Grid.Row="2" Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel
+                        Grid.Column="1"
+                        Width="auto"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <Button
+                            Margin="5"
+                            Padding="1"
+                            materialDesign:RippleAssist.IsCentered="True"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                Foreground="Black"
+                                Kind="ShareVariant" />
+                        </Button>
+                        <Button
+                            Margin="5"
+                            Padding="1"
+                            materialDesign:RippleAssist.IsCentered="True"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                Foreground="#e31b23"
+                                Kind="Heart" />
+                        </Button>
+                    </StackPanel>
+                    <Button
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Content="show more" />
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card
+            Grid.Row="1"
+            Grid.Column="3"
+            Margin="20"
+            Style="{StaticResource MaterialDesignOutlinedCard}">
+            <materialDesign:Card.Effect>
+                <DropShadowEffect
+                    BlurRadius="25"
+                    Direction="270"
+                    Opacity="1"
+                    ShadowDepth="2"
+                    Color="Black" />
+            </materialDesign:Card.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Image Source="C:\Users\User\OneDrive\Desktop\photo_2024-06-05_23-23-09.jpg" Stretch="Uniform" />
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="8,24,8,0"
+                    VerticalAlignment="Center"
+                    Text="new Product" />
+                <Grid Grid.Row="2" Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel
+                        Grid.Column="1"
+                        Width="auto"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <Button
+                            Margin="5"
+                            Padding="1"
+                            materialDesign:RippleAssist.IsCentered="True"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                Foreground="Black"
+                                Kind="ShareVariant" />
+                        </Button>
+                        <Button
+                            Margin="5"
+                            Padding="1"
+                            materialDesign:RippleAssist.IsCentered="True"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                Foreground="#e31b23"
+                                Kind="Heart" />
+                        </Button>
+                    </StackPanel>
+                    <Button
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Content="show more" />
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="20"
+            Style="{StaticResource MaterialDesignOutlinedCard}">
+            <materialDesign:Card.Effect>
+                <DropShadowEffect
+                    BlurRadius="25"
+                    Direction="270"
+                    Opacity="1"
+                    ShadowDepth="2"
+                    Color="Black" />
+            </materialDesign:Card.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Image Source="C:\Users\User\OneDrive\Desktop\photo_2024-06-05_23-23-09.jpg" Stretch="Uniform" />
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="8,24,8,0"
+                    VerticalAlignment="Center"
+                    Text="new Product" />
+                <Grid Grid.Row="2" Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel
+                        Grid.Column="1"
+                        Width="auto"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <Button
+                            Margin="5"
+                            Padding="1"
+                            materialDesign:RippleAssist.IsCentered="True"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                Foreground="Black"
+                                Kind="ShareVariant" />
+                        </Button>
+                        <Button
+                            Margin="5"
+                            Padding="1"
+                            materialDesign:RippleAssist.IsCentered="True"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                Foreground="#e31b23"
+                                Kind="Heart" />
+                        </Button>
+                    </StackPanel>
+                    <Button
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Content="show more" />
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card
+            Grid.Row="2"
+            Grid.Column="2"
+            Margin="20"
+            Style="{StaticResource MaterialDesignOutlinedCard}">
+            <materialDesign:Card.Effect>
+                <DropShadowEffect
+                    BlurRadius="25"
+                    Direction="270"
+                    Opacity="1"
+                    ShadowDepth="2"
+                    Color="Black" />
+            </materialDesign:Card.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Image Source="C:\Users\User\OneDrive\Desktop\photo_2024-06-05_23-23-09.jpg" Stretch="Uniform" />
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="8,24,8,0"
+                    VerticalAlignment="Center"
+                    Text="new Product" />
+                <Grid Grid.Row="2" Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel
+                        Grid.Column="1"
+                        Width="auto"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <Button
+                            Margin="5"
+                            Padding="1"
+                            materialDesign:RippleAssist.IsCentered="True"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                Foreground="Black"
+                                Kind="ShareVariant" />
+                        </Button>
+                        <Button
+                            Margin="5"
+                            Padding="1"
+                            materialDesign:RippleAssist.IsCentered="True"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                Foreground="#e31b23"
+                                Kind="Heart" />
+                        </Button>
+                    </StackPanel>
+                    <Button
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Content="show more" />
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card
+            Grid.Row="2"
+            Grid.Column="3"
+            Margin="20"
+            Style="{StaticResource MaterialDesignOutlinedCard}">
+            <materialDesign:Card.Effect>
+                <DropShadowEffect
+                    BlurRadius="25"
+                    Direction="270"
+                    Opacity="1"
+                    ShadowDepth="2"
+                    Color="Black" />
+            </materialDesign:Card.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Image Source="C:\Users\User\OneDrive\Desktop\photo_2024-06-05_23-23-09.jpg" Stretch="Uniform" />
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="8,24,8,0"
+                    VerticalAlignment="Center"
+                    Text="new Product" />
+                <Grid Grid.Row="2" Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel
+                        Grid.Column="1"
+                        Width="auto"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <Button
+                            Margin="5"
+                            Padding="1"
+                            materialDesign:RippleAssist.IsCentered="True"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                Foreground="Black"
+                                Kind="ShareVariant" />
+                        </Button>
+                        <Button
+                            Margin="5"
+                            Padding="1"
+                            materialDesign:RippleAssist.IsCentered="True"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                Foreground="#e31b23"
+                                Kind="Heart" />
+                        </Button>
+                    </StackPanel>
+                    <Button
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Content="show more" />
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
+        <StackPanel
+            Grid.Row="3"
+            Grid.Column="3"
+            Margin="8,0,0,8"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button Margin="0,0,10,0" Content="{materialDesign:PackIcon Kind=ChevronLeft}" />
+            <Button Content="1" Margin="0,0,10,0" />
+            <Button Content="2" Margin="0,0,10,0" />
+            <Button Content="3" Margin="0,0,10,0" />
+            <Button Content="{materialDesign:PackIcon Kind=ChevronRight}" Margin="0,0,40,0" />
+
+        </StackPanel>
+    </Grid>
+</UserControl>

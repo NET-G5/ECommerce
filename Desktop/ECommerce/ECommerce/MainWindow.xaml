@@ -61,6 +61,7 @@
                     </TabItem.Header>
                 </TabItem>
                 <TabItem Width="320" >
+                    <views:BasketView/>
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon

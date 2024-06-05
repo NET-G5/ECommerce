@@ -26,16 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\Windows\" />
-    <Folder Include="Views\Dialogs\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Dialogs\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Dialogs\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\Windows\" />
   </ItemGroup>
 
 </Project>

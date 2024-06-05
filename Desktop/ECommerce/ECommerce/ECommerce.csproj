@@ -34,4 +34,8 @@
     <Folder Include="Views\Dialogs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Dialogs\" />
+  </ItemGroup>
+
 </Project>

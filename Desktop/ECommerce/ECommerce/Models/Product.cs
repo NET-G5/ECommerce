@@ -20,6 +20,4 @@ public class Product
         Reviews = new List<Reviews>();
         Orders = new List<Order>();
     }
-
-
 }

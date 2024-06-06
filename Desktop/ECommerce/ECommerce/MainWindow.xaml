@@ -11,14 +11,14 @@
     WindowState="Maximized"
     mc:Ignorable="d">
     <Grid>
-        <materialDesign:Card >
+        <materialDesign:Card>
             <TabControl
                 materialDesign:ColorZoneAssist.Mode="Dark"
                 materialDesign:ElevationAssist.Elevation="Dp0"
                 Style="{StaticResource MaterialDesignNavigationRailTabControl}"
-                TabStripPlacement="Top" >
-                <TabItem  Width="320">
-                    <TabItem.Header >
+                TabStripPlacement="Top">
+                <TabItem Width="320">
+                    <TabItem.Header>
                         <StackPanel Width="80" Height="auto">
                             <TextBlock
                                 HorizontalAlignment="Center"
@@ -26,8 +26,9 @@
                                 Text="Home Page" />
                         </StackPanel>
                     </TabItem.Header>
-                </TabItem >
-                <TabItem Width="320" >
+                    <views:HomePageView/>
+                </TabItem>
+                <TabItem Width="320">
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <TextBlock
@@ -44,12 +45,13 @@
                                 Width="30"
                                 Height="30"
                                 HorizontalAlignment="Center"
+                                Foreground="red"
                                 Kind="Heart" />
                         </StackPanel>
                     </TabItem.Header>
-                </TabItem >
-                <TabItem  Width="320">
-                    <views:AuthorizationView/>
+                </TabItem>
+                <TabItem Width="320">
+                    <views:AuthorizationView />
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
@@ -60,7 +62,7 @@
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
-                <TabItem Width="320" >
+                <TabItem Width="320">
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
@@ -70,6 +72,7 @@
                                 Kind="Cart" />
                         </StackPanel>
                     </TabItem.Header>
+                    <views:BasketView/>
                 </TabItem>
             </TabControl>
         </materialDesign:Card>

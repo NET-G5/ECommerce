@@ -9,6 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Windows\**" />
+    <EmbeddedResource Remove="Views\Windows\**" />
+    <None Remove="Views\Windows\**" />
+    <Page Remove="Views\Windows\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="35.5.1" />
     <PackageReference Include="MaterialDesignThemes" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
@@ -19,9 +27,5 @@
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModels\Dialogs\" />
-    <Folder Include="Views\Dialogs\" />
-  </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using ECommerce.Services;
+using System.Windows;
 
 namespace ECommerce;
 
@@ -10,5 +11,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+
+        DataSeederService.SeedDate(); 
     }
 }

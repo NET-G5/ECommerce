@@ -27,5 +27,11 @@
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Views\Views\AuthorizationView.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+
 
 </Project>

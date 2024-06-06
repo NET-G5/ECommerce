@@ -516,10 +516,10 @@
             HorizontalAlignment="Right"
             Orientation="Horizontal">
             <Button Margin="0,0,10,0" Content="{materialDesign:PackIcon Kind=ChevronLeft}" />
-            <Button Content="1" Margin="0,0,10,0" />
-            <Button Content="2" Margin="0,0,10,0" />
-            <Button Content="3" Margin="0,0,10,0" />
-            <Button Content="{materialDesign:PackIcon Kind=ChevronRight}" Margin="0,0,40,0" />
+            <Button Margin="0,0,10,0" Content="1" />
+            <Button Margin="0,0,10,0" Content="2" />
+            <Button Margin="0,0,10,0" Content="3" />
+            <Button Margin="0,0,40,0" Content="{materialDesign:PackIcon Kind=ChevronRight}" />
 
         </StackPanel>
     </Grid>

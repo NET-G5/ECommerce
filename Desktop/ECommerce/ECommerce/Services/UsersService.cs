@@ -15,6 +15,17 @@ public class UsersService
     public List<UserAccount> GetUsers() => [.. _context.Users];
     public UserAccount? GetUserById(int id) => _context.Users.FirstOrDefault(u => u.Id == id);
 
+    public bool LogIn(string email, string password)
+    {
+        var user = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+
+        if (user == null)
+        {
+            return false;
+        }
+
+        return true;
+    }
     public bool CreateUser(UserAccount userAccount)
     {
         _context.Users.Add(userAccount);

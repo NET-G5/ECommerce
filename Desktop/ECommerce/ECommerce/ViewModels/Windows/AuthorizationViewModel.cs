@@ -1,6 +1,9 @@
-﻿using ECommerce.Extentions;
+﻿using ECommerce.Data;
+using ECommerce.Extensions;
 using ECommerce.Models;
 using ECommerce.Services;
+using ECommerce.Views.Views;
+using MaterialDesignThemes.Wpf;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
@@ -115,12 +118,22 @@ namespace ECommerce.ViewModels.Windows
 
         private readonly UsersService _usersService;
         public ICommand SaveCommand { get; }
+        public ICommand LogInCommand { get; }
 
         public AuthorizationViewModel()
         {
             _usersService = new();
 
             SaveCommand = new Command(OnSaveToCreate);
+        }
+
+
+        private void OnLogin()
+        {
+            if (!_usersService.LogIn(Email, Password))
+            {
+                MessageBoxExtention.ShowError("You are not registered. Please register");
+            }
         }
 
         public AuthorizationViewModel(UserAccount user)

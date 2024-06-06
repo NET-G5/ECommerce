@@ -12,6 +12,6 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        DataSeederService.SeedDate(); 
+        //DataSeederService.SeedDate(); 
     }
 }

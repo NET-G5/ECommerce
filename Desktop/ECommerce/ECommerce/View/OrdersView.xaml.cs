@@ -1,24 +1,16 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using System.Collections.ObjectModel;
+
 namespace ECommerce.View
 {
     /// <summary>
-    /// Interaction logic for OrdersWindow.xaml
+    /// Interaction logic for OrdersView.xaml
     /// </summary>
-    public partial class OrdersWindow : Window
+    public partial class OrdersView : Window
     {
-        public OrdersWindow()
+        public OrdersView()
         {
             InitializeComponent();
-        }
-
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
         }
         private bool isMaximized = false;
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -40,5 +32,6 @@ namespace ECommerce.View
             }
 
         }
+
     }
-}   
+}

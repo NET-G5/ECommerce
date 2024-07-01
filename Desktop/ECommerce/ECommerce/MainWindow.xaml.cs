@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using ECommerce.View;
+using System.Windows;
 
 namespace ECommerce
 {
@@ -10,6 +11,8 @@ namespace ECommerce
         public MainWindow()
         {
             InitializeComponent();
+            var window =new OrdersView();
+            window.Show();
         }
     }
 }

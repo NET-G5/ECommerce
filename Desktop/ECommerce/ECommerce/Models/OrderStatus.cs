@@ -1,8 +1,10 @@
-﻿namespace ECommerce.Models;
-
-public enum OrderStatus
+﻿namespace ECommerce.Models
 {
-    Pending,
-    Completed,
-    Cancelled
+	public enum OrderStatus
+	{
+		Pending,
+		Canceled,
+		Refunded,
+		Sold
+	}
 }

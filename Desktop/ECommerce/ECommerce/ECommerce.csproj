@@ -10,12 +10,16 @@
 
   <ItemGroup>
     <Compile Remove="ViewModels\**" />
+    <Compile Remove="Views\**" />
     <Compile Remove="View\**" />
     <EmbeddedResource Remove="ViewModels\**" />
+    <EmbeddedResource Remove="Views\**" />
     <EmbeddedResource Remove="View\**" />
     <None Remove="ViewModels\**" />
+    <None Remove="Views\**" />
     <None Remove="View\**" />
     <Page Remove="ViewModels\**" />
+    <Page Remove="Views\**" />
     <Page Remove="View\**" />
   </ItemGroup>
 
@@ -27,10 +31,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\" />
   </ItemGroup>
 
 </Project>

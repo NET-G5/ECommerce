@@ -9,5 +9,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     WindowState="Maximized"
     mc:Ignorable="d">
-    <Grid />
+    <Grid>
+        <Button HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Green"
+                Background="Yellow"
+                Content="Order Details"
+            Click="Button_Click"/>
+    </Grid>
 </Window>

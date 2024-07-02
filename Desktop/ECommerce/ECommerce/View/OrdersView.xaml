@@ -113,7 +113,7 @@
                                 DockPanel.Dock="Top">
                                 <Ellipse>
                                     <Ellipse.Fill>
-                                        <ImageBrush ImageSource="C:\С# .net   PDP\ECommerce\Desktop\ECommerce\ECommerce\Images\photo_2024-07-01_15-23-14.jpg" />
+                                        <ImageBrush ImageSource="C:\Users\Пользователь\Source\Repos\ECommerce\Desktop\ECommerce\ECommerce\Images\photo_2024-07-01_15-23-14.jpg" />
                                     </Ellipse.Fill>
                                 </Ellipse>
                             </Border>

@@ -96,7 +96,7 @@
                     <Button Width="120"
                             Height="30"
                             Margin="10,0"
-                            Background="LightCoral"
+                            Background="#FF204E"
                             Content="Order Cancel"
 
                         Foreground="White" />
@@ -134,15 +134,15 @@
                             Height="40"
                             Margin="10"
                             HorizontalAlignment="Center"
-                            Background="LightGreen"
+                            Background="#9333ea"
                             Content="Save"
                             Foreground="White" />
                     <Button Width="100"
                             Height="40"
                             Margin="10"
                             HorizontalAlignment="Center"
-                            Background="#FF204E"
-                            Content="Cancel"
+                            Background="#6a738f"
+                            Content="Back"
                             Foreground="White" />
                 </StackPanel>
             </StackPanel>

@@ -8,5 +8,6 @@ namespace ECommerce.Services
 {
 	internal class OrderDetailService
 	{
+
 	}
 }

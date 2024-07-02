@@ -11,7 +11,12 @@ namespace ECommerce
         public MainWindow()
         {
             InitializeComponent();
-            var window = new OrdersView();
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var window =new OrderDetailsView();
             window.Show();
         }
     }

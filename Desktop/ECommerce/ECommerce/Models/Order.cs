@@ -6,14 +6,12 @@
 
 		public Customer Customer { get; set; }
 
-		public OrderDetail OrderDetail { get; set; }
-
 		public OrderStatus Status { get; set; }
 
 		public DateTime OrderedDate { get; set; }
 
 		public DateTime ExpireDate { get; set; }
 
-		public DateTime SoldDate { get; set; }
+		public DateTime? SoldDate { get; set; }
 	}
 }

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+
+﻿using ECommerce.View;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ECommerce
@@ -11,6 +13,13 @@ namespace ECommerce
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var window =new OrderDetailsView();
+            window.Show();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

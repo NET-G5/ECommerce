@@ -11,7 +11,7 @@ namespace ECommerce
         public MainWindow()
         {
             InitializeComponent();
-            var window =new OrdersView();
+            var window = new OrdersView();
             window.Show();
         }
     }

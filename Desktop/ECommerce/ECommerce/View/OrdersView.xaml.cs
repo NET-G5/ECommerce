@@ -1,37 +1,33 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace ECommerce.View
+namespace ECommerce.View;
+
+public partial class OrdersView : Window
 {
-    /// <summary>
-    /// Interaction logic for OrdersView.xaml
-    /// </summary>
-    public partial class OrdersView : Window
+	private bool isMaximized = false;
+
+	public OrdersView()
     {
-        public OrdersView()
+        InitializeComponent();
+    }
+
+    private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        if (e.ClickCount == 2)
         {
-            InitializeComponent();
-        }
-        private bool isMaximized = false;
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ClickCount == 2)
+            if (isMaximized)
             {
-                if (isMaximized)
-                {
-                    this.WindowState = WindowState.Normal;
-                    this.Height = 720;
-                    this.Width = 1080;
-                    isMaximized = false;
-                }
-                else
-                {
-                    this.WindowState = WindowState.Maximized;
-                    isMaximized = true;
-                }
+                WindowState = WindowState.Normal;
+                Height = 720;
+                Width = 1080;
+                isMaximized = false;
             }
-
+            else
+            {
+                WindowState = WindowState.Maximized;
+                isMaximized = true;
+            }
         }
-
     }
 }

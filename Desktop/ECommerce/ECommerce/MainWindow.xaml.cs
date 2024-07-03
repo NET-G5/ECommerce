@@ -1,43 +1,37 @@
-
-﻿using ECommerce.View;
+using ECommerce.View;
 using System.Windows;
 using System.Windows.Input;
 
-namespace ECommerce
+namespace ECommerce;
+
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
+        InitializeComponent();
+    }
 
-        }
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        var window =new OrderDetailsView();
+        window.Show();
+    }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+    private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        if (e.LeftButton == MouseButtonState.Pressed)
         {
-            var window =new OrderDetailsView();
-            window.Show();
+            DragMove();
         }
+    }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
-        }
+    private void BtnMinimize_Click(object sender, RoutedEventArgs e)
+    {
+        WindowState = WindowState.Minimized;
+    }
 
-        private void btnMinimize_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+    private void BtnClose_Click(object sender, RoutedEventArgs e)
+    {
+        Application.Current.Shutdown();
     }
 }

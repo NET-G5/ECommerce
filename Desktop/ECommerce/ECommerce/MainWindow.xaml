@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ECommerce"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="LoginView"
     Width="800"
     Height="550"
@@ -66,7 +66,7 @@
                         x:Name="btnMinimize"
                         Grid.Column="1"
                         BorderThickness="0"
-                        Click="btnMinimize_Click"
+                        Click="BtnMinimize_Click"
                         Content="-"
                         Cursor="Hand"
                         FontFamily="Montserrat"
@@ -102,7 +102,7 @@
                         Grid.Column="2"
                         Background="#DA34EA"
                         BorderThickness="0"
-                        Click="btnClose_Click"
+                        Click="BtnClose_Click"
                         Content="X"
                         Cursor="Hand"
                         FontFamily="Montserrat"
@@ -140,40 +140,79 @@
                     Grid.Row="2"
                     Width="250"
                     Margin="0,35,0,0"
-                    Orientation="Vertical" >
-                    <TextBlock Text="Welcome Back!" FontSize="24" FontWeight="Bold" Foreground="#5E5CE6" Margin="0,0,0,10"/>
-                    <TextBlock Text="Please sign in to continue" FontSize="14" Foreground="#8A8A8A" Margin="0,0,0,30"/>
+                    Orientation="Vertical">
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        Foreground="#5E5CE6"
+                        Text="Welcome Back!" />
+                    <TextBlock
+                        Margin="0,0,0,30"
+                        FontSize="14"
+                        Foreground="#8A8A8A"
+                        Text="Please sign in to continue" />
 
                     <StackPanel>
-                        <TextBlock Text="Username" Foreground="#8A8A8A" Margin="0,0,0,5"/>
-                        <TextBox Width="250" Foreground="White" Height="30" BorderBrush="Gray" Margin="0,0,0,20" />
+                        <TextBlock
+                            Margin="0,0,0,5"
+                            Foreground="#8A8A8A"
+                            Text="Username" />
+                        <TextBox
+                            Width="250"
+                            Height="30"
+                            Margin="0,0,0,20"
+                            BorderBrush="Gray"
+                            Foreground="White" />
 
-                        <TextBlock Text="Password" Foreground="#8A8A8A" Margin="0,0,0,5"/>
-                        <PasswordBox Width="250" Height="30" Foreground="AntiqueWhite" BorderBrush="Gray" Margin="0,0,0,10"/>
-                        <CheckBox Content="Remember me" Background="Beige" Foreground="#8A8A8A" Margin="0,0,0,20"/>
+                        <TextBlock
+                            Margin="0,0,0,5"
+                            Foreground="#8A8A8A"
+                            Text="Password" />
+                        <PasswordBox
+                            Width="250"
+                            Height="30"
+                            Margin="0,0,0,10"
+                            BorderBrush="Gray"
+                            Foreground="AntiqueWhite" />
+                        <CheckBox
+                            Margin="0,0,0,20"
+                            Background="Beige"
+                            Content="Remember me"
+                            Foreground="#8A8A8A" />
 
-                        <Button Content="Login" Width="200" Height="35" Margin="10,30,10,20" VerticalAlignment="Top" Background="#4A47A3" Foreground="White" FontWeight="Bold" BorderBrush="White" BorderThickness="1">
+                        <Button
+                            Width="200"
+                            Height="35"
+                            Margin="10,30,10,20"
+                            VerticalAlignment="Top"
+                            Background="#4A47A3"
+                            BorderBrush="White"
+                            BorderThickness="1"
+                            Content="Login"
+                            FontWeight="Bold"
+                            Foreground="White">
                             <Button.Style>
                                 <Style TargetType="Button">
-                                    <Setter Property="Background" Value="#4A47A3"/>
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="BorderBrush" Value="White"/>
-                                    <Setter Property="BorderThickness" Value="1"/>
+                                    <Setter Property="Background" Value="#4A47A3" />
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="BorderBrush" Value="White" />
+                                    <Setter Property="BorderThickness" Value="1" />
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#5A57C3"/>
+                                            <Setter Property="Background" Value="#5A57C3" />
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <TextBlock Text="Forgot Password" Foreground="#5E5CE6" HorizontalAlignment="Right"/>
+                        <TextBlock
+                            HorizontalAlignment="Right"
+                            Foreground="#5E5CE6"
+                            Text="Forgot Password" />
                     </StackPanel>
                 </StackPanel>
             </Grid>
-
         </Border>
-
-
     </Grid>
 </Window>

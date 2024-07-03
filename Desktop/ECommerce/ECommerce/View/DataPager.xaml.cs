@@ -1,15 +1,11 @@
 ﻿using System.Windows.Controls;
 
-namespace ECommerce.View
+namespace ECommerce.View;
+
+public partial class DataPager : UserControl
 {
-    /// <summary>
-    /// Interaction logic for DataPager.xaml
-    /// </summary>
-    public partial class DataPager : UserControl
+    public DataPager()
     {
-        public DataPager()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

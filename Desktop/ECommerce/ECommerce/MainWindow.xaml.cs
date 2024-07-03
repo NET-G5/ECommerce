@@ -19,9 +19,11 @@ public partial class MainWindow : Window
         {
             return;
         }
-
+        
         var ordersView = new OrdersView();
         ordersView.Show();
+
+        this.Close();
     }
 
     private bool CheckAdmin(string username, string password)

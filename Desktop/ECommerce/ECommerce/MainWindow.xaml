@@ -202,6 +202,7 @@
                                 Kind="Key" />
 
                             <PasswordBox
+                                x:Name="PasswordInput"
                                 Width="200"
                                 Height="35"
                                 Margin="36,0,0,0"
@@ -229,7 +230,8 @@
                             BorderThickness="1"
                             Content="Login"
                             FontWeight="Bold"
-                            Foreground="White">
+                            Foreground="White"
+                            Click="BtnLogin_Clicked">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="Background" Value="#4A47A3" />

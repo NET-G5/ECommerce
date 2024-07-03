@@ -1,15 +1,9 @@
-﻿using System.Windows.Controls;
+﻿namespace ECommerce.View;
 
-namespace ECommerce.View
+public partial class OrderDetailsView
 {
-    /// <summary>
-    /// Interaction logic for OrderDetailsView.xaml
-    /// </summary>
-    public partial class OrderDetailsView
+    public OrderDetailsView()
     {
-        public OrderDetailsView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

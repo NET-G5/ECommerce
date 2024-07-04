@@ -54,7 +54,7 @@ public class OrderDetailService
 			Price = 225000,
 			Size = 5
 		},
-		new	Product()
+		new Product()
 		{
 			Id = 2,
 			Category = _categories[0],
@@ -236,7 +236,7 @@ public class OrderDetailService
 		}
 	];
 
-	List<OrderDetail> _orderDetails =
+	private static List<OrderDetail> _orderDetails =
 	[
 		new OrderDetail()
 		{
@@ -391,4 +391,19 @@ public class OrderDetailService
 			TotalPrice = _products[14].Price
 		}
 	];
+
+	public List<OrderDetail> GetOrderDetails(int orderId)
+	{
+		List<OrderDetail> orderDetails = [];
+
+		foreach (var orderDetail in _orderDetails)
+		{
+			if (orderDetail.Order.Id == orderId)
+			{
+				orderDetails.Add(orderDetail);
+			}
+		}
+
+		return orderDetails;
+	}
 }

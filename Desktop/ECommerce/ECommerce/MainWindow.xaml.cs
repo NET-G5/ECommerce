@@ -6,7 +6,7 @@ using System.Windows.Input;
 namespace ECommerce;
 
 public partial class MainWindow : Window
-{
+{   
     public MainWindow()
     {
         InitializeComponent();

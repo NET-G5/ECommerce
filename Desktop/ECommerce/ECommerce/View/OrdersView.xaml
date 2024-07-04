@@ -15,7 +15,7 @@
     WindowState="Maximized"
     WindowStyle="None">
 
-    <Border Background="#FF202137" CornerRadius="10">
+    <Border Background="#151f2d" CornerRadius="10">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -37,7 +37,7 @@
                     VerticalAlignment="Center"
                     FontFamily="Montserrat"
                     FontSize="13"
-                    Foreground="DarkGray"
+                    Foreground="White"
                     Text="ORDERS" />
             </Grid>
             <Grid Grid.Column="2">
@@ -128,8 +128,7 @@
                 </Grid.RowDefinitions>
                 <Border
                     Grid.ColumnSpan="3"
-                    Background="#FF202137"
-                    BorderBrush="Gray"
+                    Background="Transparent"
                     BorderThickness="0.5">
                     <DockPanel>
                         <Grid>
@@ -138,46 +137,13 @@
                                 <ColumnDefinition Width="500" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
-                            <!--  Search TextBox  -->
-                            <TextBox
-                                x:Name="TextSeach"
-                                Grid.Column="1"
-                                Width="400"
-                                Height="30"
-                                Margin="20,0"
-                                Padding="5"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                materialDesign:HintAssist.Hint="Search here..."
-                                Background="#FF2E2F47"
-                                Foreground="LightGray"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}" />
-                            <icon:PackIconMaterial
-                                Grid.Column="1"
-                                Width="25"
-                                Height="25"
-                                Margin="0,0,15,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Foreground="#b0b9c6"
-                                Kind="Magnify" />
-
-
-                            <!--  menu button  -->
-                            <Button
-                                Margin="0,28,0,35"
-                                HorizontalAlignment="Center"
-                                Style="{StaticResource topButton}">
-                                <icon:PackIconMaterial
-                                    Width="30"
-                                    Height="30"
-                                    Kind="Menu" />
-                            </Button>
 
                             <!--  EMP Name  -->
                             <TextBlock
                                 Grid.Column="2"
+                                Margin="0,0,10,0"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 DockPanel.Dock="Right"
@@ -195,15 +161,25 @@
                                 Margin="20,16,0,17"
                                 Padding="3"
                                 HorizontalAlignment="Left"
-                                Background="Gray"
+                                Background="#1e2e44"
                                 CornerRadius="100"
                                 DockPanel.Dock="Top">
                                 <!--<Ellipse>
-                                    <Ellipse.Fill>
-                                        <ImageBrush ImageSource="\Images\photo_2024-07-01_15-23-14.jpg" />
-                                    </Ellipse.Fill>
+                                <Ellipse.Fill>
+                                <ImageBrush ImageSource="\Images\photo_2024-07-01_15-23-14.jpg" />
+                                </Ellipse.Fill>
                                 </Ellipse>-->
                             </Border>
+
+                            <Button
+                                Grid.Column="4"
+                                Width="auto"
+                                Background="#1e2e44"
+                                Height="50"
+                                Margin="0,0,10,0"
+                                HorizontalAlignment="Right"
+                                Click="LogOut_Click"
+                                Content="Log Out" />
 
                         </Grid>
                     </DockPanel>
@@ -212,79 +188,86 @@
 
             <!--  Filters  -->
             <TextBox
+                x:Name="OrderNumberSearchText"
                 Grid.Row="2"
                 Grid.Column="0"
                 Width="250"
-                Height="40"
                 Margin="0,15,0,15"
                 Padding="8"
                 HorizontalAlignment="Center"
                 materialDesign:HintAssist.Hint="Order Number"
                 materialDesign:TextFieldAssist.HasClearButton="True"
-                Background="#FF2E2F47"
-                FontSize="10"
-                Foreground="LightGray"
+                Background="#1e2e44"
+                FontSize="16"
+                Foreground="White"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Visibility="Visible" />
 
             <TextBox
+                x:Name="CustomerNameSearchText"
                 Grid.Row="2"
                 Grid.Column="1"
                 Width="250"
-                Height="40"
                 Margin="0,15,0,15"
                 Padding="8"
                 HorizontalAlignment="Center"
                 materialDesign:HintAssist.Hint="Customer name"
                 materialDesign:TextFieldAssist.HasClearButton="True"
-                Background="#FF2E2F47"
-                FontSize="10"
-                Foreground="LightGray"
+                Background="#1e2e44"
+                FontSize="16"
+                Foreground="White"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Visibility="Visible">
                 <!--<TextBox.Text>
-                    <Binding Path="Text1" UpdateSourceTrigger="PropertyChanged" />
+                <Binding Path="Text1" UpdateSourceTrigger="PropertyChanged" />
                 </TextBox.Text>-->
             </TextBox>
 
             <ComboBox
+                x:Name="StatusCombobox"
                 Grid.Row="2"
                 Grid.Column="2"
                 Width="250"
-                Height="40"
+                Height="55"
                 Margin="0,15,0,15"
                 Padding="10"
                 materialDesign:HintAssist.Hint="Status"
                 materialDesign:TextFieldAssist.HasClearButton="True"
-                FontSize="14"
-                Background="#FF2E2F47"
-                Foreground="LightGray"
+                Background="#1e2e44"
+                FontSize="16"
+                Foreground="White"
                 IsEditable="True"
                 Style="{StaticResource MaterialDesignOutlinedComboBox}" />
             <!--  end Filrers  -->
 
             <!--  Data Grid  -->
             <DataGrid
+                x:Name="OrdersDataGrid"
                 Grid.Row="3"
                 Grid.ColumnSpan="3"
+                Margin="20"
+                Background="#1e2e44"
+                Foreground="White"
                 AlternatingRowBackground="#623ed0"
                 AutoGenerateColumns="False"
                 CanUserAddRows="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="100" Header="Order Id" />
-                    <DataGridTextColumn Width="100" Header="Customer" />
-                    <DataGridTextColumn Width="200" Header="Expire Date" />
-                    <DataGridTextColumn Width="200" Header="Status" />
+                    <DataGridTextColumn Width="100" Header="Order Id" Foreground="White" />
+                    <DataGridTextColumn Width="100" Header="Customer" Foreground="White"/>
+                    <DataGridTextColumn Width="200" Header="Expire Date"  Foreground="White" />
+                    <DataGridTextColumn Width="200" Header="Status" Foreground="White"/>
                 </DataGrid.Columns>
             </DataGrid>
 
-            <!--  Pagination  -->
+
+            <!--  Pagination
             <local:DataPager
-                Grid.Row="4"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Margin="0,0,30,30"
-                HorizontalAlignment="Right" />
+            Grid.Row="4"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,0,30,30"
+            HorizontalAlignment="Right" />
+            -->
         </Grid>
     </Border>
 

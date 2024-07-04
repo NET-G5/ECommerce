@@ -12,8 +12,10 @@
     Height="720"
     Background="Transparent"
     WindowStartupLocation="CenterScreen"
-    WindowState="Maximized">
-    <Border Background="#eff2f7" CornerRadius="30">
+    WindowState="Maximized"
+    WindowStyle="None">
+
+    <Border Background="#FF202137" CornerRadius="10">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -21,18 +23,114 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
+
+            <Grid>
+                <TextBlock
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontFamily="Montserrat"
+                    FontSize="13"
+                    Foreground="DarkGray"
+                    Text="ORDERS" />
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="30" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    x:Name="btnMinimize"
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    BorderThickness="0"
+                    Click="BtnMinimize_Click"
+                    Content="-"
+                    Cursor="Hand"
+                    FontFamily="Montserrat"
+                    FontSize="12"
+                    Foreground="White">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#28AEED" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#2788EF" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                Width="20"
+                                Height="20"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="9">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+
+                <Button
+                    x:Name="btnClose"
+                    Grid.Column="2"
+                    Background="#DA34EA"
+                    BorderThickness="0"
+                    Click="BtnClose_Click"
+                    Content="X"
+                    Cursor="Hand"
+                    FontFamily="Montserrat"
+                    FontSize="12"
+                    Foreground="White">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#28AEED" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#2788EF" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                Width="20"
+                                Height="20"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="9">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+            </Grid>
             <!--  top Menu  -->
-            <Grid Grid.Row="0" Grid.ColumnSpan="3">
+            <Grid Grid.Row="1" Grid.ColumnSpan="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Border Grid.ColumnSpan="3" Background="#623ed0">
+                <Border
+                    Grid.ColumnSpan="3"
+                    Background="#FF202137"
+                    BorderBrush="Gray"
+                    BorderThickness="0.5">
                     <DockPanel>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -52,13 +150,13 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 materialDesign:HintAssist.Hint="Search here..."
-                                Background="#eff2f7"
-                                Foreground="#623ed0"
+                                Background="#FF2E2F47"
+                                Foreground="LightGray"
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}" />
                             <icon:PackIconMaterial
                                 Grid.Column="1"
-                                Width="30"
-                                Height="30"
+                                Width="25"
+                                Height="25"
                                 Margin="0,0,15,0"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
@@ -80,25 +178,24 @@
                             <!--  EMP Name  -->
                             <TextBlock
                                 Grid.Column="2"
-                                Margin="0,0,20,0"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 DockPanel.Dock="Right"
                                 FontSize="22"
                                 FontWeight="SemiBold"
-                                Foreground="White"
+                                Foreground="#F0EAD6"
                                 Text="Boboyev Bobur"
                                 TextAlignment="Right" />
 
                             <!--  Profile Photo  -->
                             <Border
                                 Grid.Column="3"
-                                Width="60"
-                                Height="60"
+                                Width="50"
+                                Height="50"
                                 Margin="20,16,0,17"
                                 Padding="3"
                                 HorizontalAlignment="Left"
-                                Background="White"
+                                Background="Gray"
                                 CornerRadius="100"
                                 DockPanel.Dock="Top">
                                 <!--<Ellipse>
@@ -115,7 +212,7 @@
 
             <!--  Filters  -->
             <TextBox
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="0"
                 Width="250"
                 Height="40"
@@ -124,43 +221,51 @@
                 HorizontalAlignment="Center"
                 materialDesign:HintAssist.Hint="Order Number"
                 materialDesign:TextFieldAssist.HasClearButton="True"
-                Background="#eff2f7"
+                Background="#FF2E2F47"
                 FontSize="10"
-                Foreground="#623ed0"
+                Foreground="LightGray"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Visibility="Visible" />
 
-
             <TextBox
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="1"
-                materialDesign:HintAssist.Hint="Text "
+                Width="250"
+                Height="40"
+                Margin="0,15,0,15"
+                Padding="8"
+                HorizontalAlignment="Center"
+                materialDesign:HintAssist.Hint="Customer name"
                 materialDesign:TextFieldAssist.HasClearButton="True"
-                FontSize="14"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}">
-                <TextBox.Text>
+                Background="#FF2E2F47"
+                FontSize="10"
+                Foreground="LightGray"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Visibility="Visible">
+                <!--<TextBox.Text>
                     <Binding Path="Text1" UpdateSourceTrigger="PropertyChanged" />
-                </TextBox.Text>
+                </TextBox.Text>-->
             </TextBox>
 
             <ComboBox
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="2"
                 Width="250"
-                Height="auto"
+                Height="40"
                 Margin="0,15,0,15"
                 Padding="10"
                 materialDesign:HintAssist.Hint="Status"
                 materialDesign:TextFieldAssist.HasClearButton="True"
                 FontSize="14"
-                Foreground="#623ed0"
+                Background="#FF2E2F47"
+                Foreground="LightGray"
                 IsEditable="True"
                 Style="{StaticResource MaterialDesignOutlinedComboBox}" />
             <!--  end Filrers  -->
 
             <!--  Data Grid  -->
             <DataGrid
-                Grid.Row="2"
+                Grid.Row="3"
                 Grid.ColumnSpan="3"
                 AlternatingRowBackground="#623ed0"
                 AutoGenerateColumns="False"
@@ -175,7 +280,7 @@
 
             <!--  Pagination  -->
             <local:DataPager
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Margin="0,0,30,30"

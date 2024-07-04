@@ -24,10 +24,10 @@ public partial class MainWindow : Window
             return;
         }
         
-        var ordersView = new OrdersView(loggedInEmployee);
+        var ordersView = new OrdersView();
         ordersView.Show();
 
-        Close();
+        this.Close();
     }
 
     private Employee? CheckAdmin(string username, string password)
@@ -53,8 +53,8 @@ public partial class MainWindow : Window
             new Employee()
             {
                 Id = 1,
-                UserName = "ramazon",
-                Password = "choriyev2002",
+                UserName = "1",
+                Password = "1",
                 FirstName = "Ramazon",
                 LastName = "Choriyev"
             },

@@ -167,8 +167,21 @@ public class OrderService
 		}
 	];
 
+	private void CheckingForRefund()
+	{
+		for (int i = 0; i < orders.Count; i++)
+		{
+			if (orders[i].ExpireDate < DateTime.Now && orders[i].SoldDate is null)
+			{
+				orders[i].Status = OrderStatus.Refunded;
+			}
+		}
+	}
+
 	public List<Order> GetOrder(int? orderId = null, int? customerId = null, OrderStatus? status = null)
 	{
+		CheckingForRefund();
+
 		List<Order> orders = [];
 
 		if (orderId is not null && customerId is not null && status is not null)
@@ -243,5 +256,44 @@ public class OrderService
 		}
 
 		return orders;
+	}
+
+	public bool UpdateOrder(int orderId, bool isSuccessful, bool isRefunded = false)
+	{
+		for (int i = 0; i < orders.Count; i++)
+		{
+			var order = orders[i];
+
+			if (order.Id != orderId)
+			{
+				continue;
+			}
+
+			if (isRefunded)
+			{
+				var difference = DateTime.Now - order.SoldDate;
+
+				if (difference > TimeSpan.FromDays(3))
+				{
+					return false;
+				}
+
+				order.Status = OrderStatus.Refunded;
+			}
+			else if (isSuccessful)
+			{
+				order.Status = OrderStatus.Sold;
+				order.SoldDate = DateTime.Now;
+			}
+			else
+			{
+				order.Status = OrderStatus.Canceled;
+			}
+
+			orders[i] = order;
+			return true;
+		}
+
+		return false;
 	}
 }

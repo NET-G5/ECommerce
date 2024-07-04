@@ -4,7 +4,7 @@ namespace ECommerce.Services;
 
 public class OrderService
 {
-	private static readonly List<Order> _orders =
+	internal static List<Order> orders =
 	[
 		new Order ()
 		{
@@ -173,7 +173,7 @@ public class OrderService
 
 		if (orderId is not null && customerId is not null && status is not null)
 		{
-			foreach (var order in _orders)
+			foreach (var order in orders)
 			{
 				if (order.Id == orderId && order.Customer.Id == customerId && order.Status == status)
 				{
@@ -183,7 +183,7 @@ public class OrderService
 		}
 		else if (orderId is not null && customerId is not null)
 		{
-			foreach (var order in _orders)
+			foreach (var order in orders)
 			{
 				if (order.Id == orderId && order.Customer.Id == customerId)
 				{
@@ -193,7 +193,7 @@ public class OrderService
 		}
 		else if (orderId is not null && status is not null)
 		{
-			foreach (var order in _orders)
+			foreach (var order in orders)
 			{
 				if (order.Id == orderId && order.Status == status)
 				{
@@ -203,7 +203,7 @@ public class OrderService
 		}
 		else if (customerId is not null && status is not null)
 		{
-			foreach (var order in _orders)
+			foreach (var order in orders)
 			{
 				if (order.Customer.Id == customerId && order.Status == status)
 				{
@@ -213,7 +213,7 @@ public class OrderService
 		}
 		else if (orderId is not null)
 		{
-			foreach (var order in _orders)
+			foreach (var order in orders)
 			{
 				if (order.Id == orderId)
 				{
@@ -223,7 +223,7 @@ public class OrderService
 		}
 		else if (customerId is not null)
 		{
-			foreach (var order in _orders)
+			foreach (var order in orders)
 			{
 				if (order.Customer.Id == customerId)
 				{
@@ -233,7 +233,7 @@ public class OrderService
 		}
 		else if (status is not null)
 		{
-			foreach (var order in _orders)
+			foreach (var order in orders)
 			{
 				if (order.Status == status)
 				{

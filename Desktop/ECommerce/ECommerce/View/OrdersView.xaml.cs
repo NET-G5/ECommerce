@@ -1,15 +1,22 @@
-﻿using System.Windows;
+﻿using ECommerce.Models;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ECommerce.View;
 
 public partial class OrdersView : Window
 {
+    private readonly Employee loggedInEmployee;
 	private bool isMaximized = false;
 
 	public OrdersView()
     {
         InitializeComponent();
+    }
+
+    public OrdersView(Employee employee)
+    {
+        loggedInEmployee = employee;
     }
 
     private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

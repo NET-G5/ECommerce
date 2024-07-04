@@ -17,7 +17,11 @@ namespace ECommerce
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var window =new OrderDetailsView();
+
+
             window.Show();
+            this.Close();
         }
+
     }
 }

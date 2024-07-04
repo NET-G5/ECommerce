@@ -1,3 +1,4 @@
+using ECommerce.Models;
 using ECommerce.View;
 using System.Windows;
 using System.Windows.Input;
@@ -15,26 +16,68 @@ public partial class MainWindow : Window
     {
         string username = UsernameInput.Text;
         string password = PasswordInput.Password.ToString();
-        if (!CheckAdmin(username, password))
+
+        Employee? loggedInEmployee = CheckAdmin(username, password);
+
+		if (loggedInEmployee is null)
         {
             return;
         }
         
-        var ordersView = new OrdersView();
+        var ordersView = new OrdersView(loggedInEmployee);
         ordersView.Show();
 
-        this.Close();
+        Close();
     }
 
-    private bool CheckAdmin(string username, string password)
+    private Employee? CheckAdmin(string username, string password)
     {
-        if (username == "pdp" && password == "pdp123")
+        List<Employee> employees =
+        [
+            new Employee()
+            {
+                Id = 1,
+                UserName = "bobur",
+                Password = "boboyev2004",
+                FirstName = "Bobur",
+                LastName = "Boboyev"
+            },
+            new Employee()
+            {
+                Id = 1,
+                UserName = "jamshidbek",
+                Password = "choriyev0405",
+                FirstName = "Jamshidbek",
+                LastName = "Choriyev"
+            },
+            new Employee()
+            {
+                Id = 1,
+                UserName = "ramazon",
+                Password = "choriyev2002",
+                FirstName = "Ramazon",
+                LastName = "Choriyev"
+            },
+            new Employee()
+            {
+                Id = 1,
+                UserName = "akhmadovich",
+                Password = "akhmadovich0302",
+                FirstName = "Ro'zimuhammad",
+                LastName = "Abdullayev"
+            },
+        ];
+
+        foreach (var employee in employees)
         {
-            return true;
+            if (username == employee.UserName && password == employee.Password)
+            {
+                return employee;
+            }
         }
 
         MessageBox.Show("Username or password is incorrect. Please, try again!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        return false;
+        return null;
     }
 
     private void Window_MouseDown(object sender, MouseButtonEventArgs e)

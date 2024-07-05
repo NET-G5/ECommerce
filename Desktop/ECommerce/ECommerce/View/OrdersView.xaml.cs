@@ -57,11 +57,6 @@ public partial class OrdersView : Window
         WindowState = WindowState.Minimized;
     }
 
-    private void BtnClose_Click(object sender, RoutedEventArgs e)
-    {
-        Application.Current.Shutdown();
-    }
-
     private void LogOut_Click(object sender, RoutedEventArgs e)
     {
         var window = new MainWindow();

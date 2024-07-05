@@ -10,6 +10,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        var win = new OrderDetailsView();
+        win.Show();
     }
 
     private void BtnLogin_Clicked(object sender, RoutedEventArgs e)
@@ -34,6 +36,14 @@ public partial class MainWindow : Window
     {
         List<Employee> employees =
         [
+            new Employee()
+            {
+                Id = 1,
+                UserName = "b",
+                Password = "b",
+                FirstName = "Bobur",
+                LastName = "Boboyev"
+            },
             new Employee()
             {
                 Id = 1,

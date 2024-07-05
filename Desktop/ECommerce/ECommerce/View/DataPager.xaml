@@ -16,7 +16,7 @@
             Background="Transparent"
             Command="{Binding PreviousPageCommand}"
             Content="Previous"
-            Foreground="#623ed0"
+            Foreground="White"
             IsEnabled="{Binding HasPreviousPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <Button
             Margin="10,0,0,0"
@@ -43,7 +43,7 @@
             Background="Transparent"
             Command="{Binding NextPageCommand}"
             Content="Next"
-            Foreground="#623ed0"
+            Foreground="White"
             IsEnabled="{Binding HasNextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <!--  Page Size  -->

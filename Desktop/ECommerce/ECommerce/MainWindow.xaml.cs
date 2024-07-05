@@ -24,7 +24,7 @@ public partial class MainWindow : Window
             return;
         }
         
-        var ordersView = new OrdersView();
+        var ordersView = new OrdersView(loggedInEmployee);
         ordersView.Show();
 
         this.Close();

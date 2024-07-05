@@ -13,5 +13,8 @@
         public DateTime ExpireDate { get; set; }
 
 		public DateTime? SoldDate { get; set; }
-	}
+
+       
+    }
+    
 }

@@ -8,6 +8,8 @@
 
 		public Product Product { get; set; }
 
+        public OrderStatus Status { get; set; }
+
         public double Amount { get; set; }
 
         public double TotalPrice { get; set; }

@@ -178,29 +178,33 @@ public class OrderService
 		}
 	}
 
-	public List<Order> GetOrder(int? orderId = null, int? customerId = null, OrderStatus? status = null)
+	public List<Order> GetOrder(int? orderId = null, string customer = "", OrderStatus? status = null)
 	{
 		CheckingForRefund();
 
-		List<Order> orders = [];
+		List<Order> searchOrders = [];
 
-		if (orderId is not null && customerId is not null && status is not null)
+		if (orderId is not null && !string.IsNullOrEmpty(customer) && status is not null)
 		{
 			foreach (var order in orders)
 			{
-				if (order.Id == orderId && order.Customer.Id == customerId && order.Status == status)
+				if (order.Id == orderId && 
+					(order.Customer.FirstName == customer || order.Customer.LastName == customer )
+					&& order.Status == status)
 				{
-					orders.Add(order);
+					searchOrders.Add(order);
 				}
 			}
 		}
-		else if (orderId is not null && customerId is not null)
+		else if (orderId is not null && !string.IsNullOrEmpty(customer))
 		{
 			foreach (var order in orders)
 			{
-				if (order.Id == orderId && order.Customer.Id == customerId)
-				{
-					orders.Add(order);
+				if (order.Id == orderId &&
+					(order.Customer.FirstName == customer || order.Customer.LastName == customer)
+					)
+                {
+					searchOrders.Add(order);
 				}
 			}
 		}
@@ -210,17 +214,19 @@ public class OrderService
 			{
 				if (order.Id == orderId && order.Status == status)
 				{
-					orders.Add(order);
+					searchOrders.Add(order);
 				}
 			}
 		}
-		else if (customerId is not null && status is not null)
+		else if (!string.IsNullOrEmpty(customer) && status is not null)
 		{
 			foreach (var order in orders)
 			{
-				if (order.Customer.Id == customerId && order.Status == status)
+				if ((order.Customer.FirstName == customer ||
+					order.Customer.LastName == customer)&&
+					order.Status == status)
 				{
-					orders.Add(order);
+					searchOrders.Add(order);
 				}
 			}
 		}
@@ -230,17 +236,17 @@ public class OrderService
 			{
 				if (order.Id == orderId)
 				{
-					orders.Add(order);
+					searchOrders.Add(order);
 				}
 			}
 		}
-		else if (customerId is not null)
+		else if (!string.IsNullOrEmpty(customer))
 		{
 			foreach (var order in orders)
 			{
-				if (order.Customer.Id == customerId)
-				{
-					orders.Add(order);
+                if (order.Customer.FirstName == customer || order.Customer.LastName == customer)
+                {
+                    searchOrders.Add(order);
 				}
 			}
 		}
@@ -250,12 +256,14 @@ public class OrderService
 			{
 				if (order.Status == status)
 				{
-					orders.Add(order);
+					searchOrders.Add(order);
 				}
 			}
 		}
+		else
+			return orders;
 
-		return orders;
+		return searchOrders;
 	}
 
 	public bool UpdateOrder(int orderId, bool isSuccessful, bool isRefunded = false)

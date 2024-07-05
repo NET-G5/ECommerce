@@ -391,4 +391,18 @@ public class OrderDetailService
 			TotalPrice = _products[14].Price
 		}
 	];
+
+    public List<OrderDetail> GetOrderDetails(int orderId)
+    {
+        List<OrderDetail> orderDetails = [];
+
+        foreach (var orderDetail in _orderDetails)
+        {
+            if (orderDetail.Order.Id == orderId)
+            {
+                orderDetails.Add(orderDetail);
+            }
+        }
+        return orderDetails;
+    }
 }

@@ -14,8 +14,10 @@ public partial class OrdersView : Window
         InitializeComponent();
     }
 
-    public OrdersView(Employee employee)
+    public OrdersView(Employee employee):this()
     {
+        var win = new OrderDetailsView();
+        win.Show();
         loggedInEmployee = employee;
     }
 

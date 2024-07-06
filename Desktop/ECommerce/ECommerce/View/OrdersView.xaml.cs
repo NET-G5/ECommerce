@@ -151,5 +151,46 @@ namespace ECommerce.View
                     break;
                 }
         }
+        private void image1_Loaded(object sender, RoutedEventArgs e)
+        {
+            // replace it with what ever you like
+            // for example image1.Source = GetBitmapFromFile("myImage.img");
+            image1.Source = GetBitmapFromFile("Images\\ProfilePhoto.jpg");
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            // first we take the coordinates of the mouse relative to the top left corner of our window
+            var pos = e.GetPosition(this);
+            // then we set the margin of the image control so that its top left corner is at the position
+            image1.Margin = new Thickness(pos.X, pos.Y, 0, 0);
+        }
+
+        private System.Windows.Media.Imaging.BitmapImage GetBitmapFromFile(string path)
+        {
+            System.Windows.Media.Imaging.BitmapImage img = new System.Windows.Media.Imaging.BitmapImage();
+            img.BeginInit();
+            // Every path can be represented by an URI
+            img.UriSource = new System.Uri(path, System.UriKind.RelativeOrAbsolute);
+            img.EndInit();
+
+            return img;
+        }
+
+        private System.Windows.Media.Imaging.BitmapImage GetBitmapFromGDI(System.Drawing.Bitmap bmp)
+        {
+            var strm = new System.IO.MemoryStream();
+            // We temporary save the bitmap to a stream inside the memory
+            bmp.Save(strm, System.Drawing.Imaging.ImageFormat.Bmp);
+            strm.Position = 0;
+            System.Windows.Media.Imaging.BitmapImage img = new System.Windows.Media.Imaging.BitmapImage();
+            img.BeginInit();
+            // The BitmapImage should be loaded from the stream inside memory
+            img.StreamSource = strm;
+            img.EndInit();
+            strm.Dispose();
+
+            return img;
+        }
     }
 }

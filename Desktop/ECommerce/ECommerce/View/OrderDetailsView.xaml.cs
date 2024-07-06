@@ -11,31 +11,46 @@ namespace ECommerce.View
     public partial class OrderDetailsView
     {
         private readonly OrderDetailService _orderDatailService;
+		private List<Product> _products;
+        private List<OrderDetail> _orderDetails;
 
-        public OrderDetailsView(Order order)
+		public OrderDetailsView(Order order)
         {
             InitializeComponent();
-            _orderDatailService = new OrderDetailService();
-            var orderDetail = _orderDatailService.GetOrderDetails(order.Id);
-            Load(orderDetail);
-        }
-        private void Load(List<OrderDetail> orderDetail)
+            
+            _orderDatailService = new();
+            _products = [];
+            _orderDetails = _orderDatailService.GetOrderDetails(order.Id);
+
+            RefreshData(order);
+
+            Products.ItemsSource = _products;
+		}
+
+        private double TakingTotalPrice()
         {
-            Id.Text = orderDetail[0].Order.Id.ToString();
-            FullName.Text = orderDetail[0].Order.Customer.LastName + " " + orderDetail[0].Order.Customer.LastName;
-            ExpireDate.Text= orderDetail[0].Order.ExpireDate.ToString();
-            OrderDate.Text= orderDetail[0].Order.OrderedDate.ToString();
             double totalPrice = 0;
-            List<Product> products = [];
-            foreach (OrderDetail detail in orderDetail)
-            {
-                products.Add(detail.Product);
-                totalPrice+=detail.TotalPrice;
-            }
-            TotalPrice.Text=totalPrice.ToString();
-            Products.Items.Clear();
-            Products.ItemsSource = products;
-        }
+
+			foreach (var detail in _orderDetails)
+			{
+                for (int i = 0; i < detail.Amount; i++)
+                {
+                    _products.Add(detail.Product);
+				    totalPrice += detail.Product.Price;
+                }
+			}
+
+            return totalPrice;
+		}
+       
+        private void RefreshData(Order order)
+        {
+			Id.Text = order.Id.ToString();
+			FullName.Text = order.Customer.ToString();
+			ExpireDate.Text = order.ExpireDate.ToString("dd/MM/yyyy HH:mm");
+			OrderDate.Text = order.OrderedDate.ToString("dd/MM/yyyy HH:mm");
+			TotalPrice.Text = TakingTotalPrice().ToString() + " so'm";
+		}
 
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
@@ -44,7 +59,7 @@ namespace ECommerce.View
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            Close();
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)

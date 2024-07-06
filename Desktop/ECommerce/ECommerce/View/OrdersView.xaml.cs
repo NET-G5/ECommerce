@@ -53,27 +53,7 @@ namespace ECommerce.View
 			Load(_orderId, _customer, _orderStatus);
 			OrdersDataGrid.ItemsSource = Orders;
 
-			OrderIdSearchText.KeyDown += ((sender, e) =>
-			{
-				if (e.Key == Key.Enter)
-				{
-					Search_Clicked(sender, e);
-				}
-			});
-			CustomerNameSearchText.KeyDown += ((sender, e) =>
-			{
-				if (e.Key == Key.Enter)
-				{
-					Search_Clicked(sender, e);
-				}
-			});
-			StatusCombobox.KeyDown += ((sender, e) =>
-			{
-				if (e.Key == Key.Enter)
-				{
-					Search_Clicked(sender, e);
-				}
-			});
+			
 			
 		}
 

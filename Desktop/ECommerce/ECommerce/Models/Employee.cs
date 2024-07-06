@@ -12,8 +12,8 @@ public class Employee
 
     public string LastName { get; set; }
 
-	public override string ToString()
-	{
-		return $"{LastName} {FirstName}";
-	}
+    public override string ToString()
+    {
+        return $"{LastName} {FirstName}";
+    }
 }

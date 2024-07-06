@@ -6,7 +6,7 @@ using System.Windows.Input;
 namespace ECommerce;
 
 public partial class MainWindow : Window
-{   
+{
     public MainWindow()
     {
         InitializeComponent();
@@ -21,11 +21,11 @@ public partial class MainWindow : Window
 
         Employee? loggedInEmployee = CheckAdmin(username, password);
 
-		if (loggedInEmployee is null)
+        if (loggedInEmployee is null)
         {
             return;
         }
-        
+
         var ordersView = new OrdersView(loggedInEmployee);
         ordersView.Show();
 

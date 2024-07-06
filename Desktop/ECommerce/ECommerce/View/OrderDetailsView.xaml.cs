@@ -1,7 +1,6 @@
 ﻿using ECommerce.Models;
 using ECommerce.Services;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace ECommerce.View
 {
@@ -19,12 +18,12 @@ namespace ECommerce.View
             //{
             //    new Order { Id = 1,  Name = "Nimadir", Description = "nimadirlar", Price = 156, },
             //    new Order { Id = 2, Name = "Koptok", Description = "10 lik top", Price = 152, },
-            
+
             //    new Order { Id = 1,  Name = "Nimadir", Description = "nimadirlar", Price = 156, },
             //    new Order { Id = 2, Name = "Koptok", Description = "10 lik top", Price = 152, },
-            
-                
-               
+
+
+
             //};
             //OrderDetails.Items.Clear();
             //OrderDetails.ItemsSource = orders;
@@ -39,7 +38,7 @@ namespace ECommerce.View
         {
 
         }
-      
+
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
@@ -69,7 +68,7 @@ namespace ECommerce.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          
+
 
         }
 

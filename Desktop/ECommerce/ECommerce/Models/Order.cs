@@ -4,7 +4,7 @@ public class Order
 {
     public int Id { get; set; }
 
-	public Customer Customer { get; set; }
+    public Customer Customer { get; set; }
 
     public OrderStatus Status { get; set; }
 
@@ -12,5 +12,5 @@ public class Order
 
     public DateTime ExpireDate { get; set; }
 
-	public DateTime? SoldDate { get; set; }
+    public DateTime? SoldDate { get; set; }
 }

@@ -9,8 +9,9 @@ public partial class MainWindow : Window
 {
     public MainWindow()
     {
+        Order order = new Order();
         InitializeComponent();
-        var win = new OrderDetailsView();
+        var win = new OrderDetailsView(order);
         win.Show();
     }
 

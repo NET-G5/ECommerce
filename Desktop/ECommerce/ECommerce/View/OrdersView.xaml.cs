@@ -38,20 +38,7 @@ namespace ECommerce.View
 			_orderService = new OrderService();
 			Orders = new ObservableCollection<Order>();
 
-			if (!string.IsNullOrEmpty(OrderIdSearchText.Text))
-			{
-				_orderId = int.Parse(OrderIdSearchText.Text);
-			}
-
-			_customer = CustomerNameSearchText.Text ?? "";
-
-			if (StatusCombobox.SelectedItem != null)
-			{
-				_orderStatus = (OrderStatus)StatusCombobox.SelectedItem;
-			}
-
-			Load(_orderId, _customer, _orderStatus);
-			OrdersDataGrid.ItemsSource = Orders;
+			RefreshingDataGrid();
 		}
 
 		void Load(int? OrderId, string Customer, OrderStatus? Status)
@@ -86,7 +73,6 @@ namespace ECommerce.View
 			{
 				var window = new OrderDetailsView(selectedOrder);
 				window.Show();
-				//Close();
 			}
 		}
 
@@ -96,6 +82,11 @@ namespace ECommerce.View
 		}
 
 		private void Search_Clicked(object sender, RoutedEventArgs e)
+		{
+			RefreshingDataGrid();
+		}
+
+		private void RefreshingDataGrid()
 		{
 			if (!string.IsNullOrEmpty(OrderIdSearchText.Text))
 			{

@@ -10,8 +10,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        var win = new OrderDetailsView();
-        win.Show();
     }
 
     private void BtnLogin_Clicked(object sender, RoutedEventArgs e)

@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ECommerce"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
     Title="LoginView"
@@ -56,7 +57,8 @@
                         VerticalAlignment="Center"
                         FontFamily="Montserrat"
                         FontSize="13"
-                        Foreground="DarkGray"
+                        FontWeight="Bold"
+                        Foreground="White"
                         Text="LOG IN" />
 
                     <Button
@@ -64,12 +66,11 @@
                         Grid.Column="1"
                         BorderThickness="0"
                         Click="BtnMinimize_Click"
-                        Content="-"
                         Cursor="Hand"
                         FontFamily="Montserrat"
                         FontSize="12"
                         Foreground="White">
-
+                        <materialDesign:PackIcon Kind="WindowMinimize" />
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#28AEED" />
@@ -84,10 +85,10 @@
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border
-                                    Width="25"
-                                    Height="25"
+                                    Width="20"
+                                    Height="20"
                                     Background="{TemplateBinding Background}"
-                                    CornerRadius="9">
+                                    CornerRadius="10">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
                             </ControlTemplate>
@@ -98,13 +99,14 @@
                     <Button
                         x:Name="btnClose"
                         Grid.Column="2"
-                        Background="#DA34EA"
+                        Background="red"
                         BorderThickness="0"
                         Click="BtnClose_Click"
                         Content="X"
                         Cursor="Hand"
                         FontFamily="Montserrat"
                         FontSize="12"
+                        FontWeight="SemiBold"
                         Foreground="White">
 
                         <Button.Style>
@@ -121,10 +123,10 @@
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border
-                                    Width="25"
-                                    Height="25"
+                                    Width="20"
+                                    Height="20"
                                     Background="{TemplateBinding Background}"
-                                    CornerRadius="9">
+                                    CornerRadius="10">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
                             </ControlTemplate>
@@ -147,14 +149,15 @@
                             Width="50"
                             Height="50"
                             HorizontalAlignment="Center"
-                            Foreground="Gray"
+                            Foreground="White"
                             Kind="LaptopAccount" />
                     </md:Card>
 
                     <StackPanel>
                         <TextBlock
                             Margin="6,10,0,5"
-                            Foreground="#8A8A8A"
+                            FontWeight="SemiBold"
+                            Foreground="White"
                             Text="Username" />
                         <Grid Height="30" Margin="0,8,0,0">
                             <Grid.ColumnDefinitions>
@@ -162,7 +165,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <md:PackIcon
-                                Margin="5 5 0 5"
+                                Margin="5,5,0,5"
                                 VerticalAlignment="Center"
                                 Foreground="White"
                                 Kind="Account" />
@@ -170,13 +173,13 @@
                                 x:Name="UsernameInput"
                                 Grid.Column="1"
                                 Width="200"
-                                Margin="0 5 0 0"
                                 Height="35"
+                                Margin="0,5,0,0"
                                 Padding="2"
                                 VerticalAlignment="Center"
                                 Background="Transparent"
                                 BorderBrush="DarkGray"
-                                BorderThickness="0 0 0 1"
+                                BorderThickness="0,0,0,1"
                                 CaretBrush="LightGray"
                                 FontFamily="Montserrat"
                                 FontSize="13"
@@ -186,7 +189,8 @@
 
                         <TextBlock
                             Margin="6,25,0,0"
-                            Foreground="#8A8A8A"
+                            Foreground="White"
+                            FontWeight="SemiBold"
                             Text="Password" />
 
                         <Grid Height="40">
@@ -196,7 +200,7 @@
                             </Grid.ColumnDefinitions>
 
                             <md:PackIcon
-                                Margin="5 0 0 0"
+                                Margin="5,0,0,0"
                                 VerticalAlignment="Center"
                                 Foreground="White"
                                 Kind="Key" />
@@ -227,10 +231,10 @@
                             Background="#4A47A3"
                             BorderBrush="White"
                             BorderThickness="1"
+                            Click="BtnLogin_Clicked"
                             Content="Login"
                             FontWeight="Bold"
-                            Foreground="White"
-                            Click="BtnLogin_Clicked">
+                            Foreground="White">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="Background" Value="#4A47A3" />

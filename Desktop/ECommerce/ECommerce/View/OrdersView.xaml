@@ -333,8 +333,8 @@
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
                     <materialDesign:PackIcon
-                        Width="30"
-                        Height="30"
+                        Width="20"
+                        Height="20"
                         Margin="0,0,5,0"
                         VerticalAlignment="Center"
                         Foreground="White"
@@ -371,7 +371,7 @@
                         <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick" />
                     </Style>
                 </DataGrid.Resources>
-               
+
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="100"
@@ -395,12 +395,6 @@
                         Header="Status" />
                 </DataGrid.Columns>
             </DataGrid>
-
-            <!--<local:DataPager
-            Grid.Row="4"
-            Grid.Column="4"
-            Margin="11"
-            Background="#1e2e44" />-->
         </Grid>
     </Border>
 </Window>

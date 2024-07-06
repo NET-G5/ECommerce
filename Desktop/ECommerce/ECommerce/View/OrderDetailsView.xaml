@@ -1,72 +1,81 @@
-<Window x:Class="ECommerce.View.OrderDetailsView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:ECommerce.View"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        d:DesignHeight="600"
-        d:DesignWidth="800"
-        Background="#FF202137"
-        WindowState="Maximized"
-        WindowStyle="None"
-        mc:Ignorable="d">
+<Window
+    x:Class="ECommerce.View.OrderDetailsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ECommerce.View"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="Transparent"
+    WindowState="Maximized"
+    WindowStyle="None">
     <Window.Resources>
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="Background" Value="#FF2E2F47" />
+            <Setter Property="Background" Value="#1e2e44" />
         </Style>
         <Style TargetType="DataGrid">
-            <Setter Property="Background" Value="#FF2E2F47" />
-            <Setter Property="RowBackground" Value="#FF2E2F47" />
-            <Setter Property="AlternatingRowBackground" Value="#FF2E2F47" />
+            <Setter Property="Background" Value="#1e2e44" />
+            <Setter Property="RowBackground" Value="#1e2e44" />
+            <Setter Property="AlternatingRowBackground" Value="#151f2d" />
         </Style>
     </Window.Resources>
     <Grid>
-        <StackPanel>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="30" />
-                    <ColumnDefinition Width="30" />
-                </Grid.ColumnDefinitions>
+        <Border>
+            <Border.Background>
+                <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="2.5" RadiusY="1.5">
+                    <GradientStop Offset="0.0" Color="#0c0014" />
+                    <GradientStop Offset="0.5" Color="#151f2d" />
+                    <GradientStop Offset="1.0" Color="#1e2e44" />
+                </RadialGradientBrush>
+            </Border.Background>
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
 
-                <Button x:Name="btnMinimize"
+                    <Button
+                        x:Name="btnMinimize"
                         Grid.Column="1"
                         BorderThickness="0"
                         Click="BtnMinimize_Click"
-                        Content="-"
                         Cursor="Hand"
                         FontFamily="Montserrat"
                         FontSize="12"
                         Foreground="White">
+                        <materialDesign:PackIcon Kind="WindowMinimize" />
 
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background" Value="#28AEED" />
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#2788EF" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
 
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border Width="25"
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#28AEED" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#2788EF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Width="25"
                                     Height="25"
                                     Background="{TemplateBinding Background}"
-                                    CornerRadius="9">
-                                <ContentPresenter HorizontalAlignment="Center"
-                                                  VerticalAlignment="Center" />
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
+                                    CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
 
-                </Button>
+                    </Button>
 
-                <Button x:Name="btnClose"
+                    <Button
+                        x:Name="btnClose"
                         Grid.Column="2"
                         Background="red"
                         BorderThickness="0"
@@ -77,237 +86,261 @@
                         FontSize="12"
                         Foreground="White">
 
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background" Value="#28AEED" />
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#2788EF" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#28AEED" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#2788EF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
 
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border Width="25"
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Width="25"
                                     Height="25"
                                     Background="{TemplateBinding Background}"
-                                    CornerRadius="9">
-                                <ContentPresenter HorizontalAlignment="Center"
-                                                  VerticalAlignment="Center" />
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </Grid>
-            <TextBlock Grid.Row="1"
-                       Margin="0,0,0,20"
-                       HorizontalAlignment="Center"
-                       FontSize="24"
-                       FontWeight="Bold"
-                       Foreground="White"
-                       Text="Order Details" />
-            <StackPanel Margin="0,0,0,10"
+                                    CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="0,0,0,20"
+                    HorizontalAlignment="Center"
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Text="Order Details" />
+                <StackPanel
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBox
+                        x:Name="Id"
+                        Grid.Row="2"
+                        Width="100"
+                        Height="30"
+                        Margin="10,0"
+                        Padding="2"
                         HorizontalAlignment="Center"
-                        Orientation="Horizontal">
-                <TextBox x:Name="Id"
-                         Grid.Row="2"
-                         Width="100"
-                         Height="30"
-                         Margin="10,0"
-                         Padding="2"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center"
-                         Background="#FF2E2F47"
-                         FontWeight="Bold"
-                         Foreground="White"
-                         IsEnabled="False"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                         Visibility="Visible" />
-            </StackPanel>
-            <StackPanel Grid.Row="3"
-                        Margin="0,0,0,10"
+                        VerticalAlignment="Center"
+                        Background="#1e2e44"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        IsEnabled="False"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        Visibility="Visible" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="3"
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBox
+                        x:Name="FullName"
+                        Width="340"
+                        Height="30"
+                        Padding="2"
                         HorizontalAlignment="Center"
-                        Orientation="Horizontal">
-                <TextBox x:Name="FullName"
-                         Width="340"
-                         Height="30"
-                         Padding="2"
-                         HorizontalAlignment="Center"
-                         Background="#FF2E2F47"
-                         FontWeight="Bold"
-                         Foreground="White"
-                         IsEnabled="False"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}" />
-            </StackPanel>
-            <StackPanel Grid.Row="4"
-                        Margin="0,0,0,10"
-                        HorizontalAlignment="Center"
-                        Orientation="Horizontal">
-                <TextBox x:Name="OrderDate"
-                         Width="150"
-                         Height="30"
-                         Margin="10,0"
-                         Padding="2"
-                         Background="#FF2E2F47"
-                         FontWeight="Bold"
-                         Foreground="White"
-                         IsEnabled="False"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}" />
-                <TextBox x:Name="ExpireDate"
-                         Width="150"
-                         Height="30"
-                         Margin="10,0"
-                         Padding="2"
-                         Background="#FF2E2F47"
-                         FontWeight="Bold"
-                         Foreground="White"
-                         IsEnabled="False"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}" />
-                <TextBox x:Name="TotalPrice"
-                         Width="150"
-                         Height="30"
-                         Margin="10,0"
-                         Padding="2"
-                         Background="#FF2E2F47"
-                         FontWeight="Bold"
-                         Foreground="White"
-                         IsEnabled="False"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}" />
-
-            </StackPanel>
-            <StackPanel Background="#EBF4F6">
-                <StackPanel Background="#EBF4F6"
-                            Orientation="Horizontal">
-
-                    <TextBlock Margin="19,0,0,0"
-                               FontWeight="Bold"
-                               Foreground="Black"
-                               Text="Id" />
-                    <TextBlock Margin="180,0,0,0"
-                               FontWeight="Bold"
-                               Foreground="Black"
-                               Text="Name" />
-                    <TextBlock Margin="145,0,0,0"
-                               FontWeight="Bold"
-                               Foreground="Black"
-                               Text="Description" />
-                    <TextBlock Margin="295,0,0,0"
-                               FontWeight="Bold"
-                               Foreground="Black"
-                               Text="Price" />
-                    <TextBlock Margin="455,0,0,0"
-                               FontWeight="Bold"
-                               Foreground="Black"
-                               Text="Status" />
+                        Background="#1e2e44"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        IsEnabled="False"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="4"
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBox
+                        x:Name="OrderDate"
+                        Width="150"
+                        Height="30"
+                        Margin="10,0"
+                        Padding="2"
+                        Background="#1e2e44"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        IsEnabled="False"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                    <TextBox
+                        x:Name="ExpireDate"
+                        Width="150"
+                        Height="30"
+                        Margin="10,0"
+                        Padding="2"
+                        Background="#1e2e44"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        IsEnabled="False"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                    <TextBox
+                        x:Name="TotalPrice"
+                        Width="150"
+                        Height="30"
+                        Margin="10,0"
+                        Padding="2"
+                        Background="#1e2e44"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        IsEnabled="False"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}" />
 
                 </StackPanel>
-                <StackPanel>
-                    <ItemsControl x:Name="Products"
-                                  Margin="5">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border Margin="10"
+                <StackPanel Margin="20,10" Background="#1e2e44">
+                    <StackPanel Background="#1e2e44" Orientation="Horizontal">
+
+                        <TextBlock
+                            Margin="19,0,0,0"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            Text="Id" />
+                        <TextBlock
+                            Margin="180,0,0,0"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            Text="Name" />
+                        <TextBlock
+                            Margin="145,0,0,0"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            Text="Description" />
+                        <TextBlock
+                            Margin="220,0,0,0"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            Text="Price" />
+                        <TextBlock
+                            Margin="455,0,0,0"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Text="Status" />
+
+                    </StackPanel>
+                    <StackPanel>
+                        <ItemsControl x:Name="Products" Margin="5">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border
+                                        Margin="10"
                                         Padding="10"
                                         BorderBrush="Gray"
                                         BorderThickness="1">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
 
-                                        <TextBlock Grid.Column="0"
-                                                   Text="{Binding Id}" />
-                                        <TextBlock Grid.Column="1"
-                                                   FontSize="16"
-                                                   FontWeight="Bold"
-                                                   Text="{Binding Name}" />
-                                        <TextBlock Grid.Column="2"
-                                                   Text="{Binding Description}" />
-                                        <TextBlock Grid.Column="3"
-                                                   Text="{Binding CategoryId}" />
-                                        <TextBlock Grid.Column="4"
-                                                   Text="{Binding Price, StringFormat=\{0:C\}}" />
-                                        <Button Grid.Column="5"
+                                            <TextBlock Grid.Column="0" Text="{Binding Id}" />
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                FontSize="16"
+                                                FontWeight="Bold"
+                                                Text="{Binding Name}" />
+                                            <TextBlock Grid.Column="2" Text="{Binding Description}" />
+                                            <TextBlock Grid.Column="3" Text="{Binding CategoryId}" />
+                                            <TextBlock Grid.Column="4" Text="{Binding Price, StringFormat=\{0:C\}}" />
+                                            <Button
+                                                Grid.Column="5"
                                                 Margin="5,5"
                                                 Padding="10,5"
                                                 HorizontalAlignment="Right"
                                                 Background="#4CAF50"
                                                 Content="Refunded"
                                                 Foreground="White" />
-                                        <Button Grid.Column="6"
+                                            <Button
+                                                Grid.Column="6"
                                                 Margin="5,5"
                                                 Padding="10,5"
                                                 HorizontalAlignment="Right"
                                                 Background="#FF204E"
                                                 Content="Cenceled"
                                                 Foreground="White" />
-                                        <Button Grid.Column="7"
+                                            <Button
+                                                Grid.Column="7"
                                                 Margin="5,5"
                                                 Padding="20,5"
                                                 HorizontalAlignment="Right"
                                                 Background="#4CAF50"
                                                 Content="Sold"
                                                 Foreground="White" />
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
 
-                    <StackPanel Margin="10"
-                                HorizontalAlignment="Right"
-                                Orientation="Horizontal">
-                        <Button x:Name="myButton"
+                        <StackPanel
+                            Margin="10"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                            <Button
+                                x:Name="myButton"
                                 Margin="5"
                                 Padding="10,5"
                                 Background="Green"
                                 Click="Button_Click"
                                 Content="Order Sale"
+                                FontWeight="SemiBold"
                                 Foreground="White" />
-                        <Button x:Name="mButton"
+                            <Button
+                                x:Name="mButton"
                                 Margin="5"
                                 Padding="10,5"
                                 Background="#FF204E"
                                 Click="mButton_Click"
                                 Content="Order Cancel"
+                                FontWeight="SemiBold"
                                 Foreground="White" />
+                        </StackPanel>
                     </StackPanel>
+
                 </StackPanel>
 
-            </StackPanel>
-
-            <StackPanel Width="256"
-                        Height="80"
-                        Margin="0,0,0,10"
-                        HorizontalAlignment="Center"
-                        Orientation="Horizontal">
-                <Button Width="100"
+                <StackPanel
+                    Width="256"
+                    Height="80"
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        Width="100"
                         Height="40"
                         Margin="10"
                         HorizontalAlignment="Center"
                         Background="#9333ea"
                         Click="Save_Click"
                         Content="Save"
+                        FontWeight="SemiBold"
                         Foreground="White" />
-                <Button Width="100"
+                    <Button
+                        Width="100"
                         Height="40"
                         Margin="10"
                         HorizontalAlignment="Center"
-                        Background="#6a738f"
+                        Background="#1e2e44"
                         Click="Back_Click"
                         Content="Back"
+                        FontWeight="SemiBold"
                         Foreground="White" />
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
+        </Border>
 
     </Grid>
 </Window>

@@ -1,18 +1,17 @@
-﻿namespace ECommerce.Models
+﻿namespace ECommerce.Models;
+
+public class Customer
 {
-    public class Customer
+    public int Id { get; set; }
+
+    public string FirstName { get; set; }
+
+    public string LastName { get; set; }
+
+    public string PhoneNumber { get; set; }
+
+    public override string ToString()
     {
-        public int Id { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string PhoneNumber { get; set; }
-
-        public override string ToString()
-        {
-            return $"{FirstName} {LastName}";
-        }
+        return $"{FirstName} {LastName}";
     }
 }

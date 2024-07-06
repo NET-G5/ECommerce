@@ -15,24 +15,29 @@ namespace ECommerce.View
         public OrderDetailsView()
         {
             InitializeComponent();
-            orders = new List<Order>
-            {
-                new Order { Id = 1,  Name = "Nimadir", Description = "nimadirlar", Price = 156, },
-                new Order { Id = 2, Name = "Koptok", Description = "10 lik top", Price = 152, },
+            //orders = new List<Order>
+            //{
+            //    new Order { Id = 1,  Name = "Nimadir", Description = "nimadirlar", Price = 156, },
+            //    new Order { Id = 2, Name = "Koptok", Description = "10 lik top", Price = 152, },
             
-                new Order { Id = 1,  Name = "Nimadir", Description = "nimadirlar", Price = 156, },
-                new Order { Id = 2, Name = "Koptok", Description = "10 lik top", Price = 152, },
+            //    new Order { Id = 1,  Name = "Nimadir", Description = "nimadirlar", Price = 156, },
+            //    new Order { Id = 2, Name = "Koptok", Description = "10 lik top", Price = 152, },
             
                 
                
-            };
-            OrderDetails.Items.Clear();
-            OrderDetails.ItemsSource = orders;
-            Id.Text = "DFVGFDS";
-            FullName.Text = "Aslo kkd";
-            ExpireDate.Text = "xswmoxwsx";
-            TotalPrice.Text = "fgbfd";
-            OrderDate.Text = "fgfedwf";
+            //};
+            //OrderDetails.Items.Clear();
+            //OrderDetails.ItemsSource = orders;
+            //Id.Text = "DFVGFDS";
+            //FullName.Text = "Aslo kkd";
+            //ExpireDate.Text = "xswmoxwsx";
+            //TotalPrice.Text = "fgbfd";
+            //OrderDate.Text = "fgfedwf";
+        }
+
+        public OrderDetailsView(Order order)
+        {
+
         }
       
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
@@ -53,8 +58,8 @@ namespace ECommerce.View
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            var window = new OrdersView();
-            window.Show();
+            //var window = new OrdersView();
+            //window.Show();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -78,12 +83,12 @@ namespace ECommerce.View
 
         }
     }
-    public class Order
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public double Price { get; set; }
-        public string ImagePath { get; set; }
-    }
+    //public class Order
+    //{
+    //    public int Id { get; set; }
+    //    public string Name { get; set; }
+    //    public string Description { get; set; }
+    //    public double Price { get; set; }
+    //    public string ImagePath { get; set; }
+    //}
 }

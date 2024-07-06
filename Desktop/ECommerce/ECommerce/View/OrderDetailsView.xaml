@@ -178,14 +178,33 @@
 
             </StackPanel>
             <StackPanel Background="#EBF4F6">
+                <StackPanel Background="#EBF4F6"
+                            Orientation="Horizontal">
 
-                <TextBlock Grid.Column="0"
-                           Margin="10"
-                           FontWeight="Bold"
-                           Text="id" />
+                    <TextBlock Margin="19,0,0,0"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               Text="Id" />
+                    <TextBlock Margin="180,0,0,0"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               Text="Name" />
+                    <TextBlock Margin="145,0,0,0"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               Text="Description" />
+                    <TextBlock Margin="295,0,0,0"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               Text="Price" />
+                    <TextBlock Margin="455,0,0,0"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               Text="Status" />
 
+                </StackPanel>
                 <StackPanel>
-                    <ItemsControl x:Name="OrderDetails"
+                    <ItemsControl x:Name="Products"
                                   Margin="5">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
@@ -195,6 +214,7 @@
                                         BorderThickness="1">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
@@ -213,22 +233,24 @@
                                         <TextBlock Grid.Column="2"
                                                    Text="{Binding Description}" />
                                         <TextBlock Grid.Column="3"
+                                                   Text="{Binding CategoryId}" />
+                                        <TextBlock Grid.Column="4"
                                                    Text="{Binding Price, StringFormat=\{0:C\}}" />
-                                        <Button Grid.Column="4"
+                                        <Button Grid.Column="5"
                                                 Margin="5,5"
                                                 Padding="10,5"
                                                 HorizontalAlignment="Right"
                                                 Background="#4CAF50"
                                                 Content="Refunded"
                                                 Foreground="White" />
-                                        <Button Grid.Column="5"
+                                        <Button Grid.Column="6"
                                                 Margin="5,5"
                                                 Padding="10,5"
                                                 HorizontalAlignment="Right"
                                                 Background="#FF204E"
                                                 Content="Cenceled"
                                                 Foreground="White" />
-                                        <Button Grid.Column="6"
+                                        <Button Grid.Column="7"
                                                 Margin="5,5"
                                                 Padding="20,5"
                                                 HorizontalAlignment="Right"
@@ -260,6 +282,7 @@
                                 Foreground="White" />
                     </StackPanel>
                 </StackPanel>
+
             </StackPanel>
             <!--<DataGrid Grid.Row="5"
                           AutoGenerateColumns="False"

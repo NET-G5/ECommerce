@@ -68,9 +68,14 @@ public partial class OrdersView : Window
         var selectedOrder=OrdersDataGrid.SelectedItem as Order;
         if (selectedOrder is not null)
         {
-            var window = new OrderDetailsView();
+            var window = new OrderDetailsView(selectedOrder);
             window.Show();
             this.Close();
         }
+    }
+
+    private void btnClose_Click(object sender, RoutedEventArgs e)
+    {
+
     }
 }

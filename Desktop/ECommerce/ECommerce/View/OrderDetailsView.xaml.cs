@@ -11,30 +11,32 @@ namespace ECommerce.View
     public partial class OrderDetailsView
     {
         private readonly OrderDetailService _orderDatailService;
-        public List<Order> orders { get; set; }
-        public OrderDetailsView()
+
+        public OrderDetailsView(Order order)
         {
             InitializeComponent();
-            orders = new List<Order>
-            {
-                new Order { Id = 1,  Name = "Nimadir", Description = "nimadirlar", Price = 156, },
-                new Order { Id = 2, Name = "Koptok", Description = "10 lik top", Price = 152, },
-            
-                new Order { Id = 1,  Name = "Nimadir", Description = "nimadirlar", Price = 156, },
-                new Order { Id = 2, Name = "Koptok", Description = "10 lik top", Price = 152, },
-            
-                
-               
-            };
-            OrderDetails.Items.Clear();
-            OrderDetails.ItemsSource = orders;
-            Id.Text = "DFVGFDS";
-            FullName.Text = "Aslo kkd";
-            ExpireDate.Text = "xswmoxwsx";
-            TotalPrice.Text = "fgbfd";
-            OrderDate.Text = "fgfedwf";
+            _orderDatailService = new OrderDetailService();
+            var orderDetail = _orderDatailService.GetOrderDetails(order.Id);
+            Load(orderDetail);
         }
-      
+        private void Load(List<OrderDetail> orderDetail)
+        {
+            Id.Text = orderDetail[0].Order.Id.ToString();
+            FullName.Text = orderDetail[0].Order.Customer.LastName + " " + orderDetail[0].Order.Customer.LastName;
+            ExpireDate.Text= orderDetail[0].Order.ExpireDate.ToString();
+            OrderDate.Text= orderDetail[0].Order.OrderedDate.ToString();
+            double totalPrice = 0;
+            List<Product> products = [];
+            foreach (OrderDetail detail in orderDetail)
+            {
+                products.Add(detail.Product);
+                totalPrice=+detail.TotalPrice;
+            }
+            TotalPrice.Text=totalPrice.ToString();
+            Products.Items.Clear();
+            Products.ItemsSource = products;
+        }
+
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
@@ -53,8 +55,8 @@ namespace ECommerce.View
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            var window = new OrdersView();
-            window.Show();
+            
+            
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -77,13 +79,5 @@ namespace ECommerce.View
         {
 
         }
-    }
-    public class Order
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public double Price { get; set; }
-        public string ImagePath { get; set; }
     }
 }

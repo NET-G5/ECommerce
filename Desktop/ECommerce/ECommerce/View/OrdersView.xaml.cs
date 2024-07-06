@@ -109,28 +109,35 @@ namespace ECommerce.View
 
         private void RefreshingDataGrid()
         {
-            if (!string.IsNullOrEmpty(OrderIdSearchText.Text))
+            try
             {
-                _orderId = int.Parse(OrderIdSearchText.Text);
-            }
-            else
-            {
-                _orderId = null;
-            }
+                if (!string.IsNullOrEmpty(OrderIdSearchText.Text))
+                {
+                    _orderId = int.Parse(OrderIdSearchText.Text);
+                }
+                else
+                {
+                    _orderId = null;
+                }
 
-            _customer = CustomerNameSearchText.Text;
+                _customer = CustomerNameSearchText.Text;
 
-            if (StatusCombobox.SelectedItem != null)
-            {
-                _orderStatus = (OrderStatus)StatusCombobox.SelectedItem;
-            }
-            else
-            {
-                _orderStatus = null;
-            }
+                if (StatusCombobox.SelectedItem != null)
+                {
+                    _orderStatus = (OrderStatus)StatusCombobox.SelectedItem;
+                }
+                else
+                {
+                    _orderStatus = null;
+                }
 
-            Load(_orderId, _customer, _orderStatus);
-            OrdersDataGrid.ItemsSource = Orders;
+                Load(_orderId, _customer, _orderStatus);
+                OrdersDataGrid.ItemsSource = Orders;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error!\nDetails: {ex.Message}");
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

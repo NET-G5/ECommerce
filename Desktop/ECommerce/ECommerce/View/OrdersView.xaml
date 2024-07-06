@@ -264,9 +264,9 @@
                 Grid.Row="2"
                 Grid.Column="0"
                 Width="250"
-                Margin="0,15,0,15"
                 Padding="8"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
                 materialDesign:HintAssist.Hint="Order Number"
                 materialDesign:TextFieldAssist.HasClearButton="True"
                 Background="#1e2e44"
@@ -279,9 +279,9 @@
                 Grid.Row="2"
                 Grid.Column="1"
                 Width="250"
-                Margin="0,15,0,15"
                 Padding="8"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
                 materialDesign:HintAssist.Hint="Customer name"
                 materialDesign:TextFieldAssist.HasClearButton="True"
                 Background="#1e2e44"
@@ -289,48 +289,67 @@
                 Foreground="White"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}" />
 
-            <ComboBox x:Name="StatusCombobox"
-                      Grid.Row="2"
-                      Grid.Column="2"
-                      Width="250"
-                      Height="55"
-                      Margin="0,15,0,15"
-                      Padding="10"
-                      materialDesign:HintAssist.Hint="Status"
-                      materialDesign:TextFieldAssist.HasClearButton="True"
-                      Background="#1e2e44"
-                      FontSize="16"
-                      Foreground="White"
-                      IsEditable="True"
-                      ItemsSource="{Binding OrderStatuses}"
-                      Style="{StaticResource MaterialDesignOutlinedComboBox}">
+            <ComboBox
+                x:Name="StatusCombobox"
+                Grid.Row="2"
+                Grid.Column="2"
+                Width="250"
+                Height="55"
+                Padding="10"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="Status"
+                materialDesign:TextFieldAssist.HasClearButton="True"
+                Background="#1e2e44"
+                FontSize="16"
+                Foreground="White"
+                IsEditable="True"
+                ItemsSource="{Binding OrderStatuses}"
+                Style="{StaticResource MaterialDesignOutlinedComboBox}">
                 <ComboBox.ItemContainerStyle>
                     <Style TargetType="ComboBoxItem">
-                        <Setter Property="Background"
-                                Value="Black" />
-                        <Setter Property="Foreground"
-                                Value="White" />
-                        <Setter Property="BorderThickness"
-                                Value="0" />
-                        <Setter Property="Margin"
-                                Value="2" />
-                        <Setter Property="Padding"
-                                Value="8,4" />
+                        <Setter Property="Background" Value="White" />
+                        <Setter Property="FontWeight" Value="SemiBold"  />
+                        <Setter Property="Foreground" Value="#151f2d"  />
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Margin" Value="2" />
+                        <Setter Property="Padding" Value="8,4" />
                     </Style>
                 </ComboBox.ItemContainerStyle>
             </ComboBox>
-            
-            <Button Grid.Column="4"
-                    Grid.Row="2"
-                    Background="#1e2e44"
-                    Width="150"
-                    Height="55"
-                    Margin="0,15,0,15"
-                    Padding="10"
+
+            <Button
+                Grid.Row="2"
+                Grid.Column="3"
+                Width="124"
+                Height="55"
+                Padding="10"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="#1e2e44"
+                Click="Search_Clicked">
+                <StackPanel
                     HorizontalAlignment="Center"
-                    Content="Search"
-                    Click="Search_Clicked">
-                
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <materialDesign:PackIcon
+                        Width="30"
+                        Height="30"
+                        Margin="0,0,5,0"
+                        VerticalAlignment="Center"
+                        Foreground="White"
+                        Kind="Search" />
+                    <Label
+                        Width="auto"
+                        Height="30"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        FontWeight="Medium"
+                        Foreground="White">
+                        <TextBlock FontSize="20" Text="Search" />
+                    </Label>
+                </StackPanel>
+
             </Button>
 
             <!--  Data Grid  -->

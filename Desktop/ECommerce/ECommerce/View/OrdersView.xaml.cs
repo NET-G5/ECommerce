@@ -29,7 +29,7 @@ namespace ECommerce.View
 		{
 			InitializeComponent();
 
-			DataContext = this; 
+			DataContext = this;
 
 			string fullName = employee.ToString();
 			EmpTitle.TextDecorations.Clear();
@@ -52,6 +52,29 @@ namespace ECommerce.View
 
 			Load(_orderId, _customer, _orderStatus);
 			OrdersDataGrid.ItemsSource = Orders;
+
+			OrderIdSearchText.KeyDown += ((sender, e) =>
+			{
+				if (e.Key == Key.Enter)
+				{
+					Search_Clicked(sender, e);
+				}
+			});
+			CustomerNameSearchText.KeyDown += ((sender, e) =>
+			{
+				if (e.Key == Key.Enter)
+				{
+					Search_Clicked(sender, e);
+				}
+			});
+			StatusCombobox.KeyDown += ((sender, e) =>
+			{
+				if (e.Key == Key.Enter)
+				{
+					Search_Clicked(sender, e);
+				}
+			});
+			
 		}
 
 		void Load(int? OrderId, string Customer, OrderStatus? Status)
@@ -92,7 +115,7 @@ namespace ECommerce.View
 
 		private void BtnClose_Click(object sender, RoutedEventArgs e)
 		{
-			LogOut_Click(sender, e);
+			this.Close();
 		}
 
 		private void Search_Clicked(object sender, RoutedEventArgs e)

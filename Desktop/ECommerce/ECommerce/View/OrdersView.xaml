@@ -144,7 +144,7 @@
                     VerticalAlignment="Center"
                     Background="red"
                     BorderThickness="0"
-                    Click="btnClose_Click"
+                    Click="BtnClose_Click"
                     Content="X"
                     Cursor="Hand"
                     FontFamily="Montserrat"

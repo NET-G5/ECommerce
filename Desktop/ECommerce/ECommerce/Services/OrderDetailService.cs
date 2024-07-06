@@ -236,14 +236,14 @@ public class OrderDetailService
 			Size = null
 		}
 	];
-	public static List<OrderDetail> GetDetails() => new()
-	{
+	public static List<OrderDetail> _orderDetails =
+	[
 		new OrderDetail()
 		{
 			Id = 1,
 			Order = OrderService.orders[0],
 			Product = _products[0],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[0].Status,
 			Amount = 1,
 			TotalPrice = _products[0].Price
 		},
@@ -252,16 +252,16 @@ public class OrderDetailService
 			Id = 2,
 			Order = OrderService.orders[1],
 			Product = _products[3],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[1].Status,
 			Amount = 2,
-			TotalPrice = _products[3].Price * 3
+			TotalPrice = _products[3].Price * 2
 		},
 		new OrderDetail()
 		{
 			Id = 6,
 			Order = OrderService.orders[3],
 			Product = _products[3],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[3].Status,
 			Amount = 2,
 			TotalPrice = _products[3].Price * 2
 		},
@@ -270,7 +270,7 @@ public class OrderDetailService
 			Id = 7,
 			Order = OrderService.orders[3],
 			Product = _products[4],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[3].Status,
 			Amount = 1,
 			TotalPrice = _products[4].Price
 		},
@@ -279,7 +279,7 @@ public class OrderDetailService
 			Id = 8,
 			Order = OrderService.orders[3],
 			Product = _products[5],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[3].Status,
 			Amount = 1,
 			TotalPrice = _products[1].Price
 		},
@@ -288,7 +288,7 @@ public class OrderDetailService
 			Id = 9,
 			Order = OrderService.orders[4],
 			Product = _products[6],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[4].Status,
 			Amount = 1,
 			TotalPrice = _products[6].Price
 		},
@@ -297,7 +297,7 @@ public class OrderDetailService
 			Id = 10,
 			Order = OrderService.orders[5],
 			Product = _products[7],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[5].Status,
 			Amount = 1,
 			TotalPrice = _products[7].Price
 		},
@@ -306,7 +306,7 @@ public class OrderDetailService
 			Id = 11,
 			Order = OrderService.orders[5],
 			Product = _products[8],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[5].Status,
 			Amount = 2,
 			TotalPrice = _products[8].Price * 2
 		},
@@ -315,7 +315,7 @@ public class OrderDetailService
 			Id = 12,
 			Order = OrderService.orders[6],
 			Product = _products[8],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[6].Status,
 			Amount = 1,
 			TotalPrice = _products[8].Price
 		},
@@ -324,7 +324,7 @@ public class OrderDetailService
 			Id = 13,
 			Order = OrderService.orders[6],
 			Product = _products[3],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[6].Status,
 			Amount = 2,
 			TotalPrice = _products[3].Price * 2
 		},
@@ -333,7 +333,7 @@ public class OrderDetailService
 			Id = 14,
 			Order = OrderService.orders[7],
 			Product = _products[9],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[7].Status,
 			Amount = 1,
 			TotalPrice = _products[9].Price
 		},
@@ -342,7 +342,7 @@ public class OrderDetailService
 			Id = 15,
 			Order = OrderService.orders[8],
 			Product = _products[11],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[8].Status,
 			Amount = 1,
 			TotalPrice = _products[11].Price
 		},
@@ -351,7 +351,7 @@ public class OrderDetailService
 			Id = 16,
 			Order = OrderService.orders[8],
 			Product = _products[10],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[8].Status,
 			Amount = 1,
 			TotalPrice = _products[10].Price
 		},
@@ -360,7 +360,7 @@ public class OrderDetailService
 			Id = 17,
 			Order = OrderService.orders[8],
 			Product = _products[12],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[8].Status,
 			Amount = 1,
 			TotalPrice = _products[12].Price
 		},
@@ -369,7 +369,7 @@ public class OrderDetailService
 			Id = 18,
 			Order = OrderService.orders[9],
 			Product = _products[13],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[9].Status,
 			Amount = 1,
 			TotalPrice = _products[13].Price
 		},
@@ -378,24 +378,24 @@ public class OrderDetailService
 			Id = 19,
 			Order = OrderService.orders[9],
 			Product = _products[14],
-			Status = OrderStatus.Pending,
+			Status = OrderService.orders[9].Status,
 			Amount = 1,
 			TotalPrice = _products[14].Price
 		}
-	};
+	];
 
 	public List<OrderDetail> GetOrderDetails(int orderId)
 	{
 		List<OrderDetail> orderDetails = [];
-		var orderDetailsList = GetDetails();
 
-		foreach (var orderDetail in orderDetailsList)
+		foreach (var orderDetail in _orderDetails)
 		{
 			if (orderDetail.Order.Id == orderId)
 			{
 				orderDetails.Add(orderDetail);
 			}
 		}
+
         return orderDetails;
     }
 }

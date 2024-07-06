@@ -1,76 +1,135 @@
 ﻿using ECommerce.Models;
 using ECommerce.Services;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace ECommerce.View;
-
-public partial class OrdersView : Window
+namespace ECommerce.View
 {
-    private readonly Employee loggedInEmployee;
-    private readonly OrderService _orderService;
-    public ObservableCollection<Order> Orders;
-    private int? _orderId;
-    private string? _customer="";
-    private OrderStatus? _orderStatus;
-   
-    public OrdersView(Employee employee)
+    public partial class OrdersView : Window
     {
-        InitializeComponent();  
+        private readonly Employee loggedInEmployee;
+        private readonly OrderService _orderService;
+        public List<OrderStatus> OrderStatuses { get; } =
+        [
+            OrderStatus.Refunded,
+            OrderStatus.Pending,
+            OrderStatus.Canceled,
+            OrderStatus.Sold
+        ];
 
-        string fullName=employee.LastName+" "+employee.FirstName;
-        EmpTitle.TextDecorations.Clear();
-        EmpTitle.Text = fullName;
+        public ObservableCollection<Order> Orders { get; }
 
-        _orderService = new OrderService();
-        Orders = new ObservableCollection<Order>();
-        
-        if (!string.IsNullOrEmpty(OrderIdSearchText.Text))
-            _orderId = int.Parse(OrderIdSearchText.Text);
-        else _orderId = null;
-        _customer = CustomerNameSearchText.Text??"";
-        if(StatusCombobox.SelectedItem != null )
-            _orderStatus=(OrderStatus)StatusCombobox.SelectedItem;
-        else _orderStatus = null;
-        
-        Load(_orderId,_customer,_orderStatus);
-        OrdersDataGrid.ItemsSource = Orders;
+        private int? _orderId = null;
+        private string? _customer = null;
+        private OrderStatus? _orderStatus = null;
 
-    }
-    
-    void Load(int? OrderId ,string Customer, OrderStatus? Status)
-    {
-        var orders = _orderService.GetOrder(OrderId,Customer,Status);
-        Orders.Clear();
-        foreach (var order in orders)
+        public OrdersView(Employee employee)
         {
-            Orders.Add(order);   
+            InitializeComponent();
+
+            DataContext = this;
+
+            string fullName = employee.ToString();
+            EmpTitle.TextDecorations.Clear();
+            EmpTitle.Text = fullName;
+
+            _orderService = new OrderService();
+            Orders = new ObservableCollection<Order>();
+
+            OrderIdSearchText.KeyDown += ((sender, e) =>
+            {
+                if (e.Key == Key.Enter)
+                {
+                    Search_Clicked(sender, e);
+                }
+            });
+            CustomerNameSearchText.KeyDown += ((sender, e) =>
+            {
+                if (e.Key == Key.Enter)
+                {
+                    Search_Clicked(sender, e);
+                }
+            });
+            StatusCombobox.KeyDown += ((sender, e) =>
+            {
+                if (e.Key == Key.Enter)
+                {
+                    Search_Clicked(sender, e);
+                }
+            });
+            RefreshingDataGrid();
         }
-    }
 
-
-    private void BtnMinimize_Click(object sender, RoutedEventArgs e)
-    {
-        WindowState = WindowState.Minimized;
-    }
-
-    private void LogOut_Click(object sender, RoutedEventArgs e)
-    {
-        var window = new MainWindow();
-        window.Show();
-        this.Close();
-    }
-    private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-    {
-        var selectedOrder=OrdersDataGrid.SelectedItem as Order;
-        if (selectedOrder is not null)
+        void Load(int? OrderId, string Customer, OrderStatus? Status)
         {
-            var window = new OrderDetailsView(selectedOrder);
-            window.Show();
+            var orders = _orderService.GetOrder(OrderId, Customer, Status);
+
+            Orders.Clear();
+
+            foreach (var order in orders)
+            {
+                Orders.Add(order);
+            }
+        }
+
+        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
+{
+    WindowState = WindowState.Minimized;
+}
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+ {
+     var window = new MainWindow();
+     window.Show();
+     this.Close();
+ }
+
+        private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedOrder = OrdersDataGrid.SelectedItem as Order;
+
+            if (selectedOrder is not null)
+            {
+                var window = new OrderDetailsView(selectedOrder);
+                window.Show();
+            }
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
+        }
+
+        private void Search_Clicked(object sender, RoutedEventArgs e)
+        {
+            RefreshingDataGrid();
+        }
+
+        private void RefreshingDataGrid()
+        {
+            if (!string.IsNullOrEmpty(OrderIdSearchText.Text))
+            {
+                _orderId = int.Parse(OrderIdSearchText.Text);
+            }
+            else
+            {
+                _orderId = null;
+            }
+
+            _customer = CustomerNameSearchText.Text;
+
+            if (StatusCombobox.SelectedItem != null)
+            {
+                _orderStatus = (OrderStatus)StatusCombobox.SelectedItem;
+            }
+            else
+            {
+                _orderStatus = null;
+            }
+
+            Load(_orderId, _customer, _orderStatus);
+            OrdersDataGrid.ItemsSource = Orders;
         }
     }
 

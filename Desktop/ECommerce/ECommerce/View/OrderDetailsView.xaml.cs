@@ -1,4 +1,4 @@
-﻿using ECommerce.Models;
+using ECommerce.Models;
 using ECommerce.Services;
 using System.Windows;
 using System.Windows.Controls;

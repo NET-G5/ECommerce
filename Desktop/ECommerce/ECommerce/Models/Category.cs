@@ -1,9 +1,8 @@
-﻿namespace ECommerce.Models
-{
-    public class Category
-    {
-        public int Id { get; set; }
+﻿namespace ECommerce.Models;
 
-        public string Name { get; set; }
-    }
+public class Category
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; }
 }

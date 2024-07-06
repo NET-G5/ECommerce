@@ -5,45 +5,44 @@ namespace ECommerce.Services;
 
 public class OrderDetailService
 {
-	private static List<Category> _categories =
-	[
-		new Category()
-		{
-			Id = 1,
-			Name = "Sport garnitures"
-		},
-		new Category()
-		{
-			Id = 2,
-			Name = "Clothes"
-		},
-		new Category()
-		{
-			Id = 3,
-			Name = "Shoes"
-		},
-		new Category()
-		{
-			Id = 4,
-			Name = "Watches"
-		},
-		new Category()
-		{
-			Id = 5,
-			Name = "Electronics"
-		},
-		new Category()
-		{
-			Id = 6,
-			Name = "Parfume"
-		},
-		new Category()
-		{
-			Id = 7,
-			Name = "Kitchen garnitures"
-		}
-	];
-
+    private static List<Category> _categories =
+    [
+        new Category()
+        {
+            Id = 1,
+            Name = "Sport garnitures"
+        },
+        new Category()
+        {
+            Id = 2,
+            Name = "Clothes"
+        },
+        new Category()
+        {
+            Id = 3,
+            Name = "Shoes"
+        },
+        new Category()
+        {
+            Id = 4,
+            Name = "Watches"
+        },
+        new Category()
+        {
+            Id = 5,
+            Name = "Electronics"
+        },
+        new Category()
+        {
+            Id = 6,
+            Name = "Parfume"
+        },
+        new Category()
+        {
+            Id = 7,
+            Name = "Kitchen garnitures"
+        }
+    ];
 	private static List<Product> _products =
 	[
 
@@ -397,7 +396,6 @@ public class OrderDetailService
 				orderDetails.Add(orderDetail);
 			}
 		}
-
-		return orderDetails;
-	}
+        return orderDetails;
+    }
 }

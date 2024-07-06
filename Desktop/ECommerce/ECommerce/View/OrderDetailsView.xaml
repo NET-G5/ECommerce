@@ -68,7 +68,7 @@
 
                 <Button x:Name="btnClose"
                         Grid.Column="2"
-                        Background="#DA34EA"
+                        Background="red"
                         BorderThickness="0"
                         Click="BtnClose_Click"
                         Content="X"

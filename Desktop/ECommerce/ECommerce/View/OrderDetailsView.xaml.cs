@@ -30,7 +30,7 @@ namespace ECommerce.View
             foreach (OrderDetail detail in orderDetail)
             {
                 products.Add(detail.Product);
-                totalPrice=+detail.TotalPrice;
+                totalPrice+=detail.TotalPrice;
             }
             TotalPrice.Text=totalPrice.ToString();
             Products.Items.Clear();

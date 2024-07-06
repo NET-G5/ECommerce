@@ -9,10 +9,7 @@ public partial class MainWindow : Window
 {
     public MainWindow()
     {
-        Order order = new Order();
         InitializeComponent();
-        var win = new OrderDetailsView(order);
-        win.Show();
     }
 
     private void BtnLogin_Clicked(object sender, RoutedEventArgs e)

@@ -74,16 +74,16 @@ namespace ECommerce.View
         }
 
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
-{
-    WindowState = WindowState.Minimized;
-}
+        {
+            WindowState = WindowState.Minimized;
+        }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
- {
-     var window = new MainWindow();
-     window.Show();
-     this.Close();
- }
+        {
+            var window = new MainWindow();
+            window.Show();
+            this.Close();
+        }
 
         private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -131,10 +131,5 @@ namespace ECommerce.View
             Load(_orderId, _customer, _orderStatus);
             OrdersDataGrid.ItemsSource = Orders;
         }
-    }
-
-    private void btnClose_Click(object sender, RoutedEventArgs e)
-    {
-
     }
 }

@@ -188,9 +188,10 @@ public class OrderService
 		{
 			foreach (var order in orders)
 			{
-				if (order.Id == orderId && 
-					(order.Customer.FirstName == customer || order.Customer.LastName == customer )
-					&& order.Status == status)
+				if (order.Id == orderId &&
+				   (order.Customer.FirstName.StartsWith(customer, StringComparison.InvariantCultureIgnoreCase) ||
+				   order.Customer.LastName.StartsWith(customer, StringComparison.InvariantCultureIgnoreCase)) &&
+				   order.Status == status)
 				{
 					searchOrders.Add(order);
 				}
@@ -201,9 +202,9 @@ public class OrderService
 			foreach (var order in orders)
 			{
 				if (order.Id == orderId &&
-					(order.Customer.FirstName == customer || order.Customer.LastName == customer)
-					)
-                {
+				   (order.Customer.FirstName.StartsWith(customer, StringComparison.InvariantCultureIgnoreCase) ||
+				   order.Customer.LastName.StartsWith(customer, StringComparison.InvariantCultureIgnoreCase)))
+				{
 					searchOrders.Add(order);
 				}
 			}
@@ -222,8 +223,8 @@ public class OrderService
 		{
 			foreach (var order in orders)
 			{
-				if ((order.Customer.FirstName == customer ||
-					order.Customer.LastName == customer)&&
+				if ((order.Customer.FirstName.StartsWith(customer, StringComparison.InvariantCultureIgnoreCase) ||
+				   order.Customer.LastName.StartsWith(customer, StringComparison.InvariantCultureIgnoreCase)) &&
 					order.Status == status)
 				{
 					searchOrders.Add(order);
@@ -244,9 +245,10 @@ public class OrderService
 		{
 			foreach (var order in orders)
 			{
-                if (order.Customer.FirstName == customer || order.Customer.LastName == customer)
-                {
-                    searchOrders.Add(order);
+				if (order.Customer.FirstName.StartsWith(customer, StringComparison.InvariantCultureIgnoreCase) ||
+				   order.Customer.LastName.StartsWith(customer, StringComparison.InvariantCultureIgnoreCase))
+				{
+					searchOrders.Add(order);
 				}
 			}
 		}
@@ -261,7 +263,9 @@ public class OrderService
 			}
 		}
 		else
+		{
 			return orders;
+		}
 
 		return searchOrders;
 	}

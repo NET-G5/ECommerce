@@ -13,7 +13,8 @@
     Background="Transparent"
     WindowStartupLocation="CenterScreen"
     WindowState="Maximized"
-    WindowStyle="None">
+    WindowStyle="None"
+    mc:Ignorable="d">
 
     <Window.Resources>
         <Style TargetType="DataGridColumnHeader">
@@ -55,9 +56,7 @@
 
     </Window.Resources>
 
-
     <Border CornerRadius="10">
-
         <!--  Background  -->
         <Border.Background>
             <RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="2.5" RadiusY="1.5">
@@ -69,6 +68,7 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -92,14 +92,14 @@
                     Foreground="White"
                     Text="ORDERS" />
             </Grid>
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition Width="30" />
                     <ColumnDefinition Width="30" />
                 </Grid.ColumnDefinitions>
 
-                <!--  - button  -->
+                <!--  Minimize button  -->
                 <Button
                     x:Name="btnMinimize"
                     Grid.Column="1"
@@ -122,7 +122,6 @@
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
-
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border
@@ -134,13 +133,12 @@
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
-
                 </Button>
 
-                <!--  X button  -->
+                <!--  Close button  -->
                 <Button
                     x:Name="btnClose"
-                    Grid.Column="2"
+                    Grid.Column="3"
                     Margin="0,0,10,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
@@ -163,7 +161,6 @@
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
-
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border
@@ -175,12 +172,11 @@
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
-
                 </Button>
-
             </Grid>
-            <!--  top Menu  -->
-            <Grid Grid.Row="1" Grid.ColumnSpan="3">
+
+            <!--  Top Menu  -->
+            <Grid Grid.Row="1" Grid.ColumnSpan="4">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
@@ -257,7 +253,6 @@
                                         Foreground="Red" />
                                 </StackPanel>
                             </Button>
-
                         </Grid>
                     </DockPanel>
                 </Border>
@@ -292,31 +287,57 @@
                 Background="#1e2e44"
                 FontSize="16"
                 Foreground="White"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                Template="{StaticResource TextBoxBaseControlTemplate}" />
+                Style="{StaticResource MaterialDesignOutlinedTextBox}" />
 
-            <ComboBox
-                x:Name="StatusCombobox"
-                Grid.Row="2"
-                Grid.Column="2"
-                Width="250"
-                Height="55"
-                Margin="0,15,0,15"
-                Padding="10"
-                materialDesign:HintAssist.Hint="Status"
-                materialDesign:TextFieldAssist.HasClearButton="True"
-                Background="#1e2e44"
-                FontSize="16"
-                Foreground="White"
-                IsEditable="True"
-                Style="{StaticResource MaterialDesignOutlinedComboBox}" />
-            <!--  end Filtrers  -->
+            <ComboBox x:Name="StatusCombobox"
+                      Grid.Row="2"
+                      Grid.Column="2"
+                      Width="250"
+                      Height="55"
+                      Margin="0,15,0,15"
+                      Padding="10"
+                      materialDesign:HintAssist.Hint="Status"
+                      materialDesign:TextFieldAssist.HasClearButton="True"
+                      Background="#1e2e44"
+                      FontSize="16"
+                      Foreground="White"
+                      IsEditable="True"
+                      ItemsSource="{Binding OrderStatuses}"
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                <ComboBox.ItemContainerStyle>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Background"
+                                Value="Black" />
+                        <Setter Property="Foreground"
+                                Value="White" />
+                        <Setter Property="BorderThickness"
+                                Value="0" />
+                        <Setter Property="Margin"
+                                Value="2" />
+                        <Setter Property="Padding"
+                                Value="8,4" />
+                    </Style>
+                </ComboBox.ItemContainerStyle>
+            </ComboBox>
+            
+            <Button Grid.Column="4"
+                    Grid.Row="2"
+                    Background="#1e2e44"
+                    Width="150"
+                    Height="55"
+                    Margin="0,15,0,15"
+                    Padding="10"
+                    HorizontalAlignment="Center"
+                    Content="Search"
+                    Click="Search_Clicked">
+                
+            </Button>
 
             <!--  Data Grid  -->
             <DataGrid
                 x:Name="OrdersDataGrid"
                 Grid.Row="3"
-                Grid.ColumnSpan="3"
+                Grid.ColumnSpan="4"
                 Width="auto"
                 Margin="20"
                 HorizontalAlignment="Center"
@@ -355,7 +376,6 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-
             <!--<local:DataPager
             Grid.Row="4"
             Grid.Column="4"
@@ -363,6 +383,4 @@
             Background="#1e2e44" />-->
         </Grid>
     </Border>
-
-
 </Window>

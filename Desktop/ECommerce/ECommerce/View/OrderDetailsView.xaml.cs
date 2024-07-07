@@ -73,20 +73,21 @@ namespace ECommerce.View
             
             
         }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void OrderSale_Click(object sender, RoutedEventArgs e)
         {
 
+            OrderSale_Button.Visibility=Visibility.Collapsed;
+            OrderCancel_Button.Content = "Refund";
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OrderCancel_Click(object sender, RoutedEventArgs e)
         {
-          
-
-        }
-
-        private void mButton_Click(object sender, RoutedEventArgs e)
-        {
+            if(OrderCancel_Button.Content == "Refund")
+            {
+                return;
+            }
+            OrderCancel_Button.Visibility=Visibility.Collapsed;
+            OrderSale_Button.Visibility = Visibility.Collapsed;
 
         }
 
@@ -94,5 +95,6 @@ namespace ECommerce.View
         {
 
         }
+
     }
 }

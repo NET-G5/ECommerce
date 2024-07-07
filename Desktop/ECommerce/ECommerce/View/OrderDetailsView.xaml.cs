@@ -11,46 +11,39 @@ namespace ECommerce.View
     public partial class OrderDetailsView
     {
         private readonly OrderDetailService _orderDatailService;
-		private List<Product> _products;
-        private List<OrderDetail> _orderDetails;
+        public List<OrderDetail> _orderDetails;
 
-		public OrderDetailsView(Order order)
+        public OrderDetailsView(Order order)
         {
             InitializeComponent();
-            
+
             _orderDatailService = new();
-            _products = [];
             _orderDetails = _orderDatailService.GetOrderDetails(order.Id);
 
-            RefreshData(order);
+            var data=RefreshData(_orderDetails);
+            Products.ItemsSource = null;
+            Products.ItemsSource = data;
+        }
 
-            Products.ItemsSource = _products;
-		}
+        
 
-        private double TakingTotalPrice()
+        private List<Product> RefreshData(List<OrderDetail> orderDetails)
         {
-            double totalPrice = 0;
+            Id.Text = orderDetails[0].Order.Id.ToString();
+            FullName.Text = orderDetails[0].Order.Customer.ToString();
+            ExpireDate.Text = orderDetails[0].Order.ExpireDate.ToString("dd/MM/yyyy HH:mm");
+            OrderDate.Text = orderDetails[0].Order.OrderedDate.ToString("dd/MM/yyyy HH:mm");
+            var products = new List<Product>();
+            var totalPrice = 0d;
+            foreach (var detail in orderDetails)
+            {
+                products.Add(detail.Product);
+                totalPrice += detail.Product.Price;
+            }
+            TotalPrice.Text = totalPrice.ToString() + " so'm";
+            return products;
 
-			foreach (var detail in _orderDetails)
-			{
-                for (int i = 0; i < detail.Amount; i++)
-                {
-                    _products.Add(detail.Product);
-				    totalPrice += detail.Product.Price;
-                }
-			}
-
-            return totalPrice;
-		}
-       
-        private void RefreshData(Order order)
-        {
-			Id.Text = order.Id.ToString();
-			FullName.Text = order.Customer.ToString();
-			ExpireDate.Text = order.ExpireDate.ToString("dd/MM/yyyy HH:mm");
-			OrderDate.Text = order.OrderedDate.ToString("dd/MM/yyyy HH:mm");
-			TotalPrice.Text = TakingTotalPrice().ToString() + " so'm";
-		}
+        }
 
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
@@ -64,36 +57,42 @@ namespace ECommerce.View
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Close();
-            
-            
+            this.Close();
         }
         private void OrderSale_Click(object sender, RoutedEventArgs e)
         {
 
-            OrderSale_Button.Visibility=Visibility.Collapsed;
+            OrderSale_Button.Visibility = Visibility.Collapsed;
             OrderCancel_Button.Content = "Refund";
         }
 
         private void OrderCancel_Click(object sender, RoutedEventArgs e)
         {
-            if(OrderCancel_Button.Content == "Refund")
+            if (OrderCancel_Button.Content == "Refund")
             {
                 return;
             }
-            OrderCancel_Button.Visibility=Visibility.Collapsed;
+            OrderCancel_Button.Visibility = Visibility.Collapsed;
             OrderSale_Button.Visibility = Visibility.Collapsed;
 
         }
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Epladim :)","Success",MessageBoxButton.OK,MessageBoxImage.Question);
+        } 
+        private void button_Click_2(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Epladim :)","Success",MessageBoxButton.OK,MessageBoxImage.Question);
+        }
+        private void button_Click_3(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Epladim :)","Success",MessageBoxButton.OK,MessageBoxImage.Question);
         }
 
     }

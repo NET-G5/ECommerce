@@ -218,8 +218,7 @@
                                 HorizontalAlignment="Left"
                                 Background="#1e2e44"
                                 CornerRadius="100"
-                                DockPanel.Dock="Top">
-                            </Border>
+                                DockPanel.Dock="Top" />
 
                             <Button
                                 Grid.Column="4"

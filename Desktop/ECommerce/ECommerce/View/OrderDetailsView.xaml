@@ -285,7 +285,7 @@
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Background="Red"
-                                            Click="button_Click_1"
+                                            Click="ProductCancel_Click"
                                             Content="Cancel" />
                                     </Grid>
                                 </DataTemplate>
@@ -300,7 +300,7 @@
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Background="Yellow"
-                                            Click="button_Click_2"
+                                            Click="ProductSale_Click"
                                             Content="Sale"
                                             Foreground="Black" />
                                     </Grid>
@@ -316,7 +316,7 @@
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Background="ForestGreen"
-                                            Click="button_Click_3"
+                                            Click="ProductRefund_Click"
                                             Content="Refund"
                                             Foreground="White" />
                                     </Grid>

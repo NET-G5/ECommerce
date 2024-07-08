@@ -82,15 +82,15 @@ namespace ECommerce.View
 
         }
 
-        private void button_Click_1(object sender, RoutedEventArgs e)
+        private void ProductCancel_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Epladim :)","Success",MessageBoxButton.OK,MessageBoxImage.Question);
         } 
-        private void button_Click_2(object sender, RoutedEventArgs e)
+        private void ProductSale_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Epladim :)","Success",MessageBoxButton.OK,MessageBoxImage.Question);
         }
-        private void button_Click_3(object sender, RoutedEventArgs e)
+        private void ProductRefund_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Epladim :)","Success",MessageBoxButton.OK,MessageBoxImage.Question);
         }

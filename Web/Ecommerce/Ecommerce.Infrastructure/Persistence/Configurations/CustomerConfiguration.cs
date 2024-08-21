@@ -15,7 +15,7 @@ namespace Ecommerce.Infrastructure.Persistence.Configurations
                 .HasForeignKey(o => o.CustomerId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-                
+
         }
     }
 }

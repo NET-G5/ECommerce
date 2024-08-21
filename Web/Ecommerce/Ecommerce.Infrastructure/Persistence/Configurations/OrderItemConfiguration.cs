@@ -1,11 +1,6 @@
 ﻿using Ecommerce.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ecommerce.Infrastructure.Persistence.Configurations
 {
@@ -15,7 +10,10 @@ namespace Ecommerce.Infrastructure.Persistence.Configurations
         {
             builder.ToTable("OrderItem");
 
-           
+            builder.HasMany(p => p.Reviews)
+                    .WithOne(r => r.OrderItem)
+                    .HasForeignKey(r => r.OrderItemId)
+                    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

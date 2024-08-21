@@ -1,6 +1,7 @@
 ﻿using Ecommerce.Domain.Common;
 using Ecommerce.Domain.Exceptions;
 using Ecommerce.Domain.Interfaces;
+using Ecommerce.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Infrastructure.Repositories;

@@ -13,7 +13,7 @@ namespace Ecommerce
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<EcommerceDbContext>(options =>
-                options.UseSqlServer("Data Source=desktop-fb3ogeq;Initial Catalog=Ecommerce;Integrated Security=True;Trust Server Certificate=True"));            
+                options.UseSqlServer("Data Source=desktop-fb3ogeq;Initial Catalog=Ecommerce;Integrated Security=True;Trust Server Certificate=True"));
 
             var app = builder.Build();
 

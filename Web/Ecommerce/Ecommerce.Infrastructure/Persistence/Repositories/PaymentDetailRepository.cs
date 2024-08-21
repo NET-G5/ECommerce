@@ -4,7 +4,7 @@ using Ecommerce.Infrastructure.Persistence;
 
 namespace Ecommerce.Infrastructure.Repositories;
 
-public class PaymentDetailRepository : RepositoryBase<PaymentDetail>, IPaymentDetail
+public class PaymentDetailRepository : RepositoryBase<PaymentDetail>, IPaymentDetailRepository
 {
     public PaymentDetailRepository(EcommerceDbContext context) : base(context)
     {

@@ -14,10 +14,10 @@ namespace ECommerce.View
         private readonly OrderService _orderService;
         public List<OrderStatus> OrderStatuses { get; } =
             [
-            OrderStatus.Refunded,
-    OrderStatus.Pending,
-    OrderStatus.Canceled,
-    OrderStatus.Sold
+                OrderStatus.Refunded,
+                OrderStatus.Pending,
+                OrderStatus.Canceled,
+                OrderStatus.Sold
             ];
 
         public ObservableCollection<Order> Orders { get; }

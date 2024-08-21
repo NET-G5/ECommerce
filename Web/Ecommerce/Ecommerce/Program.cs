@@ -1,5 +1,4 @@
-
-using Ecommerce.Infrastructure;
+using Ecommerce.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce

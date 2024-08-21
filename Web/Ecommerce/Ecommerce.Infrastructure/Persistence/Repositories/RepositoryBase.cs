@@ -3,7 +3,7 @@ using Ecommerce.Domain.Exceptions;
 using Ecommerce.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ecommerce.Infrastructure.Persistence.Repositories;
+namespace Ecommerce.Infrastructure.Repositories;
 
 public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityBase
 {

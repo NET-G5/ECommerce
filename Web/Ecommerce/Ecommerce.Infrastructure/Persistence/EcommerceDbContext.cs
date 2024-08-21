@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace Ecommerce.Infrastructure
+namespace Ecommerce.Infrastructure.Persistence
 {
     public class EcommerceDbContext : DbContext
     {

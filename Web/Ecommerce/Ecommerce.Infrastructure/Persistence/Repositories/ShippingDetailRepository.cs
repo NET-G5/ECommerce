@@ -1,12 +1,13 @@
 ﻿using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
+using Ecommerce.Infrastructure.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Infrastructure.Persistence.Repositories
+namespace Ecommerce.Infrastructure.Repositories
 {
     public class ShippingDetailRepository : RepositoryBase<ShippingDetail>, IShippingDetail
     {
@@ -20,9 +21,9 @@ namespace Ecommerce.Infrastructure.Persistence.Repositories
             {
                 return GetAll();
             }
-            
+
             var shippingDetails = _context.ShippingDetails
-                .Where(x => x.PostalCode.Contains(searchText) || 
+                .Where(x => x.PostalCode.Contains(searchText) ||
                             x.Address.Contains(searchText) ||
                             x.City.Contains(searchText)).ToList();
 
@@ -31,13 +32,13 @@ namespace Ecommerce.Infrastructure.Persistence.Repositories
 
         public List<ShippingDetail> GetAll(DateTime? shippedDate)
         {
-            if(!shippedDate.HasValue)
+            if (!shippedDate.HasValue)
             {
                 return GetAll();
             }
 
-            var shippingDetails= _context.ShippingDetails
-                .Where(x=>x.ShippedDate==shippedDate).ToList();
+            var shippingDetails = _context.ShippingDetails
+                .Where(x => x.ShippedDate == shippedDate).ToList();
 
             return shippingDetails;
         }

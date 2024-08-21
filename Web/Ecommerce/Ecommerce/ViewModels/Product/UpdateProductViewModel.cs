@@ -1,7 +1,7 @@
 ﻿namespace Ecommerce.ViewModels.Product
 {
-    public class UpdateProductViewModel:CreateProductViewModel
+    public class UpdateProductViewModel : CreateProductViewModel
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
     }
 }

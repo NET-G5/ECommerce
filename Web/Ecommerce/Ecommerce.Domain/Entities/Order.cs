@@ -1,10 +1,10 @@
-﻿using Ecommerce.Domain.Enums;
+﻿using Ecommerce.Domain.Common;
+using Ecommerce.Domain.Enums;
 
 namespace Ecommerce.Domain.Entities;
 
-public class Order
+public class Order : AuditableEntity
 {
-    public int Id { get; set; }
     public DateTime OrderDate { get; set; }
     public decimal TotalAmount { get; set; }
     public OrderStatus Status { get; set; }

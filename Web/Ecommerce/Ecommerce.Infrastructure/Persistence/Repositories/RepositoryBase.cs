@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Domain.Common;
+using Ecommerce.Domain.Exceptionss;
 using Ecommerce.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,7 +7,7 @@ namespace Ecommerce.Infrastructure.Persistence.Repositories;
 
 public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityBase
 {
-    private readonly EcommerceDbContext _context;
+    protected readonly EcommerceDbContext _context;
 
     protected RepositoryBase(EcommerceDbContext context)
     {

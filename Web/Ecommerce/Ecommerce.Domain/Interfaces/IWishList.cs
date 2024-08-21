@@ -2,7 +2,7 @@
 
 namespace Ecommerce.Domain.Interfaces;
 
-public interface IWishList : IRepositoryBase<WishList>
+public interface IWishListRepository : IRepositoryBase<WishList>
 {
-    List<Review> GetAll(string? searchText);
+    List<WishList> GetAll(string? searchText);
 }

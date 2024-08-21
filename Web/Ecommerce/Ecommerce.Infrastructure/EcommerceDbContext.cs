@@ -1,16 +1,10 @@
 ﻿using Ecommerce.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ecommerce.Infrastructure
 {
-    public class EcommerceDbContext:DbContext
+    public class EcommerceDbContext : DbContext
     {
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
@@ -21,9 +15,9 @@ namespace Ecommerce.Infrastructure
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<ShippingDetail> ShippingDetails { get; set; }
         public virtual DbSet<WishList> WishList { get; set; }
-        public EcommerceDbContext(DbContextOptions<EcommerceDbContext> options):base(options)
+        public EcommerceDbContext(DbContextOptions<EcommerceDbContext> options) : base(options)
         {
-            
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

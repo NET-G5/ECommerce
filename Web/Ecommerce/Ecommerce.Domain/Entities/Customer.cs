@@ -1,8 +1,9 @@
-﻿namespace Ecommerce.Domain.Entities;
+﻿using Ecommerce.Domain.Common;
 
-public class Customer
+namespace Ecommerce.Domain.Entities;
+
+public class Customer :AuditableEntity
 {
-    public int Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }

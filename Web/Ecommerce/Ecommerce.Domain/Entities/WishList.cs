@@ -1,9 +1,9 @@
-﻿namespace Ecommerce.Domain.Entities;
+﻿using Ecommerce.Domain.Common;
 
-public class WishList
+namespace Ecommerce.Domain.Entities;
+
+public class WishList : AuditableEntity
 {
-    public int Id { get; set; }
-
     public int CustomerId { get; set; }
     public virtual Customer Customer { get; set; }
 

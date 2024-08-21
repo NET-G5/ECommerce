@@ -1,10 +1,10 @@
-﻿using Ecommerce.Domain.Enums;
+﻿using Ecommerce.Domain.Common;
+using Ecommerce.Domain.Enums;
 
 namespace Ecommerce.Domain.Entities;
 
-public class PaymentDetail
+public class PaymentDetail : AuditableEntity
 {
-    public int Id { get; set; }
     public PaymentMethod Method { get; set; } 
     public DateTime PaymentDate { get; set; }
     public decimal Amount { get; set; }

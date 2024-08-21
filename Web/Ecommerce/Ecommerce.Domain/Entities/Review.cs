@@ -1,9 +1,10 @@
-﻿namespace Ecommerce.Domain.Entities;
+﻿using Ecommerce.Domain.Common;
 
-public class Review
+namespace Ecommerce.Domain.Entities;
+
+public class Review : AuditableEntity
 {
-    public int Id { get; set; }
-    public int Rating { get; set; }  // e.g., 1 to 5 stars
+    public int Rating { get; set; } 
     public string Comment { get; set; }
     public DateTime DatePosted { get; set; }
     

@@ -1,8 +1,9 @@
-﻿namespace Ecommerce.Domain.Entities;
+﻿using Ecommerce.Domain.Common;
 
-public class Category
+namespace Ecommerce.Domain.Entities;
+
+public class Category : AuditableEntity
 {
-    public int Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
 

@@ -12,6 +12,16 @@ public class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository
 
     public List<Customer> GetAll(string? searchText)
     {
-        throw new NotImplementedException();
+        if (string.IsNullOrEmpty(searchText))
+        {
+            return GetAll();
+        }
+
+        var customers = _context.Customers
+            .Where(x => x.FirstName.Contains(searchText) ||
+            x.LastName.Contains(searchText) ||
+            x.Email.Contains(searchText)).ToList();
+
+        return customers;
     }
 }

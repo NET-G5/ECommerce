@@ -11,7 +11,7 @@ public class Product : AuditableEntity
     public byte[] ImageUrl { get; set; }
     public DateTime AddedDate { get; set; }
 
-    public virtual OrderItem OrderItem { get; set; }
+    public virtual ICollection<OrderItem> OrderItems { get; set; }
     public int CategoryId { get; set; }
     public virtual Category Category { get; set; }
 }

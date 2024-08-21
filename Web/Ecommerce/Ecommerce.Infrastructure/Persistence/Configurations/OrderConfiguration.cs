@@ -15,9 +15,17 @@ namespace Ecommerce.Infrastructure.Persistence.Configurations
         {
             builder.ToTable("Order");
 
-            builder.HasOne(x => x.Customer)
-                .WithMany(c => c.Orders)
-                .HasForeignKey(x => x.CustomerId);
+            builder.HasMany(x => x.OrderItems)
+                .WithOne(c => c.Order)
+                .HasForeignKey(x => x.OrderId);
+
+            builder.HasOne(x => x.PaymentDetail)
+                .WithOne(p => p.Order)
+                .HasPrincipalKey<PaymentDetail>(x => x.OrderId);
+
+            builder.HasOne(x=>x.ShippingDetail)
+                .WithOne(s=>s.Order)
+                .HasForeignKey<ShippingDetail>(x => x.OrderId);
 
         }
     }

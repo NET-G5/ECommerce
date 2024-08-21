@@ -15,6 +15,14 @@ namespace Ecommerce.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
             builder.ToTable("Customer");
+
+            builder.HasMany(c => c.Orders)
+                .WithOne(o => o.Customer)
+                .HasForeignKey(o => o.CustomerId);
+
+            builder.HasMany(c=>c.Reviews)
+                .WithOne(r=>r.Customer)
+                .HasForeignKey(c => c.CustomerId);
         }
     }
 }

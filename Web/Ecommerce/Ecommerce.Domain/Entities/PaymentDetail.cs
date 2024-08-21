@@ -8,6 +8,6 @@ public class PaymentDetail : AuditableEntity
     public PaymentMethod Method { get; set; } 
     public DateTime PaymentDate { get; set; }
     public decimal Amount { get; set; }
-    
-    public virtual List<Order> Orders { get; set; }
+    public int OrderId { get; set; }
+    public virtual Order Order { get; set; }
 }

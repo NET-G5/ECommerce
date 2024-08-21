@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Ecommerce.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -10,7 +12,15 @@ namespace Ecommerce.Infrastructure
 {
     public class EcommerceDbContext:DbContext
     {
-        
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
+        public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<ShippingDetail> ShippingDetails { get; set; }
+        public virtual DbSet<WishList> WishList { get; set; }
         public EcommerceDbContext(DbContextOptions<EcommerceDbContext> options):base(options)
         {
             

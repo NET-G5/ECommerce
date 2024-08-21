@@ -12,6 +12,15 @@ public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
 
     public List<Category> GetAll(string? searchText)
     {
-        return [];
+        if (string.IsNullOrEmpty(searchText))
+        {
+            return GetAll();
+        }
+
+        var categories = _context.Categories
+            .Where(x => x.Name.Contains(searchText) || 
+            x.Description.Contains(searchText)).ToList();
+
+        return categories;
     }
 }

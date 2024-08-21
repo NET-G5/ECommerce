@@ -12,6 +12,14 @@ public class OrderRepository : RepositoryBase<Order>, IOrderRepository
 
     public List<Order> GetAll(decimal? totalAmount)
     {
-        throw new NotImplementedException();
+        if (!totalAmount.HasValue)
+        {
+            return GetAll();
+        }
+
+        var orders = _context.Orders
+            .Where(x => x.TotalAmount == totalAmount).ToList();
+
+        return orders;
     }
 }

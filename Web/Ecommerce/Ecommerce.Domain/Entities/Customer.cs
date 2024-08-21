@@ -11,4 +11,6 @@ public class Customer :AuditableEntity
     public DateTime DateRegistered { get; set; }
     
     public virtual List<Order> Orders { get; set; }
+    public virtual List<Review> Reviews { get; set; }
+    public virtual WishList WishList { get; set; }
 }

@@ -4,7 +4,7 @@ using Ecommerce.Infrastructure.Persistence;
 
 namespace Ecommerce.Infrastructure.Repositories
 {
-    public class ShippingDetailRepository : RepositoryBase<ShippingDetail>, IShippingDetail
+    public class ShippingDetailRepository : RepositoryBase<ShippingDetail>, IShippingDetailRepository
     {
         public ShippingDetailRepository(EcommerceDbContext context) : base(context)
         {

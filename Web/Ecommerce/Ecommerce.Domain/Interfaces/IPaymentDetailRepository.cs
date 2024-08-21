@@ -2,6 +2,6 @@
 
 namespace Ecommerce.Domain.Interfaces;
 
-public interface IPaymentDetail : IRepositoryBase<PaymentDetail>
+public interface IPaymentDetailRepository : IRepositoryBase<PaymentDetail>
 {
 }

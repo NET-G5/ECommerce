@@ -3,7 +3,6 @@ using Ecommerce.Infrastructure.Persistence;
 using Ecommerce.Infrastructure.Repositories;
 using Ecommerce.Services;
 using Ecommerce.Services.Interfaces;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce;
@@ -14,9 +13,11 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.AddControllersWithViews();
+        builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-        var connectionString = builder.Configuration.GetConnectionString("ConnectionStringOfBobur");
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXdedHRQRGRZWEV+WkQ=");
+
+        var connectionString = builder.Configuration.GetConnectionString("ConnectionStringOfRamazon");
         
         builder.Services.AddDbContext<EcommerceDbContext>(options =>
             options.UseSqlServer(connectionString));

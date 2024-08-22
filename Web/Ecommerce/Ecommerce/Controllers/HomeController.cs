@@ -1,4 +1,3 @@
-using Ecommerce.Domain.Interfaces;
 using Ecommerce.Models;
 using Ecommerce.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +11,7 @@ namespace Ecommerce.Controllers
 
         public HomeController(IPaymentDetailService service)
         {
-            _service = service;            
+            _service = service;
         }
 
         public IActionResult Index()
@@ -21,10 +20,7 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

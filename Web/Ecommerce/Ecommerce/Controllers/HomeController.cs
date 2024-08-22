@@ -1,4 +1,6 @@
+using Ecommerce.Domain.Interfaces;
 using Ecommerce.Models;
+using Ecommerce.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,15 +8,16 @@ namespace Ecommerce.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IPaymentDetailService _service;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IPaymentDetailService service)
         {
-            _logger = logger;
+            _service = service;            
         }
 
         public IActionResult Index()
         {
+            var result = _service.GetAll();
             return View();
         }
 

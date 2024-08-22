@@ -5,9 +5,9 @@ namespace Ecommerce.Mappings
 {
     public static class PaymentDetailMappings
     {
-        public static PaymentDetailViewModel ToViewModel(this PaymentDetail paymentDetail)
+        public static ViewModels.PaymentDetail.PaymentDetailViewModel ToViewModel(this Domain.Entities.PaymentDetailViewModel paymentDetail)
         {
-            return new PaymentDetailViewModel
+            return new ViewModels.PaymentDetail.PaymentDetailViewModel
             {
                 Id = paymentDetail.Id,
                 Method = paymentDetail.Method,
@@ -16,7 +16,7 @@ namespace Ecommerce.Mappings
                 OrderId = paymentDetail.OrderId,
             };
         }
-        public static UpdatePaymentDetailViewModel ToUpdateViewModel(this PaymentDetailViewModel paymentDetail)
+        public static UpdatePaymentDetailViewModel ToUpdateViewModel(this ViewModels.PaymentDetail.PaymentDetailViewModel paymentDetail)
         {
             return new UpdatePaymentDetailViewModel
             {
@@ -27,9 +27,9 @@ namespace Ecommerce.Mappings
                 OrderId = paymentDetail.OrderId,
             };
         }
-        public static PaymentDetail ToEntity(this CreatePaymentDetailViewModel paymentDetail)
+        public static Domain.Entities.PaymentDetailViewModel ToEntity(this CreatePaymentDetailViewModel paymentDetail)
         {
-            return new PaymentDetail
+            return new Domain.Entities.PaymentDetailViewModel
             {
                 Method = paymentDetail.Method,
                 PaymentDate = paymentDetail.PaymentDate,
@@ -37,9 +37,9 @@ namespace Ecommerce.Mappings
                 OrderId = paymentDetail.OrderId,
             };
         }
-        public static PaymentDetail ToEntity(this UpdatePaymentDetailViewModel paymentDetail)
+        public static Domain.Entities.PaymentDetailViewModel ToEntity(this UpdatePaymentDetailViewModel paymentDetail)
         {
-            return new PaymentDetail
+            return new Domain.Entities.PaymentDetailViewModel
             {
                 Id= paymentDetail.Id,
                 Method = paymentDetail.Method,

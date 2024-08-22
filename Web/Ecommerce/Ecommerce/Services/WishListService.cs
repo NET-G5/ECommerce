@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Domain.Interfaces;
+using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.WishList;
 
@@ -6,35 +7,56 @@ namespace Ecommerce.Services;
 
 public class WishListService : IWishListService
 {
-    private readonly IWishListRepository _wishListRepository;
+    private readonly ICommonRepository _commonRepository;
 
-    public WishListService(IWishListRepository wishListRepository)
+    public WishListService(ICommonRepository commonRepository)
     {
-        _wishListRepository = wishListRepository;
+        _commonRepository= commonRepository ;
     }
 
-    public WishListViewModel Create(CreateWishListViewModel wishList)
+    public List<WishListViewModel> GetAll()
     {
-        throw new NotImplementedException();
-    }
+        var wishLists = _commonRepository.WishLists.GetAll();
+        var viewModels = wishLists.Select(w => w.ToViewModel()).ToList();
 
-    public void Delete(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public List<WishListViewModel> GetAll(string? search)
-    {
-        throw new NotImplementedException();
+        return viewModels;
     }
 
     public WishListViewModel GetById(int id)
     {
-        throw new NotImplementedException();
+        var wishList=_commonRepository.WishLists.GetById(id);
+
+        var viewModel= wishList.ToViewModel();
+
+        return viewModel ;
+    }
+    public WishListViewModel Create(CreateWishListViewModel wishList)
+    {
+        ArgumentNullException.ThrowIfNull(wishList);
+
+        var entity=wishList.ToEntity();
+
+        _commonRepository.WishLists.Create(entity);
+        _commonRepository.SaveChanges();
+
+        var viewModel= entity.ToViewModel();
+
+        return viewModel;
     }
 
     public void Update(UpdateWishListViewModel wishList)
     {
-        throw new NotImplementedException();
+        ArgumentNullException.ThrowIfNull(wishList);
+
+        var entity=wishList.ToEntity();
+
+        _commonRepository.WishLists.Update(entity);
+        _commonRepository.SaveChanges();
+    }
+
+    public void Delete(int id)
+    {
+        _commonRepository.WishLists.Delete(id);
+        _commonRepository.SaveChanges();
     }
 }

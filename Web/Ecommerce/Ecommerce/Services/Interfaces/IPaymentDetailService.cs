@@ -5,7 +5,7 @@ namespace Ecommerce.Services.Interfaces;
 
 public interface IPaymentDetailService
 {
-    List<PaymentDetailViewModel> GetAll(string? search);
+    List<PaymentDetailViewModel> GetAll(decimal? minValue =null, decimal? maxValue=null);
     PaymentDetailViewModel GetById(int id);
     PaymentDetailViewModel Create(CreatePaymentDetailViewModel paymentDetail);
     void Update(UpdatePaymentDetailViewModel paymentDetail);

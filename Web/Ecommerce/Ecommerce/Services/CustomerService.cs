@@ -1,9 +1,11 @@
 ﻿using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
+using Ecommerce.Services.Interfaces;
+using Ecommerce.ViewModels.Customer;
 
 namespace Ecommerce.Services;
 
-public class CustomerService : ICustomerRepository
+public class CustomerService : ICustomerService
 {
     private readonly ICustomerRepository _customerRepository;
 
@@ -12,7 +14,7 @@ public class CustomerService : ICustomerRepository
         _customerRepository = customerRepository;
     }
 
-    public Customer Create(Customer entity)
+    public CustomerViewModel Create(CreateCustomerViewModel customer)
     {
         throw new NotImplementedException();
     }
@@ -22,22 +24,17 @@ public class CustomerService : ICustomerRepository
         throw new NotImplementedException();
     }
 
-    public List<Customer> GetAll(string? searchText)
+    public List<CustomerViewModel> GetAll(string? search)
     {
         throw new NotImplementedException();
     }
 
-    public List<Customer> GetAll()
+    public CustomerViewModel GetById(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Customer GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Update(Customer entity)
+    public void Update(UpdateCustomerViewModel customer)
     {
         throw new NotImplementedException();
     }

@@ -6,9 +6,9 @@ namespace Ecommerce.Services.Interfaces;
 
 public interface IReviewService
 {
-    List<ReviewViewModel> GetAll(int? rating);
-    List<ReviewViewModel> GetAll(DateTime? postedDate);
-    List<ReviewViewModel> GetAll(string? search);
+    List<ReviewViewModel> GetAll(int? rating=null);
+    List<ReviewViewModel> GetAll(DateTime? postedDate = null);
+    List<ReviewViewModel> GetAll(string? search = null);
     ReviewViewModel GetById(int id);
     ReviewViewModel Create(CreateReviewViewModel review);
     void Update(UpdateReviewViewModel review);

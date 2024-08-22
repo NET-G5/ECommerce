@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Ecommerce.Infrastructure.Persistence.Configurations
 {
-    public class PaymentDetailConfiguration : IEntityTypeConfiguration<PaymentDetail>
+    public class PaymentDetailConfiguration : IEntityTypeConfiguration<PaymentDetailViewModel>
     {
-        public void Configure(EntityTypeBuilder<PaymentDetail> builder)
+        public void Configure(EntityTypeBuilder<PaymentDetailViewModel> builder)
         {
             builder.ToTable("PaymentDetail");
 

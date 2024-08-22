@@ -12,7 +12,7 @@ public class ReviewRepository : RepositoryBase<Review>, IReviewRepository
 
     public List<Review> GetAll(int? rating)
     {
-        if (!rating.HasValue)
+        if (rating==null)
         {
             return GetAll();
         }
@@ -26,7 +26,7 @@ public class ReviewRepository : RepositoryBase<Review>, IReviewRepository
 
     public List<Review> GetAll(DateTime? postedDate)
     {
-        if (!postedDate.HasValue)
+        if (postedDate==null)
         {
             return GetAll();
         }
@@ -37,4 +37,18 @@ public class ReviewRepository : RepositoryBase<Review>, IReviewRepository
 
         return reviews;
     }
+    public List<Review> GetAll(string? search)
+    {
+        if (string.IsNullOrEmpty(search))
+        {
+            return GetAll();
+        }
+
+        var reviews = _context.Reviews
+            .Where(x => x.Comment.Contains(search))
+            .ToList();
+
+        return reviews;
+    }
+
 }

@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using Ecommerce.Domain.Entities;
+﻿using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
 using Ecommerce.Infrastructure.Persistence;
 
@@ -13,7 +12,7 @@ public class ProductRepository : RepositoryBase<Product>, IProductRepository
 
     public List<Product> GetAll(string? searchText)
     {
-        if (!string.IsNullOrEmpty(searchText))
+        if (string.IsNullOrEmpty(searchText))
         {
             return GetAll();
         }
@@ -26,7 +25,7 @@ public class ProductRepository : RepositoryBase<Product>, IProductRepository
 
     public List<Product> GetAll(decimal? price)
     {
-        if (!price.HasValue)
+        if (price == null)
         {
             return GetAll();
         }

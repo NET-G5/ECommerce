@@ -1,5 +1,4 @@
-﻿using Ecommerce.Domain.Entities;
-using Ecommerce.Domain.Interfaces;
+﻿using Ecommerce.Domain.Interfaces;
 using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.ShippingDetail;
@@ -12,14 +11,14 @@ public class ShippingDetailService : IShippingDetailService
 
     public ShippingDetailService(ICommonRepository commonRepository)
     {
-        _commonRepository= commonRepository;
+        _commonRepository = commonRepository;
     }
 
     public List<ShippingDetailViewModel> GetAll(DateTime? shippingDate)
     {
-        var shippingDetails=_commonRepository.ShippingDetails.GetAll(shippingDate);
+        var shippingDetails = _commonRepository.ShippingDetails.GetAll(shippingDate);
 
-        var viewModels=shippingDetails.Select(x=>x.ToViewModel()).ToList();
+        var viewModels = shippingDetails.Select(x => x.ToViewModel()).ToList();
 
         return viewModels;
     }
@@ -36,9 +35,9 @@ public class ShippingDetailService : IShippingDetailService
 
     public ShippingDetailViewModel GetById(int id)
     {
-        var shippingDetail= _commonRepository.ShippingDetails.GetById(id);
-        
-        var viewModel=shippingDetail.ToViewModel();
+        var shippingDetail = _commonRepository.ShippingDetails.GetById(id);
+
+        var viewModel = shippingDetail.ToViewModel();
 
         return viewModel;
     }
@@ -47,12 +46,12 @@ public class ShippingDetailService : IShippingDetailService
     {
         ArgumentNullException.ThrowIfNull(shippingDetail);
 
-        var entity=shippingDetail.ToEntity();
+        var entity = shippingDetail.ToEntity();
 
         _commonRepository.ShippingDetails.Create(entity);
         _commonRepository.SaveChanges();
 
-        var viewModel= entity.ToViewModel();
+        var viewModel = entity.ToViewModel();
 
         return viewModel;
     }
@@ -61,14 +60,14 @@ public class ShippingDetailService : IShippingDetailService
     {
         ArgumentNullException.ThrowIfNull(shippingDetail);
 
-        var entity=shippingDetail.ToEntity();
+        var entity = shippingDetail.ToEntity();
 
         _commonRepository.ShippingDetails.Update(entity);
-        _commonRepository.SaveChanges() ;
+        _commonRepository.SaveChanges();
     }
     public void Delete(int id)
     {
         _commonRepository.ShippingDetails.Delete(id);
-        _commonRepository.SaveChanges() ;
+        _commonRepository.SaveChanges();
     }
 }

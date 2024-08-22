@@ -44,7 +44,7 @@ namespace Ecommerce.Mappings
         {
             return new ShippingDetail
             {
-                Id=ShippingDetailViewModel.Id,
+                Id = ShippingDetailViewModel.Id,
                 Address = ShippingDetailViewModel.Address,
                 City = ShippingDetailViewModel.City,
                 PostalCode = ShippingDetailViewModel.PostalCode,

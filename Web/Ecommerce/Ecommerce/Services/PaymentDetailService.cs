@@ -1,5 +1,4 @@
 ﻿using Ecommerce.Domain.Interfaces;
-using Ecommerce.Infrastructure.Repositories;
 using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.PaymentDetail;
@@ -12,19 +11,19 @@ public class PaymentDetailService : IPaymentDetailService
 
     public PaymentDetailService(ICommonRepository commonRepository)
     {
-        _commonRepository= commonRepository;
+        _commonRepository = commonRepository;
     }
 
     public PaymentDetailViewModel Create(CreatePaymentDetailViewModel paymentDetail)
     {
         ArgumentNullException.ThrowIfNull(paymentDetail);
 
-        var entity=paymentDetail.ToEntity();
-        
+        var entity = paymentDetail.ToEntity();
+
         _commonRepository.PaymentDetails.Create(entity);
         _commonRepository.SaveChanges();
 
-        var viewModel=entity.ToViewModel();
+        var viewModel = entity.ToViewModel();
 
         return viewModel;
     }
@@ -36,21 +35,21 @@ public class PaymentDetailService : IPaymentDetailService
     }
 
     public List<PaymentDetailViewModel> GetAll(decimal? minValue, decimal? maxValue)
-    { 
-        var paymentDetails=_commonRepository.PaymentDetails.GetAll(minValue, maxValue);
+    {
+        var paymentDetails = _commonRepository.PaymentDetails.GetAll(minValue, maxValue);
 
         var viewModel = paymentDetails.Select(x => x.ToViewModel()).ToList();
 
         return viewModel;
     }
-  
+
 
 
     public PaymentDetailViewModel GetById(int id)
     {
-        var paymentDatail=_commonRepository.PaymentDetails.GetById(id);
+        var paymentDatail = _commonRepository.PaymentDetails.GetById(id);
 
-        var viewModel=paymentDatail.ToViewModel();
+        var viewModel = paymentDatail.ToViewModel();
 
         return viewModel;
     }
@@ -59,7 +58,7 @@ public class PaymentDetailService : IPaymentDetailService
     {
         ArgumentNullException.ThrowIfNull(paymentDetail);
 
-        var entity=paymentDetail.ToEntity();
+        var entity = paymentDetail.ToEntity();
 
         _commonRepository.PaymentDetails.Update(entity);
         _commonRepository.SaveChanges();

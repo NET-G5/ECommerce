@@ -11,7 +11,7 @@ public class ProductService : IProductService
 
     public ProductService(ICommonRepository commonRepository)
     {
-        _commonRepository= commonRepository;
+        _commonRepository = commonRepository;
     }
     public ProductViewModel Create(CreateProductViewModel product)
     {
@@ -22,7 +22,7 @@ public class ProductService : IProductService
         _commonRepository.Products.Create(entity);
         _commonRepository.SaveChanges();
 
-        var viewModel=entity.ToViewModel();
+        var viewModel = entity.ToViewModel();
 
         return viewModel;
     }
@@ -35,19 +35,27 @@ public class ProductService : IProductService
 
     public List<ProductViewModel> GetAll(string? search)
     {
-        throw new NotImplementedException();
+        var products = _commonRepository.Products.GetAll(search);
+
+        var viewModel = products.Select(x => x.ToViewModel()).ToList();
+
+        return viewModel;
     }
 
     public List<ProductViewModel> GetAll(decimal? price)
     {
-        throw new NotImplementedException();
+        var products = _commonRepository.Products.GetAll(price);
+
+        var viewModel = products.Select(x => x.ToViewModel()).ToList();
+
+        return viewModel;
     }
 
     public ProductViewModel GetById(int id)
     {
-        var product=_commonRepository.Products.GetById(id);
+        var product = _commonRepository.Products.GetById(id);
 
-        var viewModel=product.ToViewModel();
+        var viewModel = product.ToViewModel();
 
         return viewModel;
     }

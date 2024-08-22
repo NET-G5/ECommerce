@@ -13,7 +13,7 @@ public class CommonRepository : ICommonRepository
 
 
     private ICustomerRepository _customerRepository;
-    public ICustomerRepository Customers => 
+    public ICustomerRepository Customers =>
         _customerRepository ??= new CustomerRepository(_context);
 
 
@@ -23,32 +23,32 @@ public class CommonRepository : ICommonRepository
 
 
     private IOrderRepository _orderRepository;
-    public IOrderRepository Orders => 
+    public IOrderRepository Orders =>
         _orderRepository ??= new OrderRepository(_context);
 
 
     private IPaymentDetailRepository _paymentDetail;
-    public IPaymentDetailRepository PaymentDetails => 
+    public IPaymentDetailRepository PaymentDetails =>
         _paymentDetail ??= new PaymentDetailRepository(_context);
 
 
     private IProductRepository _productRepository;
-    public IProductRepository Products => 
+    public IProductRepository Products =>
         _productRepository ??= new ProductRepository(_context);
 
 
     private IReviewRepository _reviewRepository;
-    public IReviewRepository Reviews => 
+    public IReviewRepository Reviews =>
         _reviewRepository ??= new ReviewRepository(_context);
 
 
     private IShippingDetailRepository _shippingDetail;
-    public IShippingDetailRepository ShippingDetails => 
-        _shippingDetail ??= new ShippingDetailRepository(_context); 
+    public IShippingDetailRepository ShippingDetails =>
+        _shippingDetail ??= new ShippingDetailRepository(_context);
 
 
     private IWishListRepository _wishListRepository;
-    public IWishListRepository WishLists => 
+    public IWishListRepository WishLists =>
         _wishListRepository ??= new WishListRepository(_context);
 
     public CommonRepository(EcommerceDbContext context)

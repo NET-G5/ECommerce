@@ -11,7 +11,7 @@ public class WishListService : IWishListService
 
     public WishListService(ICommonRepository commonRepository)
     {
-        _commonRepository= commonRepository ;
+        _commonRepository = commonRepository;
     }
 
     public List<WishListViewModel> GetAll()
@@ -24,22 +24,22 @@ public class WishListService : IWishListService
 
     public WishListViewModel GetById(int id)
     {
-        var wishList=_commonRepository.WishLists.GetById(id);
+        var wishList = _commonRepository.WishLists.GetById(id);
 
-        var viewModel= wishList.ToViewModel();
+        var viewModel = wishList.ToViewModel();
 
-        return viewModel ;
+        return viewModel;
     }
     public WishListViewModel Create(CreateWishListViewModel wishList)
     {
         ArgumentNullException.ThrowIfNull(wishList);
 
-        var entity=wishList.ToEntity();
+        var entity = wishList.ToEntity();
 
         _commonRepository.WishLists.Create(entity);
         _commonRepository.SaveChanges();
 
-        var viewModel= entity.ToViewModel();
+        var viewModel = entity.ToViewModel();
 
         return viewModel;
     }
@@ -48,7 +48,7 @@ public class WishListService : IWishListService
     {
         ArgumentNullException.ThrowIfNull(wishList);
 
-        var entity=wishList.ToEntity();
+        var entity = wishList.ToEntity();
 
         _commonRepository.WishLists.Update(entity);
         _commonRepository.SaveChanges();

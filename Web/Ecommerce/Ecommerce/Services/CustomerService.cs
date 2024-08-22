@@ -1,5 +1,5 @@
 
-﻿using Ecommerce.Domain.Interfaces;
+using Ecommerce.Domain.Interfaces;
 using Ecommerce.Mappings;
 
 using Ecommerce.Services.Interfaces;

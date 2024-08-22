@@ -1,5 +1,4 @@
-﻿using Ecommerce.ViewModels.Category;
-using Ecommerce.ViewModels.ShippingDetail;
+﻿using Ecommerce.ViewModels.ShippingDetail;
 
 namespace Ecommerce.Services.Interfaces;
 

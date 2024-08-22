@@ -48,6 +48,6 @@ namespace Ecommerce.Mappings
                 ProductId = orderItem.ProductId,
             };
         }
-        
+
     }
 }

@@ -25,7 +25,7 @@ public class PaymentDetailRepository : RepositoryBase<PaymentDetailViewModel>, I
             return _context.PaymentDetails.Where(x => x.Amount > minValue).ToList();
         }
 
-        return _context.PaymentDetails.Where(x=>x.Amount > minValue && x.Amount<maxValue).ToList();
+        return _context.PaymentDetails.Where(x => x.Amount > minValue && x.Amount < maxValue).ToList();
 
     }
 }

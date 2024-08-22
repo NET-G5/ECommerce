@@ -11,14 +11,14 @@ public class ReviewService : IReviewService
 
     public ReviewService(ICommonRepository commonRepository)
     {
-        _commonRepository= commonRepository;
+        _commonRepository = commonRepository;
     }
 
     public List<ReviewViewModel> GetAll(string? search)
     {
-        var reviews=_commonRepository.Reviews.GetAll(search);
+        var reviews = _commonRepository.Reviews.GetAll(search);
 
-        var viewModels=reviews.Select(x=>x.ToViewModel()).ToList();
+        var viewModels = reviews.Select(x => x.ToViewModel()).ToList();
 
         return viewModels;
     }
@@ -43,9 +43,9 @@ public class ReviewService : IReviewService
 
     public ReviewViewModel GetById(int id)
     {
-        var review=_commonRepository.Reviews.GetById(id);
+        var review = _commonRepository.Reviews.GetById(id);
 
-        var viewModel=review.ToViewModel();
+        var viewModel = review.ToViewModel();
 
         return viewModel;
     }
@@ -54,12 +54,12 @@ public class ReviewService : IReviewService
     {
         ArgumentNullException.ThrowIfNull(review);
 
-        var entity=review.ToEntity();
+        var entity = review.ToEntity();
 
         _commonRepository.Reviews.Create(entity);
         _commonRepository.SaveChanges();
 
-        var viewModel=entity.ToViewModel();
+        var viewModel = entity.ToViewModel();
 
         return viewModel;
     }

@@ -15,21 +15,23 @@ public class Program
 
         builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
+
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXdedHRQRGRZWEV+WkQ=");
 
         var connectionString = builder.Configuration.GetConnectionString("ConnectionStringOfRamazon");
         
+
         builder.Services.AddDbContext<EcommerceDbContext>(options =>
             options.UseSqlServer(connectionString));
-        
+
         builder.Services.AddScoped<ICommonRepository, CommonRepository>();
-        
-        
+
+
         builder.Services.AddScoped<IPaymentDetailRepository, PaymentDetailRepository>();
-        builder.Services.AddScoped<IPaymentDetailService, PaymentDetailService >();
+        builder.Services.AddScoped<IPaymentDetailService, PaymentDetailService>();
 
         builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-        builder.Services.AddScoped<ICategoryService, CategoryService >();
+        builder.Services.AddScoped<ICategoryService, CategoryService>();
 
         builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
         builder.Services.AddScoped<ICustomerService, CustomerService>();
@@ -38,7 +40,7 @@ public class Program
         builder.Services.AddScoped<IOrderService, OrderService>();
 
         builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
-        builder.Services.AddScoped<IOrderItemService, OrderItemService >();
+        builder.Services.AddScoped<IOrderItemService, OrderItemService>();
 
         builder.Services.AddScoped<IProductRepository, ProductRepository>();
         builder.Services.AddScoped<IProductService, ProductService>();
@@ -50,7 +52,7 @@ public class Program
         builder.Services.AddScoped<IShippingDetailService, ShippingDetailService>();
 
         builder.Services.AddScoped<IWishListRepository, WishListRepository>();
-        builder.Services.AddScoped<IWishListService, WishListService >();
+        builder.Services.AddScoped<IWishListService, WishListService>();
 
 
         var app = builder.Build();

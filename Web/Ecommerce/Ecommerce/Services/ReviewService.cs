@@ -22,6 +22,7 @@ public class ReviewService : IReviewService
 
         return viewModels;
     }
+
     public List<ReviewViewModel> GetAll(int? rating = null)
     {
         var reviews = _commonRepository.Reviews.GetAll(rating);
@@ -69,7 +70,6 @@ public class ReviewService : IReviewService
         _commonRepository.SaveChanges();
     }
 
-
     public void Update(UpdateReviewViewModel review)
     {
         ArgumentNullException.ThrowIfNull(review);
@@ -79,6 +79,4 @@ public class ReviewService : IReviewService
         _commonRepository.Reviews.Update(entity);
         _commonRepository.SaveChanges();
     }
-
-
 }

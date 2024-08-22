@@ -16,7 +16,6 @@ namespace Ecommerce.Controllers
 
         public IActionResult Index()
         {
-            var result = _service.GetAll();
             return View();
         }
 

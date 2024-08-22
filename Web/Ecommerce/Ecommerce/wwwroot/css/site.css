@@ -20,3 +20,113 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+header {
+    border-bottom: 1px solid #ddd;
+    margin-inline-start: 140px;
+    margin-inline-end: 140px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #F0F2F5;
+    font-size: 14px;
+}
+
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.search-bar {
+    display: flex;
+    flex: 1;
+    margin: 0 20px;
+}
+
+    .search-bar input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-right: none;
+        border-radius: 4px 0 0 4px;
+    }
+
+    .search-bar button {
+        padding: 0 20px;
+        border: 1px solid #ddd;
+        background-color: #eee;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+    }
+
+.header-icons a {
+    margin-left: 20px;
+    color: #333;
+    text-decoration: none;
+}
+
+.category-menu {
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+}
+
+    .category-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+
+        .category-menu ul li {
+            margin-right: 20px;
+        }
+
+            .category-menu ul li a {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+            }
+.horizontal-links {
+    text-decoration: none;
+    color: #007bff; /* This sets the link color to a standard blue */
+    margin-right: 15px; /* Space between the links */
+    cursor: pointer;
+}
+
+.horizontal-links {
+    background-color: transparent; /* Removes any default background from the toolbar */
+    border: none; /* Removes any default border */
+    padding: 0; /* Ensures no padding around the toolbar */
+}
+
+.horizontal-links {
+    display: flex; /* Displays the items in a row */
+    gap: 15px; /* Adjusts the space between the items */
+}
+
+.btn-group button {
+    background-color: transparent;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration-thickness: from-font
+}
+
+.btn-group button:hover {
+    background-color: transparent;
+    color:black
+}
+
+.btn-group button:active {
+    background-color: transparent;
+    color: black
+}

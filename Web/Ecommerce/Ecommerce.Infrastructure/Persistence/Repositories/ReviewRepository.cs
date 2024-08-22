@@ -12,7 +12,7 @@ public class ReviewRepository : RepositoryBase<Review>, IReviewRepository
 
     public List<Review> GetAll(int? rating)
     {
-        if (rating==null)
+        if (rating == null)
         {
             return GetAll();
         }
@@ -26,7 +26,7 @@ public class ReviewRepository : RepositoryBase<Review>, IReviewRepository
 
     public List<Review> GetAll(DateTime? postedDate)
     {
-        if (postedDate==null)
+        if (postedDate == null)
         {
             return GetAll();
         }

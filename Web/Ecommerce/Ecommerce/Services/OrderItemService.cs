@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Domain.Interfaces;
+using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.OrderItem;
 
@@ -6,33 +7,55 @@ namespace Ecommerce.Services;
 
 public class OrderItemService : IOrderItemService
 {
-    private readonly IOrderRepository _orderRepository;
-    public OrderItemService(IOrderRepository orderRepository)
+    private readonly ICommonRepository _commonRepository;
+    public OrderItemService(ICommonRepository commonRepository)
     {
-        _orderRepository = orderRepository;
-    }
-    public OrderItemViewModel Create(CreateOrderItemViewModel orderItem)
-    {
-        throw new NotImplementedException();
+        _commonRepository = commonRepository;
     }
 
-    public void Delete(int id)
+    public List<OrderItemViewModel> GetAll()
     {
-        throw new NotImplementedException();
-    }
+        var orderItemViewModels = _commonRepository.OrderItems
+                .GetAll().Select(x => x.ToViewModel()).ToList();
 
-    public List<OrderItemViewModel> GetAll(string? search)
-    {
-        throw new NotImplementedException();
+        return orderItemViewModels;
     }
 
     public OrderItemViewModel GetById(int id)
     {
-        throw new NotImplementedException();
+        var orderItemViewModel = _commonRepository.OrderItems
+            .GetById(id).ToViewModel();
+
+        return orderItemViewModel;
     }
+
+    public OrderItemViewModel Create(CreateOrderItemViewModel orderItem)
+    {
+        ArgumentNullException.ThrowIfNull(orderItem);
+
+        var newOrderItem = _commonRepository.OrderItems.Create(orderItem.ToEntity());
+        _commonRepository.SaveChanges();
+
+        var orderItemViewModel = newOrderItem.ToViewModel();
+
+        return orderItemViewModel;
+
+    }
+
+    public void Delete(int id)
+    {
+        _commonRepository.OrderItems.Delete(id);
+        _commonRepository.SaveChanges();
+    }
+
 
     public void Update(UpdateOrderItemViewModel orderItem)
     {
-        throw new NotImplementedException();
+        ArgumentNullException.ThrowIfNull(orderItem);
+
+        var orderItemToUpdate = orderItem.ToEntity();
+
+        _commonRepository.OrderItems.Update(orderItemToUpdate);
+        _commonRepository.SaveChanges();
     }
 }

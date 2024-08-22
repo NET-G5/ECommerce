@@ -4,5 +4,5 @@ namespace Ecommerce.Domain.Interfaces;
 
 public interface ICustomerRepository : IRepositoryBase<Customer>
 {
-    List<Customer> GetAll(string? searchText);
+    List<Customer> GetAll(string? searchText = null);
 }

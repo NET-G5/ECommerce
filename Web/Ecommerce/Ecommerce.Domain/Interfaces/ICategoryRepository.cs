@@ -4,5 +4,5 @@ namespace Ecommerce.Domain.Interfaces;
 
 public interface ICategoryRepository : IRepositoryBase<Category>
 {
-    List<Category> GetAll(string? searchText);
+    List<Category> GetAll(string? searchText = null);
 }

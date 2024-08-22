@@ -1,44 +1,60 @@
-﻿using Ecommerce.Domain.Entities;
-using Ecommerce.Domain.Interfaces;
+﻿using Ecommerce.Domain.Interfaces;
+using Ecommerce.Mappings;
+using Ecommerce.Services.Interfaces;
+using Ecommerce.ViewModels.Customer;
 
 namespace Ecommerce.Services;
 
-public class CustomerService : ICustomerRepository
+public class CustomerService : ICustomerService
 {
-    private readonly ICustomerRepository _customerRepository;
+    private readonly ICommonRepository _commonRepository;
 
-    public CustomerService(ICustomerRepository customerRepository)
+    public CustomerService(ICommonRepository commonRepository)
     {
-        _customerRepository = customerRepository;
+        _commonRepository = commonRepository;
     }
 
-    public Customer Create(Customer entity)
+    public List<CustomerViewModel> GetAll(string? search)
     {
-        throw new NotImplementedException();
+        var customers = _commonRepository.Customers.GetAll(search).ToList();
+
+        var customerViewModel = customers.Select(x => x.ToViewModel()).ToList();
+
+        return customerViewModel;
+    }
+
+    public CustomerViewModel GetById(int id)
+    {
+        var customer = _commonRepository.Customers.GetById(id);
+
+        var customerViewModel = customer.ToViewModel();
+
+        return customerViewModel;
+    }
+
+    public CustomerViewModel Create(CreateCustomerViewModel customer)
+    {
+        ArgumentNullException.ThrowIfNull(customer);
+
+        var newCustomer = _commonRepository.Customers.Create(customer.ToEntity());
+        _commonRepository.SaveChanges();
+
+        return newCustomer.ToViewModel();
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        _commonRepository.Customers.Delete(id);
+        _commonRepository.SaveChanges();
     }
 
-    public List<Customer> GetAll(string? searchText)
+    public void Update(UpdateCustomerViewModel customer)
     {
-        throw new NotImplementedException();
-    }
+        ArgumentNullException.ThrowIfNull(customer);
 
-    public List<Customer> GetAll()
-    {
-        throw new NotImplementedException();
-    }
+        var customerToUpdate = customer.ToEntity();
 
-    public Customer GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Update(Customer entity)
-    {
-        throw new NotImplementedException();
+        _commonRepository.Customers.Update(customerToUpdate);
+        _commonRepository.SaveChanges();
     }
 }

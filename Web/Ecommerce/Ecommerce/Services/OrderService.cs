@@ -1,4 +1,6 @@
-﻿using Ecommerce.Domain.Interfaces;
+﻿using Ecommerce.Domain.Enums;
+using Ecommerce.Domain.Interfaces;
+using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.Order;
 
@@ -6,35 +8,57 @@ namespace Ecommerce.Services;
 
 public class OrderService : IOrderService
 {
-    private readonly IOrderRepository _orderRepository;
+    private readonly ICommonRepository _commonRepository;
 
-    public OrderService(IOrderRepository orderRepository)
+    public OrderService(ICommonRepository commonRepository)
     {
-        _orderRepository = orderRepository;
-    }
-    public OrderViewModel Create(CreateOrderViewModel order)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Delete(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public List<OrderViewModel> GetAll(string? search)
-    {
-        throw new NotImplementedException();
+        _commonRepository = commonRepository;
     }
 
     public List<OrderViewModel> GetAll(decimal? amount)
     {
-        throw new NotImplementedException();
+        var orderViewModel = _commonRepository.Orders.GetAll(amount).Select(x => x.ToViewModel()).ToList();
+
+        return orderViewModel;
+    }
+
+    public List<OrderViewModel> GetAll(DateTime? orderDate)
+    {
+        var orderViewModel = _commonRepository.Orders.GetAll(orderDate).Select(x => x.ToViewModel()).ToList();
+
+        return orderViewModel;
+    }
+
+    public List<OrderViewModel> GetAll(OrderStatus? orderStatus)
+    {
+        var orderViewModel = _commonRepository.Orders.GetAll(orderStatus).Select(x => x.ToViewModel()).ToList();
+
+        return orderViewModel;
+    }
+
+    public OrderViewModel Create(CreateOrderViewModel order)
+    {
+        ArgumentNullException.ThrowIfNull(order);
+
+        var newOrder = _commonRepository.Orders.Create(order.ToEntity());
+        _commonRepository.SaveChanges();
+
+        var orderViewModel = newOrder.ToViewModel();
+
+        return orderViewModel;
+    }
+
+    public void Delete(int id)
+    {
+        _commonRepository.Orders.Delete(id);
+        _commonRepository.SaveChanges();
     }
 
     public OrderViewModel GetById(int id)
     {
-        throw new NotImplementedException();
+        var orderViewModel = _commonRepository.Orders.GetById(id).ToViewModel();
+
+        return orderViewModel;
     }
 
     public void Update(UpdateOrderViewModel order)

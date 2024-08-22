@@ -1,7 +1,8 @@
-﻿using Ecommerce.Domain.Entities;
-using Ecommerce.Domain.Interfaces;
+﻿using Ecommerce.Domain.Interfaces;
+using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.Category;
+using System.Security.Cryptography.Xml;
 
 namespace Ecommerce.Services;
 
@@ -15,30 +16,51 @@ public class CategoryService : ICategoryService
     }
     public List<CategoryViewModel> GetAll(string? search)
     {
-        var entity = _commonRepository.Categories.GetAll(search);
-        throw new NotImplementedException();
+        var categories = _commonRepository.Categories.GetAll(search);
+
+        var categoryViewModels = categories
+            .Select(x => x.ToViewModel())
+            .ToList();
+
+        return categoryViewModels;
 
     }
 
     public CategoryViewModel GetById(int id)
     {
-        throw new NotImplementedException();
+        var category = _commonRepository.Categories.GetById(id);
+
+        var categoryViewModel = category.ToViewModel();
+
+        return categoryViewModel;
     }
 
-    public CategoryViewModel Create(CreateCategoryViewModel category)
+    public CategoryViewModel Create(CreateCategoryViewModel categoryViewModel)
     {
-        throw new NotImplementedException();
+        ArgumentNullException.ThrowIfNull(categoryViewModel);
 
+        var category = categoryViewModel.ToEntity();
+
+        var newCategory = _commonRepository.Categories.Create(category);
+        _commonRepository.SaveChanges();
+
+        return newCategory.ToViewModel();
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        _commonRepository.Categories.Delete(id);
+        _commonRepository.SaveChanges();
     }
 
 
     public void Update(UpdateCategoryViewModel category)
     {
-        throw new NotImplementedException();
+        ArgumentNullException.ThrowIfNull(category);
+
+        var entity = category.ToEntity();
+
+        _commonRepository.Categories.Update(entity);
+        _commonRepository.SaveChanges();
     }
 }

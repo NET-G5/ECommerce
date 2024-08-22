@@ -1,5 +1,4 @@
-﻿using Ecommerce.ViewModels.Category;
-using Ecommerce.ViewModels.WishList;
+﻿using Ecommerce.ViewModels.WishList;
 
 namespace Ecommerce.Services.Interfaces;
 

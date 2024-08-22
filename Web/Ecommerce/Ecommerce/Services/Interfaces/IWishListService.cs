@@ -5,7 +5,7 @@ namespace Ecommerce.Services.Interfaces;
 
 public interface IWishListService
 {
-    List<WishListViewModel> GetAll(string? search);
+    List<WishListViewModel> GetAll();
     WishListViewModel GetById(int id);
     WishListViewModel Create(CreateWishListViewModel wishList);
     void Update(UpdateWishListViewModel wishList);

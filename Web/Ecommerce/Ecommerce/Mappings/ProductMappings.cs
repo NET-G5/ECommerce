@@ -14,7 +14,7 @@ namespace Ecommerce.Mappings
                 Description = product.Description,
                 Price = product.Price,
                 StockQuantity = product.StockQuantity,
-                Image = product.Image,
+                ImageUrl = product.ImageUrl,
                 AddedDate = product.AddedDate,
                 CategoryId = product.CategoryId,
             };
@@ -28,7 +28,7 @@ namespace Ecommerce.Mappings
                 Description = product.Description,
                 Price = product.Price,
                 StockQuantity = product.StockQuantity,
-                Image = product.Image,
+                ImageUrl = product.ImageUrl,
                 AddedDate = product.AddedDate,
                 CategoryId = product.CategoryId,
             };
@@ -41,7 +41,7 @@ namespace Ecommerce.Mappings
                 Description = product.Description,
                 Price = product.Price,
                 StockQuantity = product.StockQuantity,
-                Image = product.Image,
+                ImageUrl = product.ImageUrl,
                 AddedDate = product.AddedDate,
                 CategoryId = product.CategoryId,
             };
@@ -55,7 +55,7 @@ namespace Ecommerce.Mappings
                 Description = product.Description,
                 Price = product.Price,
                 StockQuantity = product.StockQuantity,
-                Image = product.Image,
+                ImageUrl = product.ImageUrl,
                 AddedDate = product.AddedDate,
                 CategoryId = product.CategoryId,
             };

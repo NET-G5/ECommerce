@@ -1,5 +1,4 @@
-﻿using Ecommerce.Domain.Entities;
-using Ecommerce.ViewModels.PaymentDetail;
+﻿using Ecommerce.ViewModels.PaymentDetail;
 
 namespace Ecommerce.Mappings
 {
@@ -41,7 +40,7 @@ namespace Ecommerce.Mappings
         {
             return new Domain.Entities.PaymentDetailViewModel
             {
-                Id= paymentDetail.Id,
+                Id = paymentDetail.Id,
                 Method = paymentDetail.Method,
                 PaymentDate = paymentDetail.PaymentDate,
                 Amount = paymentDetail.Amount,

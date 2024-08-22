@@ -41,7 +41,7 @@ namespace Ecommerce.Mappings
         {
             return new Order
             {
-                Id= order.Id,
+                Id = order.Id,
                 OrderDate = order.OrderDate,
                 TotalAmount = order.TotalAmount,
                 Status = order.Status,

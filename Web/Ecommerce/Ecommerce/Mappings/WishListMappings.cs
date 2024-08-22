@@ -32,7 +32,7 @@ namespace Ecommerce.Mappings
         {
             return new WishList
             {
-                Id=wishList.Id,
+                Id = wishList.Id,
                 CustomerId = wishList.CustomerId,
             };
         }

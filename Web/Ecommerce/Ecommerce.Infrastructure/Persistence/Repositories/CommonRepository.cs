@@ -3,7 +3,7 @@ using Ecommerce.Infrastructure.Persistence;
 
 namespace Ecommerce.Infrastructure.Repositories;
 
-internal class CommonRepository : ICommonRepository
+public class CommonRepository : ICommonRepository
 {
     private readonly EcommerceDbContext _context;
 

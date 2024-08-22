@@ -1,5 +1,7 @@
+
 ﻿using Ecommerce.Domain.Interfaces;
 using Ecommerce.Mappings;
+
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.Customer;
 
@@ -14,7 +16,9 @@ public class CustomerService : ICustomerService
         _commonRepository = commonRepository;
     }
 
+
     public List<CustomerViewModel> GetAll(string? search)
+
     {
         var customers = _commonRepository.Customers.GetAll(search).ToList();
 
@@ -23,7 +27,9 @@ public class CustomerService : ICustomerService
         return customerViewModel;
     }
 
+
     public CustomerViewModel GetById(int id)
+
     {
         var customer = _commonRepository.Customers.GetById(id);
 
@@ -32,7 +38,9 @@ public class CustomerService : ICustomerService
         return customerViewModel;
     }
 
+
     public CustomerViewModel Create(CreateCustomerViewModel customer)
+
     {
         ArgumentNullException.ThrowIfNull(customer);
 
@@ -42,11 +50,13 @@ public class CustomerService : ICustomerService
         return newCustomer.ToViewModel();
     }
 
+
     public void Delete(int id)
     {
         _commonRepository.Customers.Delete(id);
         _commonRepository.SaveChanges();
     }
+
 
     public void Update(UpdateCustomerViewModel customer)
     {

@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Domain.Interfaces;
+using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.Product;
 
@@ -6,20 +7,30 @@ namespace Ecommerce.Services;
 
 public class ProductService : IProductService
 {
-    private readonly IProductRepository _productRepository;
+    private readonly ICommonRepository _commonRepository;
 
-    public ProductService(IProductRepository productRepository)
+    public ProductService(ICommonRepository commonRepository)
     {
-        _productRepository = productRepository;
+        _commonRepository= commonRepository;
     }
     public ProductViewModel Create(CreateProductViewModel product)
     {
-        throw new NotImplementedException();
+        ArgumentNullException.ThrowIfNull(product);
+
+        var entity = product.ToEntity();
+
+        _commonRepository.Products.Create(entity);
+        _commonRepository.SaveChanges();
+
+        var viewModel=entity.ToViewModel();
+
+        return viewModel;
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        _commonRepository.Products.Delete(id);
+        _commonRepository.SaveChanges();
     }
 
     public List<ProductViewModel> GetAll(string? search)
@@ -34,11 +45,20 @@ public class ProductService : IProductService
 
     public ProductViewModel GetById(int id)
     {
-        throw new NotImplementedException();
+        var product=_commonRepository.Products.GetById(id);
+
+        var viewModel=product.ToViewModel();
+
+        return viewModel;
     }
 
     public void Update(UpdateProductViewModel product)
     {
-        throw new NotImplementedException();
+        ArgumentNullException.ThrowIfNull(product);
+
+        var entity = product.ToEntity();
+
+        _commonRepository.Products.Update(entity);
+        _commonRepository.SaveChanges();
     }
 }

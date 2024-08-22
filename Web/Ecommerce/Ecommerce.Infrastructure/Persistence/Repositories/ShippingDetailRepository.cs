@@ -24,10 +24,10 @@ namespace Ecommerce.Infrastructure.Repositories
 
             return shippingDetails;
         }
-
+            
         public List<ShippingDetail> GetAll(DateTime? shippedDate)
         {
-            if (!shippedDate.HasValue)
+            if (shippedDate==null)
             {
                 return GetAll();
             }

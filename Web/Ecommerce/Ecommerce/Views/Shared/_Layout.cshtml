@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Ecommerce.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/26.2.4/fluent.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <script src="https://cdn.syncfusion.com/ej2/26.2.4/dist/ej2.min.js"></script>
 </head>
@@ -18,35 +19,35 @@
         <div class="header-top">
             <div class="location">
                 <span>
-                    <i class="fas fa-map-marker-alt"></i>
-                    Shahar:
-                    <ejs-dropdownbutton id="cityDropdown" Content="Toshkent">
+                    <i class="fas fa-map-marker-alt me-1"></i>
+                    <a href="#">City</a>
+                    <ejs-dropdownbutton id="cityDropdown" class="ms-1 me-1" Content="Tashkent">
                     </ejs-dropdownbutton>
                 </span>
-                <ejs-button id="pickupPointsBtn" CssClass="e-link" Content="Topshirish punktlari"></ejs-button>
+                <a href="#" >Delivery points</a>
             </div>
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-secondary">Sell</button>
-                <button type="button" class="btn btn-secondary">FAQs</button>
-                <button type="button" class="btn btn-secondary">My orders</button>
-                <button type="button" class="btn btn-secondary">Uzbek</button>
+            <div class="header-icon bold-link">
+                <a href="#" >Sell</a>
+                <a href="#" >FAQs</a>
+                <a href="#" >My orders</a>
+                <a href="#" >Uzbek</a>
             </div>
         </div>
         <div class="header-main">
-            <div class="logo">
-                <a href="#"><img src="~/css/e-commerce.logo.png" alt="Ecommerce" /></a>
-                <p class="fw-bolder">Bolder weight text (relative to the parent element).</p>
-
+            <div class="logo d-flex">
+                <a href="#"><img src="~/css/e-commerce.logo1.png" alt="Ecommerce" /></a>
+                <p class="fw-bolder mt-2">Ecommerce</p>
             </div>
             
             <div class="search-bar">
-                <input type="text" placeholder="Mahsulotlar va turkumlar izlash" />
-                <button><i class="fas fa-search"></i></button>
+                <input type="text" placeholder="Search products and types..." >
+                    <button><i class="fas fa-search"></i></button>
+                </input>
             </div>
             <div class="header-icons">
-                <a href="#"><i class="fas fa-user"></i> Kirish</a>
-                <a href="#"><i class="fas fa-heart"></i> Saralangan</a>
-                <a href="#"><i class="fas fa-shopping-cart"></i> Savat</a>
+                <button><i class="fas fa-user"></i> LogIn</button>
+                <button><i class="fas fa-heart"></i> Favourite</button>
+                <button><i class="fas fa-shopping-cart"></i> Basket</button>
             </div>
         </div>
         <nav class="category-menu">

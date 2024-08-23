@@ -17,6 +17,34 @@ html {
   min-height: 100%;
 }
 
+.location a {
+    font-weight:600;
+    text-decoration: none;
+    color: #333;
+}
+
+.bold-link {
+    text-align: right;
+    display: flex;
+    font-size: 15px;
+    gap: 15px;
+    margin-top: 2px
+}
+
+    .bold-link a {
+        font-weight: 600;
+        text-decoration: none;
+        color: #333;
+    }
+
+        .bold-link a:active {
+            color: palevioletred
+        }
+
+        .bold-link a:focus {
+            color: palevioletred
+        }
+
 body {
   margin-bottom: 60px;
 }
@@ -43,8 +71,14 @@ header {
 }
 
 .logo img {
-    height: 40px;
+    height: 45px;
+    width: 45px
 }
+
+    .logo p {
+        color: blueviolet;
+        font-size: 20px
+    }
 
 .search-bar {
     display: flex;
@@ -60,6 +94,12 @@ header {
         border-radius: 4px 0 0 4px;
     }
 
+        .search-bar input:focus {
+            border: 0.3px solid #ddd;
+            border-color: #333;
+            outline: none;
+        }
+
     .search-bar button {
         padding: 0 20px;
         border: 1px solid #ddd;
@@ -68,11 +108,25 @@ header {
         cursor: pointer;
     }
 
-.header-icons a {
+        .search-bar button:hover {
+            background-color: dimgrey;
+            border: black
+        }
+
+
+.header-icons button {
+    border: none;
+    background-color: transparent;
+    width: 100px;
+    height: 40px;
     margin-left: 20px;
     color: #333;
     text-decoration: none;
 }
+
+    .header-icons button:hover {
+        background-color: darkgray
+    }
 
 .category-menu {
     background-color: #f8f8f8;
@@ -95,38 +149,4 @@ header {
                 color: #333;
                 font-weight: bold;
             }
-.horizontal-links {
-    text-decoration: none;
-    color: #007bff; /* This sets the link color to a standard blue */
-    margin-right: 15px; /* Space between the links */
-    cursor: pointer;
-}
 
-.horizontal-links {
-    background-color: transparent; /* Removes any default background from the toolbar */
-    border: none; /* Removes any default border */
-    padding: 0; /* Ensures no padding around the toolbar */
-}
-
-.horizontal-links {
-    display: flex; /* Displays the items in a row */
-    gap: 15px; /* Adjusts the space between the items */
-}
-
-.btn-group button {
-    background-color: transparent;
-    color: black;
-    font-weight: bold;
-    font-size: 15px;
-    text-decoration-thickness: from-font
-}
-
-.btn-group button:hover {
-    background-color: transparent;
-    color:black
-}
-
-.btn-group button:active {
-    background-color: transparent;
-    color: black
-}

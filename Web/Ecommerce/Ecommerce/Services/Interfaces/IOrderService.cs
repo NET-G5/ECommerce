@@ -4,8 +4,8 @@ namespace Ecommerce.Services.Interfaces;
 
 public interface IOrderService
 {
-    List<OrderViewModel> GetAll(string? search);
-    List<OrderViewModel> GetAll(decimal? amount);
+    List<OrderViewModel> GetAll(DateTime? orderedDate = null);
+    List<OrderViewModel> GetAll(decimal? amount = null);
     OrderViewModel GetById(int id);
     OrderViewModel Create(CreateOrderViewModel order);
     void Update(UpdateOrderViewModel order);

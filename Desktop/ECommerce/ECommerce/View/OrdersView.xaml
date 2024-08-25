@@ -17,16 +17,42 @@
     mc:Ignorable="d">
 
     <Window.Resources>
+        <!--  DataGridCell Style for Selection Colors  -->
         <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#1A1A1A" />
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="Background" Value="#1e2e44" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
-        <Style TargetType="DataGrid">
-            <Setter Property="Background" Value="#1e2e44" />
-            <Setter Property="RowBackground" Value="#1e2e44" />
-            <Setter Property="AlternatingRowBackground" Value="#1e2e44" />
+        <Style TargetType="DataGridCell">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Status}" Value="Refunded">
+                    <Setter Property="Foreground" Value="Red"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="Pending">
+                    <Setter Property="Foreground" Value="Yellow"/>
+                </DataTrigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#007BFF" />
+                    <!--  Selected Cell Background  -->
+                    <Setter Property="Foreground" Value="White" />
+                    <!--  Selected Cell Foreground  -->
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#007BFF" />
+                    <!--  Hover Cell Background  -->
+                    <Setter Property="Foreground" Value="White" />
+                    <!--  Hover Cell Foreground  -->
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
+        <!--  ControlTemplate for TextBox and ComboBox  -->
         <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
             <Border
                 x:Name="Bd"
@@ -54,6 +80,19 @@
             <Border x:Name="PART_ContentHost" Focusable="True" />
         </ControlTemplate>
 
+        <!--  Button Style  -->
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#28AEED" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Height" Value="20" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2788EF" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
 
     <Border>
@@ -75,23 +114,21 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="35" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Grid>
-                <!--  TITLE  -->
-                <TextBlock
-                    Margin="10,0,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    FontFamily="Montserrat"
-                    FontSize="13"
-                    Foreground="White"
-                    Text="ORDERS" />
-            </Grid>
+            <TextBlock
+                Margin="10,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontFamily="Montserrat"
+                FontSize="13"
+                Foreground="White"
+                Text="ORDERS" />
+
             <Grid Grid.Column="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -104,35 +141,12 @@
                     x:Name="btnMinimize"
                     Grid.Column="1"
                     Margin="0,0,5,0"
-                    HorizontalAlignment="Right"
-                    BorderThickness="0"
                     Click="BtnMinimize_Click"
-                    Cursor="Hand"
                     FontFamily="Montserrat"
                     FontSize="12"
-                    Foreground="White">
+                    Foreground="White"
+                    Style="{StaticResource CustomButtonStyle}">
                     <materialDesign:PackIcon Kind="WindowMinimize" />
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background" Value="#28AEED" />
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#2788EF" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border
-                                Width="20"
-                                Height="20"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="10">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
                 </Button>
 
                 <!--  Close button  -->
@@ -140,114 +154,75 @@
                     x:Name="btnClose"
                     Grid.Column="3"
                     Margin="0,0,10,0"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Background="red"
-                    BorderThickness="0"
+                    Background="Red"
                     Click="BtnClose_Click"
                     Content="X"
-                    Cursor="Hand"
                     FontFamily="Montserrat"
                     FontSize="12"
                     FontWeight="SemiBold"
-                    Foreground="White">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background" Value="#28AEED" />
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#2788EF" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border
-                                Width="20"
-                                Height="20"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="10">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
+                    Foreground="White"
+                    Style="{StaticResource CustomButtonStyle}" />
             </Grid>
 
             <!--  Top Menu  -->
             <Grid Grid.Row="1" Grid.ColumnSpan="4">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Border
-                    Grid.ColumnSpan="3"
-                    Background="Transparent"
-                    BorderThickness="0.5">
-                    <DockPanel>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100" />
-                                <ColumnDefinition Width="500" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="100" />
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
+                <DockPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="500" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-                            <!--  EMP Name  -->
-                            <TextBlock
-                                x:Name="EmpTitle"
-                                Grid.Column="2"
-                                Margin="0,0,10,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                DockPanel.Dock="Right"
-                                FontSize="22"
-                                FontWeight="SemiBold"
-                                Foreground="#F0EAD6"
-                                TextAlignment="Right" />
+                        <!--  EMP Name  -->
+                        <TextBlock
+                            x:Name="EmpTitle"
+                            Grid.Column="2"
+                            Margin="0,0,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            FontSize="22"
+                            FontWeight="SemiBold"
+                            Foreground="#F0EAD6"
+                            TextAlignment="Right" />
 
-                            <!--  Profile Photo  -->
-                            <Border
-                                Grid.Column="3"
-                                Width="50"
-                                Height="50"
-                                Margin="20,16,0,17"
-                                Padding="3"
-                                HorizontalAlignment="Left"
-                                Background="#1e2e44"
-                                CornerRadius="100"
-                                DockPanel.Dock="Top" />
+                        <!--  Profile Photo  -->
+                        <Border
+                            Grid.Column="3"
+                            Width="50"
+                            Height="50"
+                            Margin="20,16,0,17"
+                            Background="#1e2e44"
+                            CornerRadius="100" />
 
-                            <Button
-                                Grid.Column="4"
-                                Width="auto"
-                                Height="50"
-                                Margin="0,0,10,0"
-                                HorizontalAlignment="Right"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                Click="LogOut_Click"
-                                Foreground="Red"
-                                IsEnabled="True">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon
-                                        Width="20"
-                                        Height="20"
-                                        Margin="0,0,5,0"
-                                        VerticalAlignment="Center"
-                                        Kind="Logout" />
-                                    <Label
-                                        Height="20"
-                                        Content="LOG OUT"
-                                        FontWeight="Medium"
-                                        Foreground="Red" />
-                                </StackPanel>
-                            </Button>
-                        </Grid>
-                    </DockPanel>
-                </Border>
+                        <Button
+                            Grid.Column="4"
+                            Height="50"
+                            Margin="0,0,10,0"
+                            HorizontalAlignment="Right"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Click="LogOut_Click"
+                            Foreground="Red">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Width="20"
+                                    Height="20"
+                                    Margin="0,0,5,0"
+                                    FontWeight="Bold"
+                                    VerticalAlignment="Center"
+                                    Kind="Logout" />
+                                <Label
+                                    Height="20"
+                                    Content="LOG OUT"
+                                    FontWeight="Bold"
+                                    Foreground="Red" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </DockPanel>
             </Grid>
 
             <!--  Filters  -->
@@ -299,92 +274,140 @@
                 ItemsSource="{Binding OrderStatuses}"
                 Style="{StaticResource MaterialDesignOutlinedComboBox}">
                 <ComboBox.ItemContainerStyle>
+
                     <Style TargetType="ComboBoxItem">
-                        <Setter Property="Background" Value="White" />
-                        <Setter Property="FontWeight" Value="SemiBold" />
-                        <Setter Property="Foreground" Value="#151f2d" />
-                        <Setter Property="BorderThickness" Value="0" />
-                        <Setter Property="Margin" Value="2" />
-                        <Setter Property="Padding" Value="8,4" />
+                        <Setter Property="Foreground" Value="Black" />
                     </Style>
                 </ComboBox.ItemContainerStyle>
+                <ComboBox.Template>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton
+                                x:Name="ToggleButton"
+                                Grid.Column="2"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                ClickMode="Press"
+                                Focusable="False">
+                                <ContentPresenter />
+                            </ToggleButton>
+                            <Popup
+                                x:Name="Popup"
+                                AllowsTransparency="True"
+                                Focusable="False"
+                                IsOpen="{TemplateBinding IsDropDownOpen}"
+                                Placement="Bottom">
+                                <Border
+                                    x:Name="PopupBorder"
+                                    Background="#1e2e44"
+                                    BorderBrush="#151f2d"
+                                    BorderThickness="1"
+                                    CornerRadius="10"
+                                    SnapsToDevicePixels="True">
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" />
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </ComboBox.Template>
             </ComboBox>
 
-            <Button
-                Grid.Row="2"
-                Grid.Column="3"
-                Width="124"
-                Height="55"
-                Padding="10"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Background="#1e2e44"
-                Click="Search_Clicked">
-                <StackPanel
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Orientation="Horizontal">
-                    <materialDesign:PackIcon
-                        Width="20"
-                        Height="20"
-                        Margin="0,0,5,0"
-                        VerticalAlignment="Center"
-                        Foreground="White"
-                        Kind="Search" />
-                    <Label
-                        Width="auto"
-                        Height="30"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        FontWeight="Medium"
-                        Foreground="White">
-                        <TextBlock FontSize="20" Text="Search" />
-                    </Label>
-                </StackPanel>
-
-            </Button>
-
-            <!--  Data Grid  -->
+            <!--  Orders DataGrid  -->
             <DataGrid
-                x:Name="OrdersDataGrid"
+                x:Name="OrdersGrid"
                 Grid.Row="3"
                 Grid.ColumnSpan="4"
-                Width="auto"
-                Margin="20"
-                HorizontalAlignment="Center"
-                AlternatingRowBackground="#151f2d"
+                Width="1265"
+                Margin="0,40,0,50"
                 AutoGenerateColumns="False"
-                Background="#1e2e44"
+                Background="#1A1A1A"
                 CanUserAddRows="False"
-                Foreground="White"
-                IsReadOnly="True">
-                <DataGrid.Resources>
-                    <Style TargetType="DataGridRow">
-                        <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
-                    </Style>
-                </DataGrid.Resources>
+
+                CanUserDeleteRows="False"
+                ColumnHeaderHeight="40"
+                IsReadOnly="True"
+                ItemsSource="{Binding Orders}"
+                RowHeight="40"
+                Style="{StaticResource {x:Type DataGrid}}">
 
                 <DataGrid.Columns>
                     <DataGridTextColumn
-                        Width="100"
+                        Width="50"
                         Binding="{Binding Id}"
                         Foreground="White"
-                        Header="Order Id" />
+                        Header="Order ID">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
                     <DataGridTextColumn
-                        Width="auto"
+                        Width="300"
+                        MaxWidth="300"
                         Binding="{Binding Customer}"
                         Foreground="White"
-                        Header="Customer" />
+                        Header="Customer Name" >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
                     <DataGridTextColumn
-                        Width="200"
-                        Binding="{Binding ExpireDate, StringFormat='{}{0:dd-MMM-yyyy}'}"
-                        Foreground="White"
-                        Header="Expire Date" />
-                    <DataGridTextColumn
-                        x:Name="statusGrid"
-                        Width="200"
+                        Width="150"
                         Binding="{Binding Status}"
-                        Header="Status" />
+                        FontWeight="Bold"
+                        Header="Status">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn
+                        Width="150"
+                        Binding="{Binding OrderedDate, StringFormat=d}"
+                        Foreground="White"
+                        Header="Ordered Date">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn
+                        Width="150"
+                        Binding="{Binding ExpireDate, StringFormat=d}"
+                        Foreground="White"
+                        Header="Expire Date">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="#007BFF"
+                                        Click="Details_Button"  
+                                        Content="Details" />
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

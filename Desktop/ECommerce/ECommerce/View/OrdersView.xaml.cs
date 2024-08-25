@@ -2,9 +2,8 @@
 using ECommerce.Services;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
+using MessageBox = System.Windows.MessageBox;
 
 namespace ECommerce.View
 {
@@ -29,7 +28,6 @@ namespace ECommerce.View
         public OrdersView(Employee employee)
         {
             InitializeComponent();
-
             DataContext = this;
 
             string fullName = employee.ToString();
@@ -60,6 +58,7 @@ namespace ECommerce.View
                                             Search_Clicked(sender, e);
                                         }
                                     });
+
             RefreshingDataGrid();
         }
 
@@ -86,20 +85,14 @@ namespace ECommerce.View
             this.Close();
         }
 
-        private void DataGridRow_MouseDoubleClick(object sender, RoutedEventArgs e)
-        {
-            var selectedOrder = OrdersGrid.SelectedItem as Order;
-
-            if (selectedOrder is not null)
-            {
-                var window = new OrderDetailsView(selectedOrder);
-                window.Show();
-            }
-        }
-
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            var result = MessageBox.Show("Are you sure you want to exit the program?", "Ecommerce", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+
         }
 
         private void Search_Clicked(object sender, RoutedEventArgs e)
@@ -138,28 +131,6 @@ namespace ECommerce.View
             {
                 MessageBox.Show($"Error!\nDetails: {ex.Message}");
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
-                if (vis is DataGridRow)
-                {
-                    var row = (DataGridRow)vis;
-                    row.DetailsVisibility =
-                    row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                    break;
-                }
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Button Clicked","success", MessageBoxButton.OK, MessageBoxImage.Question);
-        }
-
-        private void ExportButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void Details_Button(object sender, RoutedEventArgs e)

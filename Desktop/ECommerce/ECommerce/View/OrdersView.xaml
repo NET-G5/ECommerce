@@ -17,6 +17,30 @@
     mc:Ignorable="d">
 
     <Window.Resources>
+
+        <!--  ComboBox Style  -->
+        <Style BasedOn="{StaticResource MaterialDesignOutlinedComboBox}" TargetType="ComboBox">
+            <Setter Property="Background" Value="#1e2e44" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Height" Value="55" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="MaxDropDownHeight" Value="300" />
+            <!--  Adjust as needed  -->
+        </Style>
+
+        <!--  ComboBoxItem Style  -->
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="#2C3E50" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="0,2" />
+            <Setter Property="BorderBrush" Value="#1B2631" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+
         <!--  DataGridCell Style for Selection Colors  -->
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="Background" Value="#1A1A1A" />
@@ -32,10 +56,10 @@
             <Setter Property="BorderBrush" Value="Transparent" />
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Status}" Value="Refunded">
-                    <Setter Property="Foreground" Value="Red"/>
+                    <Setter Property="Foreground" Value="Red" />
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Status}" Value="Pending">
-                    <Setter Property="Foreground" Value="Yellow"/>
+                    <Setter Property="Foreground" Value="Yellow" />
                 </DataTrigger>
                 <Trigger Property="IsSelected" Value="True">
                     <Setter Property="Background" Value="#007BFF" />
@@ -48,48 +72,6 @@
                     <!--  Hover Cell Background  -->
                     <Setter Property="Foreground" Value="White" />
                     <!--  Hover Cell Foreground  -->
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!--  ControlTemplate for TextBox and ComboBox  -->
-        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
-            <Border
-                x:Name="Bd"
-                Background="{TemplateBinding Background}"
-                BorderBrush="Black"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="10">
-                <ScrollViewer x:Name="PART_ContentHost" />
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
-                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-                </Trigger>
-                <Trigger Property="Width" Value="Auto">
-                    <Setter Property="MinWidth" Value="100" />
-                </Trigger>
-                <Trigger Property="Height" Value="Auto">
-                    <Setter Property="MinHeight" Value="20" />
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-
-        <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
-            <Border x:Name="PART_ContentHost" Focusable="True" />
-        </ControlTemplate>
-
-        <!--  Button Style  -->
-        <Style x:Key="CustomButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#28AEED" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="HorizontalAlignment" Value="Right" />
-            <Setter Property="Width" Value="20" />
-            <Setter Property="Height" Value="20" />
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#2788EF" />
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -121,11 +103,12 @@
             </Grid.RowDefinitions>
 
             <TextBlock
-                Margin="10,0,0,0"
+                Margin="20,10,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 FontFamily="Montserrat"
-                FontSize="13"
+                FontSize="16"
+                FontWeight="Bold"
                 Foreground="White"
                 Text="ORDERS" />
 
@@ -144,8 +127,28 @@
                     Click="BtnMinimize_Click"
                     FontFamily="Montserrat"
                     FontSize="12"
-                    Foreground="White"
-                    Style="{StaticResource CustomButtonStyle}">
+                    Foreground="White">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#28AEED" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#2788EF" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                Width="20"
+                                Height="20"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
                     <materialDesign:PackIcon Kind="WindowMinimize" />
                 </Button>
 
@@ -154,14 +157,34 @@
                     x:Name="btnClose"
                     Grid.Column="3"
                     Margin="0,0,10,0"
-                    Background="Red"
                     Click="BtnClose_Click"
-                    Content="X"
                     FontFamily="Montserrat"
                     FontSize="12"
+                    Content="X"
                     FontWeight="SemiBold"
-                    Foreground="White"
-                    Style="{StaticResource CustomButtonStyle}" />
+                    Foreground="White">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Red" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#de0404" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                Width="20"
+                                Height="20"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </Grid>
 
             <!--  Top Menu  -->
@@ -211,8 +234,8 @@
                                     Width="20"
                                     Height="20"
                                     Margin="0,0,5,0"
-                                    FontWeight="Bold"
                                     VerticalAlignment="Center"
+                                    FontWeight="Bold"
                                     Kind="Logout" />
                                 <Label
                                     Height="20"
@@ -234,6 +257,8 @@
                 Padding="8"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
                 materialDesign:HintAssist.Hint="Order Number"
                 materialDesign:TextFieldAssist.HasClearButton="True"
                 Background="#1e2e44"
@@ -249,6 +274,8 @@
                 Padding="8"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
                 materialDesign:HintAssist.Hint="Customer name"
                 materialDesign:TextFieldAssist.HasClearButton="True"
                 Background="#1e2e44"
@@ -261,59 +288,26 @@
                 Grid.Row="2"
                 Grid.Column="2"
                 Width="250"
-                Height="55"
-                Padding="10"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
                 materialDesign:HintAssist.Hint="Status"
                 materialDesign:TextFieldAssist.HasClearButton="True"
-                Background="#1e2e44"
-                FontSize="16"
-                Foreground="White"
                 IsEditable="True"
-                ItemsSource="{Binding OrderStatuses}"
-                Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                <ComboBox.ItemContainerStyle>
+                ItemsSource="{Binding OrderStatuses}" />
 
-                    <Style TargetType="ComboBoxItem">
-                        <Setter Property="Foreground" Value="Black" />
-                    </Style>
-                </ComboBox.ItemContainerStyle>
-                <ComboBox.Template>
-                    <ControlTemplate TargetType="ComboBox">
-                        <Grid>
-                            <ToggleButton
-                                x:Name="ToggleButton"
-                                Grid.Column="2"
-                                Background="Transparent"
-                                BorderBrush="Transparent"
-                                ClickMode="Press"
-                                Focusable="False">
-                                <ContentPresenter />
-                            </ToggleButton>
-                            <Popup
-                                x:Name="Popup"
-                                AllowsTransparency="True"
-                                Focusable="False"
-                                IsOpen="{TemplateBinding IsDropDownOpen}"
-                                Placement="Bottom">
-                                <Border
-                                    x:Name="PopupBorder"
-                                    Background="#1e2e44"
-                                    BorderBrush="#151f2d"
-                                    BorderThickness="1"
-                                    CornerRadius="10"
-                                    SnapsToDevicePixels="True">
-                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
-                                        <StackPanel IsItemsHost="True" />
-                                    </ScrollViewer>
-                                </Border>
-                            </Popup>
-                        </Grid>
-                    </ControlTemplate>
-                </ComboBox.Template>
-            </ComboBox>
-
+            <Button
+                Grid.Row="2"
+                Grid.Column="3"
+                Width="150"
+                Height="55"
+                Margin="0,0,35,0"
+                Background="#1e2e44"
+                Click="Search_Clicked"
+                Content="Apply filters"
+                Foreground="White"
+                Style="{StaticResource MaterialDesignOutlinedButton}" />
             <!--  Orders DataGrid  -->
             <DataGrid
                 x:Name="OrdersGrid"
@@ -324,7 +318,6 @@
                 AutoGenerateColumns="False"
                 Background="#1A1A1A"
                 CanUserAddRows="False"
-
                 CanUserDeleteRows="False"
                 ColumnHeaderHeight="40"
                 IsReadOnly="True"
@@ -350,7 +343,7 @@
                         MaxWidth="300"
                         Binding="{Binding Customer}"
                         Foreground="White"
-                        Header="Customer Name" >
+                        Header="Customer Name">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
@@ -402,7 +395,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Background="#007BFF"
-                                        Click="Details_Button"  
+                                        Click="Details_Button"
                                         Content="Details" />
                                 </Grid>
                             </DataTemplate>

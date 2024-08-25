@@ -1,7 +1,6 @@
 using ECommerce.Models;
 using ECommerce.Services;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace ECommerce.View
 {
@@ -20,16 +19,20 @@ namespace ECommerce.View
             _orderDatailService = new();
             _orderDetails = _orderDatailService.GetOrderDetails(order.Id);
 
-            var data=RefreshData(_orderDetails);
+            var data = RefreshData(_orderDetails);
             Products.ItemsSource = null;
             Products.ItemsSource = data;
         }
 
-        
+
 
         private List<Product> RefreshData(List<OrderDetail> orderDetails)
         {
-
+            if (orderDetails.Count == 0)
+            {
+                MessageBox.Show("order not found", "error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return new();
+            }
             IdInput.Text = orderDetails[0].Order.Id.ToString();
 
             FullName.Text = orderDetails[0].Order.Customer.ToString();
@@ -54,7 +57,11 @@ namespace ECommerce.View
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            var result = MessageBox.Show("Are you sure you want to exit the program?", "Ecommerce", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                Environment.Exit(0);
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -86,15 +93,15 @@ namespace ECommerce.View
 
         private void ProductCancel_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Epladim :)","Success",MessageBoxButton.OK,MessageBoxImage.Question);
-        } 
+            MessageBox.Show("Epladim :)", "Success", MessageBoxButton.OK, MessageBoxImage.Question);
+        }
         private void ProductSale_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Epladim :)","Success",MessageBoxButton.OK,MessageBoxImage.Question);
+            MessageBox.Show("Epladim :)", "Success", MessageBoxButton.OK, MessageBoxImage.Question);
         }
         private void ProductRefund_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Epladim :)","Success",MessageBoxButton.OK,MessageBoxImage.Question);
+            MessageBox.Show("Epladim :)", "Success", MessageBoxButton.OK, MessageBoxImage.Question);
         }
 
     }

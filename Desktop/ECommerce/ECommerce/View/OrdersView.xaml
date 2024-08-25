@@ -324,12 +324,14 @@
                 AutoGenerateColumns="False"
                 Background="#1A1A1A"
                 CanUserAddRows="False"
+
                 CanUserDeleteRows="False"
                 ColumnHeaderHeight="40"
                 IsReadOnly="True"
                 ItemsSource="{Binding Orders}"
                 RowHeight="40"
                 Style="{StaticResource {x:Type DataGrid}}">
+
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="50"

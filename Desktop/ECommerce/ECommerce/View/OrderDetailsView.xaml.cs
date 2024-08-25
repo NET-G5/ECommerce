@@ -29,10 +29,11 @@ namespace ECommerce.View
 
         private List<Product> RefreshData(List<OrderDetail> orderDetails)
         {
+            
             Id.Text = orderDetails[0].Order.Id.ToString();
             FullName.Text = orderDetails[0].Order.Customer.ToString();
-            ExpireDate.Text = orderDetails[0].Order.ExpireDate.ToString("dd/MM/yyyy HH:mm");
-            OrderDate.Text = orderDetails[0].Order.OrderedDate.ToString("dd/MM/yyyy HH:mm");
+            ExpireDate.Text = orderDetails[0].Order.ExpireDate.ToString("dd/MMM/yyyy");
+            OrderDate.Text = orderDetails[0].Order.OrderedDate.ToString("dd/MMM/yyyy");
             var products = new List<Product>();
             var totalPrice = 0d;
             foreach (var detail in orderDetails)

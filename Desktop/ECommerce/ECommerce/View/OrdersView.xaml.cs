@@ -86,9 +86,9 @@ namespace ECommerce.View
             this.Close();
         }
 
-        private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void DataGridRow_MouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            var selectedOrder = OrdersDataGrid.SelectedItem as Order;
+            var selectedOrder = OrdersGrid.SelectedItem as Order;
 
             if (selectedOrder is not null)
             {
@@ -132,7 +132,7 @@ namespace ECommerce.View
                 }
 
                 Load(_orderId, _customer, _orderStatus);
-                OrdersDataGrid.ItemsSource = Orders;
+                OrdersGrid.ItemsSource = Orders;
             }
             catch (Exception ex)
             {
@@ -155,6 +155,22 @@ namespace ECommerce.View
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Button Clicked","success", MessageBoxButton.OK, MessageBoxImage.Question);
+        }
+
+        private void ExportButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Details_Button(object sender, RoutedEventArgs e)
+        {
+            var selectedOrder = OrdersGrid.SelectedItem as Order;
+
+            if (selectedOrder is not null)
+            {
+                var window = new OrderDetailsView(selectedOrder);
+                window.Show();
+            }
         }
     }
 }

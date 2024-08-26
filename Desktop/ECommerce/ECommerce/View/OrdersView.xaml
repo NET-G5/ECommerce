@@ -1,25 +1,25 @@
-﻿<Window
-    x:Class="ECommerce.View.OrdersView"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-    xmlns:local="clr-namespace:ECommerce.View"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Width="1080"
-    Height="720"
-    Background="Transparent"
-    WindowStartupLocation="CenterScreen"
-    WindowState="Maximized"
-    WindowStyle="None"
-    mc:Ignorable="d">
+﻿<Window x:Class="ECommerce.View.OrdersView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:ECommerce.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        Width="1080"
+        Height="720"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        WindowStyle="None"
+        mc:Ignorable="d">
 
     <Window.Resources>
 
         <!--  ComboBox Style  -->
-        <Style BasedOn="{StaticResource MaterialDesignOutlinedComboBox}" TargetType="ComboBox">
+        <Style BasedOn="{StaticResource MaterialDesignOutlinedComboBox}"
+               TargetType="ComboBox">
             <Setter Property="Background" Value="#1e2e44" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="16" />
@@ -55,10 +55,12 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="BorderBrush" Value="Transparent" />
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Status}" Value="Refunded">
+                <DataTrigger Binding="{Binding Status}"
+                             Value="Refunded">
                     <Setter Property="Foreground" Value="Red" />
                 </DataTrigger>
-                <DataTrigger Binding="{Binding Status}" Value="Pending">
+                <DataTrigger Binding="{Binding Status}"
+                             Value="Pending">
                     <Setter Property="Foreground" Value="Yellow" />
                 </DataTrigger>
                 <Trigger Property="IsSelected" Value="True">
@@ -100,15 +102,14 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <TextBlock
-                Margin="20,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                FontFamily="Montserrat"
-                FontSize="16"
-                FontWeight="Bold"
-                Foreground="White"
-                Text="ORDERS" />
+            <TextBlock Margin="20,10,0,0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontFamily="Montserrat"
+                       FontSize="16"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       Text="ORDERS" />
 
             <Grid Grid.Column="3">
                 <Grid.ColumnDefinitions>
@@ -118,14 +119,13 @@
                 </Grid.ColumnDefinitions>
 
                 <!--  Minimize button  -->
-                <Button
-                    x:Name="btnMinimize"
-                    Grid.Column="1"
-                    Margin="0,0,5,0"
-                    Click="BtnMinimize_Click"
-                    FontFamily="Montserrat"
-                    FontSize="12"
-                    Foreground="White">
+                <Button x:Name="btnMinimize"
+                        Grid.Column="1"
+                        Margin="0,0,5,0"
+                        Click="BtnMinimize_Click"
+                        FontFamily="Montserrat"
+                        FontSize="12"
+                        Foreground="White">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#28AEED" />
@@ -138,12 +138,12 @@
                     </Button.Style>
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border
-                                Width="20"
-                                Height="20"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="10">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Border Width="20"
+                                    Height="20"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
@@ -151,16 +151,15 @@
                 </Button>
 
                 <!--  Close button  -->
-                <Button
-                    x:Name="btnClose"
-                    Grid.Column="3"
-                    Margin="0,0,10,0"
-                    Click="BtnClose_Click"
-                    FontFamily="Montserrat"
-                    FontSize="12"
-                    Content="X"
-                    FontWeight="SemiBold"
-                    Foreground="White">
+                <Button x:Name="btnClose"
+                        Grid.Column="3"
+                        Margin="0,0,10,0"
+                        Click="BtnClose_Click"
+                        Content="X"
+                        FontFamily="Montserrat"
+                        FontSize="12"
+                        FontWeight="SemiBold"
+                        Foreground="White">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Red" />
@@ -173,12 +172,12 @@
                     </Button.Style>
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border
-                                Width="20"
-                                Height="20"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="10">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Border Width="20"
+                                    Height="20"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
@@ -186,7 +185,8 @@
             </Grid>
 
             <!--  Top Menu  -->
-            <Grid Grid.Row="1" Grid.ColumnSpan="4">
+            <Grid Grid.Row="1"
+                  Grid.ColumnSpan="4">
                 <DockPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -198,48 +198,47 @@
                         </Grid.ColumnDefinitions>
 
                         <!--  EMP Name  -->
-                        <TextBlock
-                            x:Name="EmpTitle"
-                            Grid.Column="2"
-                            Margin="0,0,10,0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            FontSize="22"
-                            FontWeight="SemiBold"
-                            Foreground="#F0EAD6"
-                            TextAlignment="Right" />
+                        <TextBlock x:Name="EmpTitle"
+                                   Grid.Column="2"
+                                   Margin="0,0,10,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="22"
+                                   FontWeight="SemiBold"
+                                   Foreground="#F0EAD6"
+                                   TextAlignment="Right" />
 
                         <!--  Profile Photo  -->
-                        <Border
-                            Grid.Column="3"
-                            Width="50"
-                            Height="50"
-                            Margin="20,16,0,17"
-                            Background="#1e2e44"
-                            CornerRadius="100" />
-
-                        <Button
-                            Grid.Column="4"
-                            Height="50"
-                            Margin="0,0,10,0"
-                            HorizontalAlignment="Right"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Click="LogOut_Click"
-                            Foreground="Red">
+                        <Ellipse Grid.Column="3"
+                                 Width="50"
+                                 Height="50"
+                                 Margin="0,16,15,17"
+                                 HorizontalAlignment="Right"
+                                 ClipToBounds="True">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Images/ProfilePhoto.jpg"
+                                            Stretch="Fill" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Button Grid.Column="4"
+                                Height="50"
+                                Margin="0,0,10,0"
+                                HorizontalAlignment="Right"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Click="LogOut_Click"
+                                Foreground="Red">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon
-                                    Width="20"
-                                    Height="20"
-                                    Margin="0,0,5,0"
-                                    VerticalAlignment="Center"
-                                    FontWeight="Bold"
-                                    Kind="Logout" />
-                                <Label
-                                    Height="20"
-                                    Content="LOG OUT"
-                                    FontWeight="Bold"
-                                    Foreground="Red" />
+                                <materialDesign:PackIcon Width="20"
+                                                         Height="20"
+                                                         Margin="0,0,5,0"
+                                                         VerticalAlignment="Center"
+                                                         FontWeight="Bold"
+                                                         Kind="Logout" />
+                                <Label Height="20"
+                                       Content="LOG OUT"
+                                       FontWeight="Bold"
+                                       Foreground="Red" />
                             </StackPanel>
                         </Button>
                     </Grid>
@@ -247,81 +246,76 @@
             </Grid>
 
             <!--  Filters  -->
-            <TextBox
-                x:Name="OrderIdSearchText"
-                Grid.Row="2"
-                Grid.Column="0"
-                Width="250"
-                Padding="8"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                materialDesign:HintAssist.Hint="Order Number"
-                materialDesign:TextFieldAssist.HasClearButton="True"
-                Background="#1e2e44"
-                FontSize="16"
-                Foreground="White"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+            <TextBox x:Name="OrderIdSearchText"
+                     Grid.Row="2"
+                     Grid.Column="0"
+                     Width="250"
+                     Padding="8"
+                     HorizontalAlignment="Right"
+                     VerticalAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     materialDesign:HintAssist.Hint="Order Number"
+                     materialDesign:TextFieldAssist.HasClearButton="True"
+                     Background="#1e2e44"
+                     FontSize="16"
+                     Foreground="White"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" />
 
-            <TextBox
-                x:Name="CustomerNameSearchText"
-                Grid.Row="2"
-                Grid.Column="1"
-                Width="250"
-                Padding="8"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                materialDesign:HintAssist.Hint="Customer name"
-                materialDesign:TextFieldAssist.HasClearButton="True"
-                Background="#1e2e44"
-                FontSize="16"
-                Foreground="White"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+            <TextBox x:Name="CustomerNameSearchText"
+                     Grid.Row="2"
+                     Grid.Column="1"
+                     Width="250"
+                     Padding="8"
+                     HorizontalAlignment="Right"
+                     VerticalAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     materialDesign:HintAssist.Hint="Customer name"
+                     materialDesign:TextFieldAssist.HasClearButton="True"
+                     Background="#1e2e44"
+                     FontSize="16"
+                     Foreground="White"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" />
 
-            <ComboBox
-                x:Name="StatusCombobox"
-                Grid.Row="2"
-                Grid.Column="2"
-                Width="250"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                materialDesign:HintAssist.Hint="Status"
-                materialDesign:TextFieldAssist.HasClearButton="True"
-                IsEditable="True"
-                ItemsSource="{Binding OrderStatuses}" />
+            <ComboBox x:Name="StatusCombobox"
+                      Grid.Row="2"
+                      Grid.Column="2"
+                      Width="250"
+                      HorizontalAlignment="Right"
+                      VerticalAlignment="Center"
+                      HorizontalContentAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      materialDesign:HintAssist.Hint="Status"
+                      materialDesign:TextFieldAssist.HasClearButton="True"
+                      IsEditable="True"
+                      ItemsSource="{Binding OrderStatuses}" />
 
-            <Button
-                Grid.Row="2"
-                Grid.Column="3"
-                Width="150"
-                Height="55"
-                Margin="0,0,35,0"
-                Background="#1e2e44"
-                Click="Search_Clicked"
-                Content="Apply filters"
-                Foreground="White"
-                Style="{StaticResource MaterialDesignOutlinedButton}" />
+            <Button Grid.Row="2"
+                    Grid.Column="3"
+                    Width="150"
+                    Height="55"
+                    Margin="0,0,35,0"
+                    Background="#1e2e44"
+                    Click="Search_Clicked"
+                    Content="Apply filters"
+                    Foreground="White"
+                    Style="{StaticResource MaterialDesignOutlinedButton}" />
             <!--  Orders DataGrid  -->
-            <DataGrid
-                x:Name="OrdersGrid"
-                Grid.Row="3"
-                Grid.ColumnSpan="4"
-                Width="1265"
-                Margin="0,40,0,50"
-                AutoGenerateColumns="False"
-                Background="#1A1A1A"
-                CanUserAddRows="False"
-                CanUserDeleteRows="False"
-                ColumnHeaderHeight="40"
-                IsReadOnly="True"
-                ItemsSource="{Binding Orders}"
-                RowHeight="40"
-                Style="{StaticResource {x:Type DataGrid}}">
+            <DataGrid x:Name="OrdersGrid"
+                      Grid.Row="3"
+                      Grid.ColumnSpan="4"
+                      Width="1265"
+                      Margin="0,40,0,50"
+                      AutoGenerateColumns="False"
+                      Background="#1A1A1A"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      ColumnHeaderHeight="40"
+                      IsReadOnly="True"
+                      ItemsSource="{Binding Orders}"
+                      RowHeight="40"
+                      Style="{StaticResource {x:Type DataGrid}}">
 
                 <DataGrid.Columns>
                     <DataGridTextColumn
@@ -329,6 +323,7 @@
                         Binding="{Binding Id}"
                         Foreground="White"
                         Header="Order ID">
+
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="VerticalAlignment" Value="Center" />
@@ -336,12 +331,11 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn
-                        Width="300"
-                        MaxWidth="300"
-                        Binding="{Binding Customer}"
-                        Foreground="White"
-                        Header="Customer Name">
+                    <DataGridTextColumn Width="300"
+                                        MaxWidth="300"
+                                        Binding="{Binding Customer}"
+                                        Foreground="White"
+                                        Header="Customer Name">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
@@ -349,11 +343,10 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn
-                        Width="150"
-                        Binding="{Binding Status}"
-                        FontWeight="Bold"
-                        Header="Status">
+                    <DataGridTextColumn Width="150"
+                                        Binding="{Binding Status}"
+                                        FontWeight="Bold"
+                                        Header="Status">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
@@ -361,11 +354,10 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn
-                        Width="150"
-                        Binding="{Binding OrderedDate, StringFormat=d}"
-                        Foreground="White"
-                        Header="Ordered Date">
+                    <DataGridTextColumn Width="150"
+                                        Binding="{Binding OrderedDate, StringFormat=d}"
+                                        Foreground="White"
+                                        Header="Ordered Date">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="VerticalAlignment" Value="Center" />
@@ -373,11 +365,10 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn
-                        Width="150"
-                        Binding="{Binding ExpireDate, StringFormat=d}"
-                        Foreground="White"
-                        Header="Expire Date">
+                    <DataGridTextColumn Width="150"
+                                        Binding="{Binding ExpireDate, StringFormat=d}"
+                                        Foreground="White"
+                                        Header="Expire Date">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="VerticalAlignment" Value="Center" />
@@ -389,12 +380,11 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Background="#007BFF"
-                                        Click="Details_Button"
-                                        Content="Details" />
+                                    <Button HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Background="#007BFF"
+                                            Click="Details_Button"
+                                            Content="Details" />
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

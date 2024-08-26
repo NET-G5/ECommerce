@@ -11,42 +11,27 @@
 
     <Window.Resources>
         <!--  Reusable Styles  -->
-        <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#28AEED" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#2788EF" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="RoundButtonTemplate" TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border
-                            Width="20"
-                            Height="20"
-                            Background="{TemplateBinding Background}"
-                            CornerRadius="10">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
         <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#1A1A1A" />
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="Background" Value="#1e2e44" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
-
-        <Style TargetType="DataGrid">
-            <Setter Property="Background" Value="#1e2e44" />
-            <Setter Property="RowBackground" Value="#1e2e44" />
-            <Setter Property="AlternatingRowBackground" Value="#151f2d" />
+        <Style TargetType="DataGridCell">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#007BFF" />
+                    <!--  Selected Cell Background  -->
+                    <Setter Property="Foreground" Value="White" />
+                    <!--  Selected Cell Foreground  -->
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True" />
+            </Style.Triggers>
         </Style>
     </Window.Resources>
 
@@ -68,7 +53,15 @@
                         <ColumnDefinition Width="30" />
                         <ColumnDefinition Width="30" />
                     </Grid.ColumnDefinitions>
-
+                    <TextBlock
+                        Margin="20,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontFamily="Montserrat"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Text="ORDER DETAILS" />
                     <Button
                         x:Name="btnMinimize"
                         Grid.Column="1"
@@ -160,22 +153,16 @@
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-
-
-
                         <TextBox
                             x:Name="IdInput"
                             Grid.Row="0"
                             Grid.Column="0"
                             Visibility="Hidden" />
-
                         <StackPanel
                             Grid.Column="0"
                             Margin="0,0,50,10"
                             HorizontalAlignment="Center"
                             Orientation="Vertical">
-
-
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
                                     FontSize="20"
@@ -213,9 +200,7 @@
                                     FontWeight="SemiBold"
                                     IsEnabled="False" />
                             </StackPanel>
-
                         </StackPanel>
-
                         <StackPanel
                             Grid.Column="1"
                             Margin="0,0,0,10"
@@ -269,50 +254,90 @@
                     <DataGrid
                         x:Name="Products"
                         Grid.Row="0"
-                        MaxWidth="1200"
-                        AlternatingRowBackground="#151f2d"
+                        MaxWidth="1265"
                         AutoGenerateColumns="False"
-                        Background="#1e2e44"
-                        Foreground="White"
+                        Background="#1A1A1A"
+                        BorderThickness="0"
+                        CanUserAddRows="False"
+                        CanUserDeleteRows="False"
+                        ColumnHeaderHeight="40"
                         IsReadOnly="True"
-                        ItemsSource="{Binding __products}">
+                        ItemsSource="{Binding __products}"
+                        RowHeight="40"
+                        Style="{StaticResource {x:Type DataGrid}}">
                         <DataGrid.Columns>
                             <DataGridTextColumn
-                                Width="100"
+                                Width="60"
                                 Binding="{Binding Id}"
-                                Header="Id" />
+                                Foreground="White"
+                                Header="Id">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
                             <DataGridTextColumn
                                 Width="200"
                                 Binding="{Binding Name}"
-                                Header="Name" />
+                                Foreground="White"
+                                Header="Name">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
                             <DataGridTextColumn
                                 Width="300"
                                 Binding="{Binding Description}"
-                                Header="Description" />
+                                Foreground="White"
+                                Header="Description">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
                             <DataGridTextColumn
                                 Width="150"
                                 Binding="{Binding Price}"
-                                Header="Price" />
-                            <DataGridTemplateColumn>
+                                Foreground="White"
+                                Header="Price">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Actions">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                                             <Button
-                                                Background="Red"
+                                                Width="70"
+                                                Margin="0,0,15,0"
+                                                Background="#FF0000"
                                                 Click="ProductCancel_Click"
-                                                Margin="0 0 15 0"
-                                                Content="Cancel" />
+                                                Content="Refund" />
                                             <Button
-                                                Background="Yellow"
+                                                Width="70"
+                                                Margin="0,0,15,0"
+                                                Background="#FFD700"
                                                 Click="ProductSale_Click"
                                                 Content="Sale"
-                                                Foreground="Black"
-                                                Margin="0 0 15 0"/>
+                                                Foreground="Black" />
                                             <Button
-                                                Background="ForestGreen"
+                                                Width="70"
+                                                Margin="0,0,15,0"
+                                                Background="#32CD32"
                                                 Click="ProductRefund_Click"
                                                 Content="Refund"
-                                                Margin="0 0 15 0"/>
+                                                Foreground="White" />
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>

@@ -2,6 +2,7 @@
 using ECommerce.Services;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 using MessageBox = System.Windows.MessageBox;
 
@@ -129,7 +130,7 @@ namespace ECommerce.View
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error!\nDetails: {ex.Message}");
+                MessageBox.Show($"Error!\nDetails: {ex.Message}","Ecommerce",MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
 

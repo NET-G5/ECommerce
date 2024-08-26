@@ -68,9 +68,7 @@
                     <!--  Selected Cell Foreground  -->
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#007BFF" />
                     <!--  Hover Cell Background  -->
-                    <Setter Property="Foreground" Value="White" />
                     <!--  Hover Cell Foreground  -->
                 </Trigger>
             </Style.Triggers>
@@ -327,7 +325,7 @@
 
                 <DataGrid.Columns>
                     <DataGridTextColumn
-                        Width="50"
+                        Width="60"
                         Binding="{Binding Id}"
                         Foreground="White"
                         Header="Order ID">

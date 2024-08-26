@@ -9,15 +9,15 @@ namespace ECommerce.View
     /// </summary>
     public partial class OrderDetailsView
     {
-        private readonly OrderDetailService _orderDatailService;
+        private readonly OrderDetailService _orderDetailService;
         public List<OrderDetail> _orderDetails;
 
         public OrderDetailsView(Order order)
         {
             InitializeComponent();
 
-            _orderDatailService = new();
-            _orderDetails = _orderDatailService.GetOrderDetails(order.Id);
+            _orderDetailService = new();
+            _orderDetails = _orderDetailService.GetOrderDetails(order.Id);
 
             var data = RefreshData(_orderDetails);
             Products.ItemsSource = null;

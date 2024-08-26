@@ -44,7 +44,7 @@ public partial class MainWindow : Window
             },
             new Employee()
             {
-                Id = 1,
+                Id = 2,
                 UserName = "bobur",
                 Password = "boboyev2004",
                 FirstName = "Bobur",
@@ -52,7 +52,7 @@ public partial class MainWindow : Window
             },
             new Employee()
             {
-                Id = 1,
+                Id = 3,
                 UserName = "jamshidbek",
                 Password = "choriyev0405",
                 FirstName = "Jamshidbek",
@@ -60,7 +60,7 @@ public partial class MainWindow : Window
             },
             new Employee()
             {
-                Id = 1,
+                Id = 4,
                 UserName = "1",
                 Password = "1",
                 FirstName = "Ramazon",
@@ -68,7 +68,7 @@ public partial class MainWindow : Window
             },
             new Employee()
             {
-                Id = 1,
+                Id = 5,
                 UserName = "akhmadovich",
                 Password = "akhmadovich0302",
                 FirstName = "Ro'zimuhammad",

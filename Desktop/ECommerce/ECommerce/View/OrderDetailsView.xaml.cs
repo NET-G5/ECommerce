@@ -8,10 +8,30 @@ namespace ECommerce.View
     /// <summary>
     /// Interaction logic for OrderDetailsView.xaml
     /// </summary>
-    public partial class OrderDetailsView:INotifyPropertyChanged
+
+    public partial class OrderDetailsView : Window, INotifyPropertyChanged
     {
         private readonly OrderDetailService _orderDetailService;
         public List<OrderDetail> _orderDetails;
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private bool _isButtonVisible;
+
+        public bool IsButtonVisible
+        {
+            get => _isButtonVisible;
+            set
+            {
+                _isButtonVisible = value;
+                OnPropertyChanged(nameof(IsButtonVisible));
+            }
+        }
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public OrderDetailsView(Order order)

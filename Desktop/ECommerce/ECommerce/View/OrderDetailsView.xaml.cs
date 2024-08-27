@@ -8,10 +8,12 @@ namespace ECommerce.View
     /// <summary>
     /// Interaction logic for OrderDetailsView.xaml
     /// </summary>
+
     public partial class OrderDetailsView : Window, INotifyPropertyChanged
     {
         private readonly OrderDetailService _orderDetailService;
         public List<OrderDetail> _orderDetails;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private bool _isButtonVisible;
 
@@ -111,17 +113,56 @@ namespace ECommerce.View
 
         }
 
+
+        private bool _hasSaleButton;
+        public bool HasSaleButton
+        {
+            get => _hasSaleButton;
+            set
+            {
+                _hasSaleButton = value;
+                OnPropertyChanged(nameof(HasSaleButton));
+            }
+        }
+
+        private bool _hasCancelButton;
+        public bool HasCancelButton
+        {
+            get => _hasCancelButton;
+            set
+            {
+                _hasCancelButton = value;
+                OnPropertyChanged(nameof(HasCancelButton));
+            }
+        }
+
+        private bool _hasRefundButton;
+        public bool HasRefundButton
+        {
+            get => _hasRefundButton;
+            set
+            {
+                _hasRefundButton = value;
+                OnPropertyChanged(nameof(HasRefundButton));
+            }
+        }
+
+        
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         private void ProductCancel_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Epladim :)", "Success", MessageBoxButton.OK, MessageBoxImage.Question);
+
         }
         private void ProductSale_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Epladim :)", "Success", MessageBoxButton.OK, MessageBoxImage.Question);
+
         }
         private void ProductRefund_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Epladim :)", "Success", MessageBoxButton.OK, MessageBoxImage.Question);
+
         }
 
     }

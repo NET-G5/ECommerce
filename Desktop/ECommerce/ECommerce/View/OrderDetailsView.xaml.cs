@@ -2,6 +2,8 @@ using ECommerce.Models;
 using ECommerce.Services;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ECommerce.View
 {
@@ -32,7 +34,7 @@ namespace ECommerce.View
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+     
 
         public OrderDetailsView(Order order)
         {
@@ -147,22 +149,79 @@ namespace ECommerce.View
             }
         }
 
-        
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+
+
         private void ProductCancel_Click(object sender, RoutedEventArgs e)
         {
+            var button = sender as Button;
+            var dataGridRow = button.Tag as DataGridRow;
 
+            if (dataGridRow != null)
+            {
+                var button1 = FindVisualChild<Button>(dataGridRow, "CancelButton");
+                var button2 = FindVisualChild<Button>(dataGridRow, "RefundButton");
+                var button3 = FindVisualChild<Button>(dataGridRow, "SaleButton");
+
+                if (button1 != null)
+                {
+                    button1.Visibility = Visibility.Collapsed;
+                }
+
+                if (button2 != null)
+                {
+                    button2.Visibility = Visibility.Collapsed;
+                }
+
+                if (button3 != null)
+                {
+                    button3.Visibility = Visibility.Collapsed;
+                }
+            }
+            
         }
         private void ProductSale_Click(object sender, RoutedEventArgs e)
         {
+            var button = sender as Button;
+            var dataGridRow = button.Tag as DataGridRow;
 
+            if (dataGridRow != null)
+            {
+                var button1 = FindVisualChild<Button>(dataGridRow, "RefundButton");
+                var button2 = FindVisualChild<Button>(dataGridRow, "SaleButton");
+                var button3 = FindVisualChild<Button>(dataGridRow, "CancelButton");
+
+                if (button1 != null)
+                {
+                    button1.Visibility = Visibility.Visible;
+                }
+
+                if (button2 != null)
+                {
+                    button2.Visibility = Visibility.Collapsed;
+                }
+                if (button3 != null)
+                {
+                    button3.Visibility = Visibility.Collapsed;
+                }
+
+            }
         }
-        private void ProductRefund_Click(object sender, RoutedEventArgs e)
+        private T FindVisualChild<T>(DependencyObject parent, string name) where T : FrameworkElement
         {
-
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                if (child is T frameworkElement && frameworkElement.Name == name)
+                {
+                    return frameworkElement;
+                }
+                T result = FindVisualChild<T>(child, name);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+            return null;
         }
 
     }

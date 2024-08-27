@@ -317,47 +317,35 @@
                             <DataGridTemplateColumn Header="Actions">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                                             <Button
                                                 Width="70"
-                                                Margin="0,0,15,0"
+                                                x:Name="SaleButton"
+                                                Margin="0,0,15,0"   
                                                 Background="ForestGreen"
                                                 Click="ProductSale_Click"
                                                 Content="Sale"
                                                 Foreground="Black"
-                                                Visibility="{Binding IsButtonVisible, Converter={StaticResource BoolToVisConverter}}" />
+                                                Tag="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
                                             <Button
                                                 Width="70"
+                                                Content="Cancel"
+                                                x:Name="CancelButton"
                                                 Margin="0,0,15,0"
                                                 Background="#FF0000"
                                                 Click="ProductCancel_Click"
-                                                Foreground="Black">
-
-                                                <Button.Style>
-                                                    <Style TargetType="Button">
-                                                        <Setter Property="Content" Value="Cancel" />
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding IsButtonVisible}" Value="True">
-                                                                <Setter Property="Content" Value="Cancel" />
-                                                            </DataTrigger>
-                                                            <DataTrigger Binding="{Binding IsButtonVisible}" Value="False">
-                                                                <Setter Property="Content" Value="Refund" />
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Button.Style>
-
-                                            </Button>
-
-                                            <!--<Button
+                                                Foreground="Black"
+                                                Tag="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
+                                            <Button
                                                 Width="70"
+                                                x:Name="RefundButton"
                                                 Margin="0,0,15,0"
                                                 Background="#32CD32"
-                                                Click="ProductRefund_Click"
+                                                Visibility="Collapsed"
+                                                Click="ProductCancel_Click"
                                                 Content="Refund"
-                                                Foreground="White" />-->
-
-
+                                                Foreground="White"
+                                                Tag="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>

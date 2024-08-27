@@ -319,33 +319,33 @@
                                     <DataTemplate>
                                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                                             <Button
-                                                Width="70"
                                                 x:Name="SaleButton"
-                                                Margin="0,0,15,0"   
+                                                Width="70"
+                                                Margin="0,0,15,0"
                                                 Background="ForestGreen"
                                                 Click="ProductSale_Click"
                                                 Content="Sale"
                                                 Foreground="Black"
                                                 Tag="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
                                             <Button
-                                                Width="70"
-                                                Content="Cancel"
                                                 x:Name="CancelButton"
+                                                Width="70"
                                                 Margin="0,0,15,0"
                                                 Background="#FF0000"
                                                 Click="ProductCancel_Click"
+                                                Content="Cancel"
                                                 Foreground="Black"
                                                 Tag="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
                                             <Button
-                                                Width="70"
                                                 x:Name="RefundButton"
+                                                Width="70"
                                                 Margin="0,0,15,0"
-                                                Background="#32CD32"
-                                                Visibility="Collapsed"
+                                                Background="#FFD700"
                                                 Click="ProductCancel_Click"
                                                 Content="Refund"
                                                 Foreground="White"
-                                                Tag="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
+                                                Tag="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}}"
+                                                Visibility="Collapsed" />
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>

@@ -16,6 +16,7 @@ namespace ECommerce.View
         private readonly OrderDetailService _orderDetailService;
         public List<OrderDetail> _orderDetails;
         public event PropertyChangedEventHandler? PropertyChanged;
+        public List<Product> _products;
 
         private bool _isButtonVisible;
 
@@ -43,9 +44,9 @@ namespace ECommerce.View
             _orderDetailService = new();
             _orderDetails = _orderDetailService.GetOrderDetails(order.Id);
 
-            var data = RefreshData(_orderDetails);
+            _products= RefreshData(_orderDetails);
             Products.ItemsSource = null;
-            Products.ItemsSource = data;
+            Products.ItemsSource = _products;
         }
 
 
@@ -115,44 +116,9 @@ namespace ECommerce.View
 
         }
 
-
-        private bool _hasSaleButton;
-        public bool HasSaleButton
-        {
-            get => _hasSaleButton;
-            set
-            {
-                _hasSaleButton = value;
-                OnPropertyChanged(nameof(HasSaleButton));
-            }
-        }
-
-        private bool _hasCancelButton;
-        public bool HasCancelButton
-        {
-            get => _hasCancelButton;
-            set
-            {
-                _hasCancelButton = value;
-                OnPropertyChanged(nameof(HasCancelButton));
-            }
-        }
-
-        private bool _hasRefundButton;
-        public bool HasRefundButton
-        {
-            get => _hasRefundButton;
-            set
-            {
-                _hasRefundButton = value;
-                OnPropertyChanged(nameof(HasRefundButton));
-            }
-        }
-
-
-
         private void ProductCancel_Click(object sender, RoutedEventArgs e)
         {
+            var selectedItem = Products.SelectedItem as Product;
             var button = sender as Button;
             var dataGridRow = button.Tag as DataGridRow;
 
@@ -164,6 +130,9 @@ namespace ECommerce.View
 
                 if (button1 != null)
                 {
+                    var product=_products.FirstOrDefault(x => x.Id == selectedItem.Id);
+
+
                     button1.Visibility = Visibility.Collapsed;
                 }
 

@@ -321,23 +321,43 @@
                                             <Button
                                                 Width="70"
                                                 Margin="0,0,15,0"
-                                                Background="#FF0000"
-                                                Click="ProductCancel_Click"
-                                                Content="Refund" />
+                                                Background="ForestGreen"
+                                                Click="ProductSale_Click"
+                                                Content="Sale"
+                                                Foreground="Black"
+                                                Visibility="{Binding IsButtonVisible, Converter={StaticResource BoolToVisConverter}}" />
                                             <Button
                                                 Width="70"
                                                 Margin="0,0,15,0"
-                                                Background="#FFD700"
-                                                Click="ProductSale_Click"
-                                                Content="Sale"
-                                                Foreground="Black" />
-                                            <Button
+                                                Background="#FF0000"
+                                                Click="ProductCancel_Click"
+                                                Foreground="Black">
+
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Content" Value="Cancel" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsButtonVisible}" Value="True">
+                                                                <Setter Property="Content" Value="Cancel" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding IsButtonVisible}" Value="False">
+                                                                <Setter Property="Content" Value="Refund" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+
+                                            </Button>
+
+                                            <!--<Button
                                                 Width="70"
                                                 Margin="0,0,15,0"
                                                 Background="#32CD32"
                                                 Click="ProductRefund_Click"
                                                 Content="Refund"
-                                                Foreground="White" />
+                                                Foreground="White" />-->
+
+
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>

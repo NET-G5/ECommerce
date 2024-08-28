@@ -4,63 +4,26 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="card-product">
+        @foreach (var product in Model)
+        {
+            <div class="d-flex m-10">
+                <div class="img-h-w">
+                    @if (product.ImageUrl != null)
+                    {
+                        var imageBase64 = Convert.ToBase64String(product.ImageUrl);
+                        var imageSrc = $"data:image/gif;base64,{imageBase64}";
+                        <img src="@imageSrc" alt="Image" class="img-thumbnail card-img-top" />
+                    }
+                </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StockQuantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AddedDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StockQuantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddedDate)
-            </td>
-          
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <div class="card-body ms-10">
+                    <h1 class="card-title">@product.Name </h1>
+                    <h3 class="card-body">@product.Description</h3>
+                    <p class="card-text">@product.Price</p>
+                    <button class="btn btn-primary">Add to Cart</button>
+                </div>
+
+            </div>
+        }
+</div>

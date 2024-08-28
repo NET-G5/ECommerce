@@ -9,45 +9,22 @@
 <div>
     <h4>Product</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StockQuantity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StockQuantity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AddedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AddedDate)
-        </dd>
-       
-    </dl>
+
+    <div class="card h-30">
+        @if (Model.ImageUrl != null)
+        {
+            var imageBase64 = Convert.ToBase64String(Model.ImageUrl);
+            var imageSrc = $"data:image/gif;base64,{imageBase64}";
+            <img src="@imageSrc" alt="Image" class="img-thumbnail card-img-top" width="50" height="50" />
+        }
+
+        <div class="card-body text-center">
+            <h5 class="card-title">@Model.Name @Model.Description</h5>
+            <p class="card-text">@Model.Price</p>
+            <button class="btn btn-primary">Add to Cart</button>
+        </div>
+    </div>
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |

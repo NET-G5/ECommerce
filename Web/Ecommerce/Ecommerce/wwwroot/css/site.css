@@ -23,28 +23,6 @@ html {
     color: #333;
 }
 
-.bold-link {
-    text-align: right;
-    display: flex;
-    font-size: 15px;
-    gap: 15px;
-    margin-top: 2px
-}
-
-    .bold-link a {
-        font-weight: 600;
-        text-decoration: none;
-        color: #333;
-    }
-
-        .bold-link a:active {
-            color: palevioletred
-        }
-
-        .bold-link a:focus {
-            color: palevioletred
-        }
-
 body {
   margin-bottom: 60px;
 }
@@ -75,7 +53,8 @@ header {
     width: 45px
 }
 
-    .logo p {
+    .logo p,
+    .logo p:hover {
         color: blueviolet;
         font-size: 20px
     }
@@ -128,25 +107,44 @@ header {
         background-color: darkgray
     }
 
-.category-menu {
-    background-color: #f8f8f8;
-    padding: 10px 20px;
+.fw-bolder {
+    font-weight: bold;
+    font-size: 40px;
+    color: inherit;
+    text-decoration: none
 }
-
-    .category-menu ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
+    
+    .fw-bolder:hover, 
+    .fw-bolder:focus {
+        color: inherit
     }
 
-        .category-menu ul li {
-            margin-right: 20px;
-        }
+.icon-width-height {
+    width: 20px;
+    height: 30px
+}
 
-            .category-menu ul li a {
-                text-decoration: none;
-                color: #333;
-                font-weight: bold;
-            }
+.btn-category,
+.btn-category:hover {
+    font-weight: 500;
+    border: 2px solid #008CBA;
+    width: auto;
+    height: 40px;
+    text-decoration: none;
+    color: #3b2a2a
+}
+
+    .btn-category:active {
+        border: 2px solid #008CBA;
+        outline: none;
+    }
+
+    .btn-category:focus {
+        outline: none
+    }
+
+.img-h-w {
+    width: 400px;
+    height: 400px
+}
 

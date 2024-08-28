@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-
+@* 
         <div class="header-top">
             <div class="location">
                 <span>
@@ -32,7 +32,7 @@
                 <a href="#" >My orders</a>
                 <a href="#" >Uzbek</a>
             </div>
-        </div>
+        </div> *@
         <div class="header-main">
             <div class="logo d-flex">
                 <a href="#"><img src="~/css/e-commerce.logo1.png" alt="Ecommerce" /></a>
@@ -46,28 +46,20 @@
             </div>
             <div class="header-icons">
                 <button><i class="fas fa-user"></i> LogIn</button>
+                <button asp-controller="MyOrders" asp-action="Index"> My orders</button>
                 <button><i class="fas fa-heart"></i> Favourite</button>
                 <button><i class="fas fa-shopping-cart"></i> Basket</button>
             </div>
         </div>
-        <nav class="category-menu">
-            <ul>
-                <li><a href="#">Maktab bozori</a></li>
-                <li><a href="#">Yozgi savdo</a></li>
-                <li><a href="#">Kanselyariya</a></li>
-                <li><a href="#">Nasiya</a></li>
-                <li><a href="#">Elektronika</a></li>
-                <li><a href="#">Maishiy texnika</a></li>
-                <li><a href="#">Kiyim</a></li>
-                <li><a href="#">Poyabzallar</a></li>
-                <li><a href="#">Aksessuarlar</a></li>
-                <li><a href="#">Go'zallik va parvarish</a></li>
-                <li><a href="#">Salomatlik</a></li>
-                <li><a href="#">Yana</a></li>
-            </ul>
-        </nav>
     </header>
     <div class="container">
+        <div class="d-flex justify-content-between mt-3">
+            <a href="#" class="badge badge-light fw-bolder">Last sold products  <i class="fa-solid fa-chevron-right icon-width-height ms-2"></i></a>
+            <form asp-controller="Products" asp-action="Create" method="get">
+                <button type="submit" class="btn btn-primary">Products</button>
+            </form>
+            <button type="button" class="btn btn-info btn-category mt-4 me-3">Categories <i class="fa-solid fa-chevron-down ms-2"></i></button>
+        </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

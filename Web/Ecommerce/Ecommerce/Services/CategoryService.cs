@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Domain.Interfaces;
+using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.Category;
 
@@ -14,30 +15,43 @@ public class CategoryService : ICategoryService
     }
     public List<CategoryViewModel> GetAll(string? search)
     {
-        var entity = _commonRepository.Categories.GetAll(search);
-        throw new NotImplementedException();
+        var entities = _commonRepository.Categories.GetAll(search);
+
+        return entities.Select(x => x.ToViewModel()).ToList();
 
     }
 
     public CategoryViewModel GetById(int id)
     {
-        throw new NotImplementedException();
+        var entity = _commonRepository.Categories.GetById(id);
+
+        return entity.ToViewModel();
     }
 
     public CategoryViewModel Create(CreateCategoryViewModel category)
     {
-        throw new NotImplementedException();
+        ArgumentNullException.ThrowIfNull(category);
 
+        var newCategory = _commonRepository.Categories.Create(category.ToEntity());
+        _commonRepository.SaveChanges();
+
+        return newCategory.ToViewModel();
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        _commonRepository.Categories.Delete(id);
+        _commonRepository.SaveChanges();
     }
 
 
     public void Update(UpdateCategoryViewModel category)
     {
-        throw new NotImplementedException();
+        ArgumentNullException.ThrowIfNull(category);
+
+        var newCategory = category.ToEntity();
+
+        _commonRepository.Categories.Update(newCategory);
+        _commonRepository.SaveChanges();
     }
 }

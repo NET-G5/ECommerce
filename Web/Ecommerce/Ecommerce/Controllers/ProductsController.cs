@@ -9,10 +9,12 @@ namespace Ecommerce.Controllers
     public class ProductsController : Controller
     {
         private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
-        public ProductsController(IProductService productService)
+        public ProductsController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
+            _categoryService = categoryService;
         }
 
         public IActionResult Index()
@@ -35,6 +37,8 @@ namespace Ecommerce.Controllers
 
         public IActionResult Create()
         {
+            var categories = _categoryService.GetAll();
+            ViewBag.Categories = categories;
             return View();
         }
 
@@ -42,10 +46,15 @@ namespace Ecommerce.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(CreateProductViewModel product, IFormFile image)
         {
-            if (!ModelState.IsValid)
+            if (image != null && image.Length > 0)
             {
-                return View(product);
+                using (var stream = new MemoryStream())
+                {
+                     image.CopyTo(stream);
+                     product.ImageUrl = stream.ToArray(); 
+                }
             }
+
             var createdProduct = _productService.Create(product);
 
             return RedirectToAction(nameof(Details), new { id = createdProduct.Id });

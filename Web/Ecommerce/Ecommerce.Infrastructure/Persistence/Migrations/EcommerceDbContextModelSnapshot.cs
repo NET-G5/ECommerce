@@ -140,7 +140,7 @@ namespace Ecommerce.Infrastructure.Persistence.Migrations
                     b.ToTable("OrderItem", (string)null);
                 });
 
-            modelBuilder.Entity("Ecommerce.Domain.Entities.PaymentDetailViewModel", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Entities.PaymentDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -189,7 +189,7 @@ namespace Ecommerce.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Image")
+                    b.Property<byte[]>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
@@ -243,7 +243,7 @@ namespace Ecommerce.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("OrderItemId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("Ecommerce.Domain.Entities.ShippingDetail", b =>
@@ -280,7 +280,7 @@ namespace Ecommerce.Infrastructure.Persistence.Migrations
                     b.HasIndex("OrderId")
                         .IsUnique();
 
-                    b.ToTable("ShippingDetails");
+                    b.ToTable("ShippingDetails", (string)null);
                 });
 
             modelBuilder.Entity("Ecommerce.Domain.Entities.WishList", b =>
@@ -317,7 +317,7 @@ namespace Ecommerce.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("WishListId");
 
-                    b.ToTable("ProductWishList");
+                    b.ToTable("ProductWishList", (string)null);
                 });
 
             modelBuilder.Entity("Ecommerce.Domain.Entities.Order", b =>
@@ -328,10 +328,10 @@ namespace Ecommerce.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Ecommerce.Domain.Entities.PaymentDetailViewModel", "PaymentDetail")
+                    b.HasOne("Ecommerce.Domain.Entities.PaymentDetail", "PaymentDetail")
                         .WithOne("Order")
                         .HasForeignKey("Ecommerce.Domain.Entities.Order", "Id")
-                        .HasPrincipalKey("Ecommerce.Domain.Entities.PaymentDetailViewModel", "OrderId")
+                        .HasPrincipalKey("Ecommerce.Domain.Entities.PaymentDetail", "OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -454,7 +454,7 @@ namespace Ecommerce.Infrastructure.Persistence.Migrations
                     b.Navigation("Reviews");
                 });
 
-            modelBuilder.Entity("Ecommerce.Domain.Entities.PaymentDetailViewModel", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Entities.PaymentDetail", b =>
                 {
                     b.Navigation("Order")
                         .IsRequired();

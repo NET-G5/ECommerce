@@ -4,26 +4,31 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="card-product">
-        @foreach (var product in Model)
-        {
-            <div class="d-flex m-10">
-                <div class="img-h-w">
-                    @if (product.ImageUrl != null)
-                    {
-                        var imageBase64 = Convert.ToBase64String(product.ImageUrl);
-                        var imageSrc = $"data:image/gif;base64,{imageBase64}";
-                        <img src="@imageSrc" alt="Image" class="img-thumbnail card-img-top" />
-                    }
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">
+                        <label style="font-size: 23px;color: steelblue">@product.Name</label>
+                    </h4>
                 </div>
-
-                <div class="card-body ms-10">
-                    <h1 class="card-title">@product.Name </h1>
-                    <h3 class="card-body">@product.Description</h3>
-                    <p class="card-text">@product.Price</p>
-                    <button class="btn btn-primary">Add to Cart</button>
+                @if (product.ImageUrl != null)
+                {
+                    var imageBase64 = Convert.ToBase64String(product.ImageUrl);
+                    var imageSrc = $"data:image/gif;base64,{imageBase64}";
+                    <img src="@imageSrc" alt="Image" class="img-thumbnail card-img-top" />
+                }
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <label style="font-size: 20px;color: #a51313"><b>Price : @product.Price</b></label>
+                        </div>
+                        <a asp-action="Details" asp-controller="Products" asp-route-id="@product.Id" class="btn pull-right btn-outline-info">Deatils</a>
+                    </div>
                 </div>
-
             </div>
-        }
+        </div>
+    }
 </div>

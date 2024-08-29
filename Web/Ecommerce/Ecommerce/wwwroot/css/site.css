@@ -145,6 +145,11 @@ header {
 
 .img-h-w {
     width: 400px;
-    height: 400px
+    height: 280px;
+}
+
+.create-from {
+    border-radius: 1rem;
+    background-color: antiquewhite;
 }
 

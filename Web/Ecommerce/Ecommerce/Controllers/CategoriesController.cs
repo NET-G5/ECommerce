@@ -1,26 +1,32 @@
-﻿using Ecommerce.Mappings;
-using Ecommerce.Services.Interfaces;
-using Ecommerce.ViewModels.Product;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Ecommerce.Domain.Entities;
+using Ecommerce.Infrastructure.Persistence;
+using Ecommerce.Services.Interfaces;
+using Ecommerce.ViewModels.Category;
+using Ecommerce.Mappings;
 
 namespace Ecommerce.Controllers
 {
-    public class ProductsController : Controller
+    public class CategoriesController : Controller
     {
-        private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
 
-        public ProductsController(IProductService productService, ICategoryService categoryService)
+        public CategoriesController(ICategoryService categoryService)
         {
-            _productService = productService;
-            _categoryService = categoryService;
+            _categoryService=categoryService;
         }
 
         public IActionResult Index()
         {
-            var products = _productService.GetAll("");
-            return View(products);
+            var categories = _categoryService.GetAll();
+
+            return View(categories);
         }
 
         public IActionResult Details(int? id)
@@ -30,38 +36,34 @@ namespace Ecommerce.Controllers
                 return NotFound();
             }
 
-            var product = _productService.GetById(id.Value);
-            if(product is null)
+            var category = _categoryService.GetById(id.Value);
+
+            if (category is null)
             {
                 return NotFound();
-            }    
+            }
 
-            return View(product);
+            return View(category);
         }
 
         public IActionResult Create()
         {
-            var categories = _categoryService.GetAll();
-            ViewBag.Categories = categories;
+
             return View();
         }
 
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CreateProductViewModel product, IFormFile image)
+        public IActionResult Create(CreateCategoryViewModel createCategoryViewModel)
         {
-            if (image != null && image.Length > 0)
+            if (ModelState.IsValid)
             {
-                using (var stream = new MemoryStream())
-                {
-                     image.CopyTo(stream);
-                     product.ImageUrl = stream.ToArray(); 
-                }
+                _categoryService.Create(createCategoryViewModel);
+                return RedirectToAction(nameof(Index));
             }
 
-            var createdProduct = _productService.Create(product);
-
-            return RedirectToAction(nameof(Index));
+            return View(createCategoryViewModel);
         }
 
         public IActionResult Edit(int? id)
@@ -71,22 +73,23 @@ namespace Ecommerce.Controllers
                 return NotFound();
             }
 
-            var product = _productService.GetById(id.Value);
+            var category = _categoryService.GetById(id.Value);
 
-            if (product is null)
+            if (category is null)
             {
                 return NotFound();
             }
-            var viewModel = product.ToUpdateViewModel();
+            
+            var viewModel=category.ToUpdateViewModel();
 
             return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, UpdateProductViewModel product)
+        public IActionResult Edit(int id, UpdateCategoryViewModel viewModel)
         {
-            if (id != product.Id)
+            if (id != viewModel.Id)
             {
                 return NotFound();
             }
@@ -95,11 +98,11 @@ namespace Ecommerce.Controllers
             {
                 try
                 {
-                    _productService.Update(product);
+                    _categoryService.Update(viewModel);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
+                    if (!CategoryExists(viewModel.Id))
                     {
                         return NotFound();
                     }
@@ -110,7 +113,7 @@ namespace Ecommerce.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(viewModel);
         }
 
         public IActionResult Delete(int? id)
@@ -120,34 +123,35 @@ namespace Ecommerce.Controllers
                 return NotFound();
             }
 
-            var product = _productService.GetById(id.Value);
+            var category = _categoryService.GetById(id.Value);
 
-            if (product == null)
+            if (category is null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(category);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            var product = _productService.GetById(id);
-            if (product is null)
+            var category = _categoryService.GetById(id);
+
+            if (category is null)
             {
                 return NotFound();
             }
 
-            _productService.Delete(id);
+            _categoryService.Delete(id);
 
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _productService.GetById(id) is not null;
+            return _categoryService.GetById(id) is not null;
         }
     }
 }

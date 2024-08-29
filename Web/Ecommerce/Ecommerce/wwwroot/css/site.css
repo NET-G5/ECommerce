@@ -29,8 +29,7 @@ body {
 
 header {
     border-bottom: 1px solid #ddd;
-    margin-inline-start: 140px;
-    margin-inline-end: 140px;
+    width:100%;
 }
 
 .header-top {
@@ -146,5 +145,50 @@ header {
 .img-h-w {
     width: 400px;
     height: 400px
+}
+
+.categories {
+    background-color: transparent;
+    padding: 20px 0;
+    width:100%;
+}
+
+.categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.categories ul li {
+    margin: 0 15px;
+}
+
+.categories ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.categories ul li a:hover {
+    color: #007bff;
+}
+#container {
+    height: 100%;
+    background: coral;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    margin-left: 36.6%;
+    min-height: 100%;
+}
+span{
+    font-size:22px;
+    font-weight:bold;
+}
+a{
+    text-decoration:none;
 }
 

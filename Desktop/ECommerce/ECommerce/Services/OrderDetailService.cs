@@ -391,6 +391,10 @@ public class OrderDetailService
         {
             if (orderDetail.Order.Id == orderId)
             {
+                if (orderDetail.Status == OrderStatus.Canceled)
+                {
+                    orderDetail.Product.Status = OrderStatus.Canceled;
+                }
                 orderDetails.Add(orderDetail);
             }
         }

@@ -270,42 +270,12 @@ public class OrderService
         return searchOrders;
     }
 
-    public bool UpdateOrder(int orderId, bool isSuccessful, bool isRefunded = false)
+    public List<Order> UpdateOrder(Order order)
     {
-        for (int i = 0; i < orders.Count; i++)
-        {
-            var order = orders[i];
+        ArgumentNullException.ThrowIfNull(order);
 
-            if (order.Id != orderId)
-            {
-                continue;
-            }
+        orders[order.Id - 1] = order;
 
-            if (isRefunded)
-            {
-                var difference = DateTime.Now - order.SoldDate;
-
-                if (difference > TimeSpan.FromDays(3))
-                {
-                    return false;
-                }
-
-                order.Status = OrderStatus.Refunded;
-            }
-            else if (isSuccessful)
-            {
-                order.Status = OrderStatus.Sold;
-                order.SoldDate = DateTime.Now;
-            }
-            else
-            {
-                order.Status = OrderStatus.Canceled;
-            }
-
-            orders[i] = order;
-            return true;
-        }
-
-        return false;
+        return orders;
     }
 }

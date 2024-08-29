@@ -1,0 +1,157 @@
+﻿@model IEnumerable<Ecommerce.ViewModels.Category.CategoryViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+﻿@{
+    List<Object> menuItems = new List<Object>();
+
+    menuItems.Add(new
+    {
+        text = "Books",
+        iconCss="fa-solid fa-book",
+        Url="#"
+    });
+    menuItems.Add(new
+    {
+        text = "Office",
+        iconCss = "fa-solid fa-book-open",
+        url = "/"
+    });
+    menuItems.Add(new
+    {
+        text = "Electronics",
+        iconCss = "fa-solid fa-laptop-code",
+        url = "/categories"
+    });
+    menuItems.Add(new
+    {
+        text = "Household appliances",
+        iconCss = "fa-solid fa-house",
+        url = "/transfers"
+    });
+
+    menuItems.Add(new
+    {
+        text = "Clothing",
+        iconCss="fa-solid fa-shirt",
+        separator = true,
+    });
+    menuItems.Add(new
+    {
+        text = "Shoes",
+        iconCss = "fa-solid ",
+        url = "#"
+    });
+    menuItems.Add(new
+    {
+        text = "Accessories",
+        iconCss = "fa-solid fa-gear",
+        url = "#"
+    });
+    menuItems.Add(new
+    {
+        text = "Beauty and care",
+        iconCss = "fa-solid fa-gear",
+        url = "#"
+    });
+    menuItems.Add(new
+    {
+        text = "Health",
+        iconCss = "fa-solid fa-gear",
+        url = "#"
+    });
+    menuItems.Add(new
+    {
+        text = "Household goods",
+        iconCss = "fa-solid fa-gear",
+        url = "#"
+    });
+    menuItems.Add(new
+    {
+        text = "Construction and repair",
+        iconCss = "fa-solid fa-gear",
+        url = "#"
+    });
+    menuItems.Add(new
+    {
+        text = "Childrens goods",
+        iconCss = "fa-solid fa-gear",
+        url = "#"
+    });
+    menuItems.Add(new
+    {
+        text = "Automotive goods",
+        iconCss = "fa-solid fa-gear",
+        url = "#"
+    });
+    menuItems.Add(new
+    {
+        text = "Sports and recreation",
+        iconCss = "fa-solid fa-gear",
+        url = "#"
+    });
+    menuItems.Add(new
+    {
+        text = "Hobbies and creativity",
+        iconCss = "fa-solid fa-gear",
+        url = "#"
+    });
+    
+}
+
+
+<ejs-sidebar id="sidebar" width="290px" enableDock dockSize="100px"
+             target=".dock-target" enableGestures="false">
+    <e-content-template>
+
+        <div class="logo-wrapper">
+            <div class="w-100"></div>
+            <i id="sidebar-toggler" class="fa-solid"></i>
+        </div>
+
+        <div class="profile-wrapper">
+            <div class="titles d-flex flex-column ps-3">
+                <h6 class="mb-0">Wallet App</h6>
+                <span class="text-muted">Ashton Cox</span>
+            </div>
+        </div>
+
+        <ejs-menu id="menu"
+                  items="menuItems"
+                  orientation="Vertical"
+                  hamburgerMode></ejs-menu>
+    </e-content-template>
+</ejs-sidebar>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        dockBar = document.getElementById('sidebar').ej2_instances[0];
+        document.getElementById('sidebar-toggler').onclick = function () {
+            dockBar.toggle();
+        };
+    });
+</script>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td align="center   ">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

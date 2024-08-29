@@ -17,8 +17,10 @@
     <header>
         <div class="header-main">
             <div class="logo d-flex">
-                <a href="#"><img src="~/css/e-commerce.logo1.png" alt="Ecommerce" /></a>
-                <p class="fw-bolder mt-2">Ecommerce</p>
+                <a asp-controller="Home"  asp-action="Index"> 
+                    <img src="~/css/e-commerce.logo1.png" alt="Ecommerce" />
+                    <span   >Ecommerce</span>
+                </a>
             </div>
             
             <div class="search-bar">
@@ -33,14 +35,29 @@
                 <button><i class="fas fa-shopping-cart"></i> Basket</button>
             </div>
         </div>
+        <section class="categories d-flex justify-content-between">
+            <div class="container" >
+                <ul>
+                    <li><a asp-controller="Categories" asp-action="Index">Electronics</a></li>
+                    <li><a asp-controller="Categories" asp-action="Index">Books</a></li>
+                    <li><a asp-controller="Categories" asp-action="Index">Office</a></li>
+                    <li><a asp-controller="Categories" asp-action="Index">Household appliances</a></li>
+                    <li><a asp-controller="Categories" asp-action="Index">Clothing</a></li>
+                    <li><a asp-controller="Categories" asp-action="Index">Shoes</a></li>
+                    <li><a asp-controller="Categories" asp-action="Index">Health</a></li>
+                    <li><a asp-controller="Categories" asp-action="Index">Automotive goods</a></li>
+                    <li><a asp-controller="Categories" asp-action="Index">Sports and recreation</a></li>
+                    <li><a asp-controller="Categories" asp-action="Index">Beauty and care</a></li>
+                    <li><a asp-controller="Categories" asp-action="Index">More</a></li>
+                </ul>
+            </div>
+        </section>
     </header>
     <div class="container">
         <div class="d-flex justify-content-between mt-3">
-            <a href="#" class="badge badge-light fw-bolder">Last sold products  <i class="fa-solid fa-chevron-right icon-width-height ms-2"></i></a>
             <form asp-controller="Products" asp-action="Create" method="get">
-                <button type="submit" class="btn btn-primary">Products</button>
+                <button type="submit" class="btn btn-primary">Add Products</button>
             </form>
-            <button type="button" class="btn btn-info btn-category mt-4 me-3">Categories <i class="fa-solid fa-chevron-down ms-2"></i></button>
         </div>
         <main role="main" class="pb-3">
             @RenderBody()

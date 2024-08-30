@@ -29,8 +29,7 @@ body {
 
 header {
     border-bottom: 1px solid #ddd;
-    margin-inline-start: 140px;
-    margin-inline-end: 140px;
+    width:100%;
 }
 
 .header-top {
@@ -267,3 +266,4 @@ a {
     background-color: transparent;
     outline: 3px solid darkviolet
 }
+

@@ -2,7 +2,6 @@
 using ECommerce.Services;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Forms;
 using System.Windows.Input;
 using MessageBox = System.Windows.MessageBox;
 
@@ -17,9 +16,9 @@ namespace ECommerce.View
                 OrderStatus.Refunded,
                 OrderStatus.Pending,
                 OrderStatus.Canceled,
-                OrderStatus.Sold
+                OrderStatus.Sold,
+                OrderStatus.All
             ];
-
         public ObservableCollection<Order> Orders { get; }
 
         private int? _orderId = null;
@@ -63,20 +62,19 @@ namespace ECommerce.View
             RefreshingDataGrid();
         }
 
-        void Load(int? OrderId, string Customer, OrderStatus? Status)
+        void Load(int? orderId, string customer, OrderStatus? status)
         {
-            var orders = _orderService.GetOrder(OrderId, Customer, Status);
+            if (status == OrderStatus.All)
+            {
+                status = null;
+            }
+            var orders = _orderService.GetOrder(orderId, customer, status);
 
             Orders.Clear();
             foreach (var order in orders)
             {
                 Orders.Add(order);
             }
-        }
-
-        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -130,7 +128,7 @@ namespace ECommerce.View
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error!\nDetails: {ex.Message}","Ecommerce",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show($"Error!\nDetails: {ex.Message}", "Ecommerce", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -140,9 +138,31 @@ namespace ECommerce.View
 
             if (selectedOrder is not null)
             {
-                var window = new OrderDetailsView(selectedOrder);
+
+                var window = new OrderDetailsView(selectedOrder,Orders);
                 window.Show();
             }
+        }
+
+        private void OrderCancel_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedOrder = OrdersGrid.SelectedItem as Order;
+            if (selectedOrder is null)
+            {
+                return;
+            }
+
+            selectedOrder.Status = OrderStatus.Canceled;
+
+            List<Order> updatedOrders = _orderService.UpdateOrder(selectedOrder);
+
+            Orders.Clear();
+
+            foreach (var order in updatedOrders)
+            {
+                Orders.Add(order);
+            }
+            RefreshingDataGrid();
         }
     }
 }

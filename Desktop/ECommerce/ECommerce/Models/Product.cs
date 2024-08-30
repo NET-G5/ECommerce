@@ -1,6 +1,6 @@
 ﻿namespace ECommerce.Models;
 
-public class Product
+public class Product:OrderDetail
 {
     public int Id { get; set; }
 

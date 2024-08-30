@@ -10,6 +10,20 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        UsernameInput.KeyDown += ((sender, e) =>
+        {
+            if (e.Key == Key.Enter)
+            {
+                BtnLogin_Clicked(sender, e);
+            }
+        });
+        PasswordInput.KeyDown += ((sender, e) =>
+        {
+            if (e.Key == Key.Enter)
+            {
+                BtnLogin_Clicked(sender, e);
+            }
+        });
     }
 
     private void BtnLogin_Clicked(object sender, RoutedEventArgs e)

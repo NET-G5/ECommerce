@@ -1,65 +1,76 @@
 ﻿@model Ecommerce.ViewModels.Product.UpdateProductViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["PageTitle"] = "Edit a category";
 }
 
-<h1>Edit</h1>
-
-<h4>Product</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StockQuantity" class="control-label"></label>
-                <input asp-for="StockQuantity" class="form-control" />
-                <span asp-validation-for="StockQuantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddedDate" class="control-label"></label>
-                <input asp-for="AddedDate" class="form-control" />
-                <span asp-validation-for="AddedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
-            </div>
-         
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="col-md-6 offset-md-3 justify-content-center">
+        <div class="create-from p-5">
+            <form asp-action="Edit" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="d-flex gap-4 mb-3">
+                    <div class="form-group mt-2">
+                        <ejs-textbox id="name" placeholder="Name" ejs-for="Name"
+                                     floatLabelType="Always"></ejs-textbox>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageUrl" class="form-label">Image</label>
+                        <input type="file" class="form-control" id="image" name="image">
+                    </div>
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+                <div class="d-flex gap-4 mb-3">
+                    <div class="form-group">
+                        <div class='wrap'>
+                            <ejs-numerictextbox id="price" value="10" ejs-for="Price" validateDecimalOnType="true" decimals="3" format="n3"
+                                                placeholder="Price" floatLabelType="Always" min="0"></ejs-numerictextbox>
+                        </div>
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class='wrap'>
+                            <ejs-numerictextbox id="stockQuantity" value="10" ejs-for="StockQuantity" validateDecimalOnType="true" decimals="3" format="n3"
+                                                placeholder="Stock quantity" floatLabelType="Always" min="0"></ejs-numerictextbox>
+                        </div>
+                        <span asp-validation-for="StockQuantity" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="d-flex gap-4 mb-3">
+                    <div class="form-group">
+                        <ejs-datepicker id="date" placeholder="Select date" ejs-for="AddedDate"
+                                        floatLabelType="Always"></ejs-datepicker>
+                        <span asp-validation-for="AddedDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-4">
+                        <ejs-combobox name="categoryId" id="categories-combobox"
+                                      filterType="Contains" allowFiltering="true" ignoreAccent="true"
+                                      dataSource="@ViewBag.Categories" placeholder="Select a category" popupHeight="220px">
+                            <e-combobox-fields value="Id" text="Name"></e-combobox-fields>
+                        </ejs-combobox>
+                        <span asp-validation-for="CategoryId" class="text-danger fs-6"></span>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <ejs-textbox id="description" placeholder="Description" ejs-for="Description"
+                                 floatLabelType="Always" multiline="true"></ejs-textbox>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="d-flex gap-4">
+                    <div class="form-group">
+                        <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

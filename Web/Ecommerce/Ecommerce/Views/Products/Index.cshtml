@@ -7,28 +7,26 @@
 <div class="row">
     @foreach (var product in Model)
     {
-        <div class="col-4">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">
-                        <label style="font-size: 23px;color: steelblue">@product.Name</label>
-                    </h4>
-                </div>
-                @if (product.ImageUrl != null)
-                {
-                    var imageBase64 = Convert.ToBase64String(product.ImageUrl);
-                    var imageSrc = $"data:image/gif;base64,{imageBase64}";
-                    <img src="@imageSrc" alt="Image" class="img-thumbnail card-img-top" />
-                }
-                <div class="card-header">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <label style="font-size: 20px;color: #a51313"><b>Price : @product.Price</b></label>
-                        </div>
-                        <a asp-action="Details" asp-controller="Products" asp-route-id="@product.Id" class="btn pull-right btn-outline-info">Deatils</a>
+       <div class="col-4">
+           <div class="card mb-4">
+               <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+               @if (product.ImageUrl != null)
+               {
+                   var imageBase64 = Convert.ToBase64String(product.ImageUrl);
+                   var imageSrc = $"data:image/gif;base64,{imageBase64}";
+                   <img src="@imageSrc" alt="Image" class="img-thumbnail card-img-top" />
+               }
+               <div class="d-flex justify-content-between card-header">
+                   <label style="font-size: 23px;color: steelblue">@product.Name</label>
+                   <input type="checkbox" id="favorite-@product.Id" class="favorite-checkbox">
+                   <label for="favorite-@product.Id" class="heart-icon">&#x2665;</label>
+               </div>
+               <div class="d-flex justify-content-between card-header">
+                   <label style="font-size: 20px;color: #a51313"><b>Price : @product.Price</b></label>
+                        <button class="btn-cart" asp-conroller="OrderItem" ><i class="fa-solid fa-cart-arrow-down"></i></button>
                     </div>
-                </div>
-            </div>
-        </div>
+               </a>
+           </div>
+       </div>
     }
 </div>

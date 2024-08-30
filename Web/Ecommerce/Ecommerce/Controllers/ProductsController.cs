@@ -57,7 +57,7 @@ namespace Ecommerce.Controllers
 
             var createdProduct = _productService.Create(product);
 
-            return RedirectToAction(nameof(Details), new { id = createdProduct.Id });
+            return RedirectToAction(nameof(Index), new { id = createdProduct.Id });
         }
 
         public IActionResult Edit(int? id)

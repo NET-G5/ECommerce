@@ -24,7 +24,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;    
 }
 
 header {
@@ -181,6 +181,62 @@ a {
     text-orientation: upright
 }
 
+        /*categories*/
+.categories {
+    background-color: transparent;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.categories ul 
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.categories ul li 
+{
+    margin: 0 15px;
+}
+
+.categories ul li a 
+{
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.categories ul li a:hover 
+{
+    color: #007bff;
+}
+
+#container {
+    height: 100%;
+    background: coral;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    margin-left: 36.6%;
+    min-height: 100%;
+}
+
+span 
+{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+
 
 .counter-wrapper {
     background-color: #ffffff;
@@ -265,5 +321,72 @@ a {
     font-weight: 500;
     background-color: transparent;
     outline: 3px solid darkviolet
+}
+
+/*SideBar*/
+
+#sidebar {
+    background-color: #12161d;
+    border-right: 1px dashed rgba(75,82,85,0.24);
+    padding: 10px 20px;
+    overflow: hidden;
+}
+
+    #sidebar .e-menu-wrapper {
+        width: 100%;
+        background-color: inherit;
+    }
+
+#sidebar-toggler {
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+    #sidebar-toggler:hover {
+        cursor: pointer;
+        background-color: #48545f14;
+        transform: scale(1.05) translateZ(0px);
+    }
+
+#sidebar.e-close {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+    #sidebar.e-close .app-logo {
+        display: none;
+    }
+
+    #sidebar.e-close .e-anchor-wrap, #sidebar.e-close .e-menu-item.e-menu-caret-icon {
+        font-size: 0px;
+    }
+
+    #sidebar.e-close .profile-wrapper .titles {
+        display: none !important;
+    }
+
+
+    #sidebar.e-open .e-anchor-wrap,
+    #sidebar.e-close .e-menu-icon, #sidebar.e-open .e-menu-icon {
+        visibility: visible;
+    }
+
+#sidebar.e-open .profile-wrapper .titles, #sidebar.e-open .app-logo {
+    display: flex;
+}
+
+#sidebar.e-sidebar.e-right.e-close {
+    visibility: visible;
+    transform: translateX(0%);
+}
+
+#sidebar.e-open #sidebar-toggler:before {
+    content: '\f100'
+}
+
+#sidebar.e-close #sidebar-toggler:before {
+    content: '\f101'
 }
 

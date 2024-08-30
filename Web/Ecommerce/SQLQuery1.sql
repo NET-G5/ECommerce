@@ -1,1 +1,1 @@
-﻿select *from Category
+﻿select *from category

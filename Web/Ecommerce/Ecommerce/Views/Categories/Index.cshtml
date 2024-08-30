@@ -11,13 +11,13 @@
     {
         text = "Books",
         iconCss="fa-solid fa-book",
-        Url="#"
+        Url="/Categories"
     });
     menuItems.Add(new
     {
         text = "Office",
         iconCss = "fa-solid fa-book-open",
-        url = "/"
+        url = "/Categories"
     });
     menuItems.Add(new
     {
@@ -29,14 +29,14 @@
     {
         text = "Household appliances",
         iconCss = "fa-solid fa-blender",
-        url = "/transfers"
+        url = "/categories"
     });
 
     menuItems.Add(new
     {
         text = "Clothing",
         iconCss="fa-solid fa-shirt",
-        separator = true,
+        Url="/#"
     });
     menuItems.Add(new
     {
@@ -100,9 +100,7 @@
     });
     
 }
-
-
-<ejs-sidebar id="sidebar" width="290px" enableDock dockSize="100px"
+<ejs-sidebar class="text-white" id="sidebar" width="250px" enableDock dockSize="100px"
              target=".dock-target" enableGestures="false">
     <e-content-template>
 
@@ -113,8 +111,7 @@
 
         <div class="profile-wrapper">
             <div class="titles d-flex flex-column ps-3">
-                <h6 class="mb-0">Wallet App</h6>
-                <span class="text-muted">Ashton Cox</span>
+                <h6 class="mb-0">Categories</h6>
             </div>
         </div>
 
@@ -125,14 +122,6 @@
     </e-content-template>
 </ejs-sidebar>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        dockBar = document.getElementById('sidebar').ej2_instances[0];
-        document.getElementById('sidebar-toggler').onclick = function () {
-            dockBar.toggle();
-        };
-    });
-</script>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -148,10 +137,24 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td align="center   ">
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        dockBar = document.getElementById('sidebar').ej2_instances[0];
+        document.getElementById('sidebar-toggler').onclick = function () {
+            dockBar.toggle();
+        };
+    });
+</script>

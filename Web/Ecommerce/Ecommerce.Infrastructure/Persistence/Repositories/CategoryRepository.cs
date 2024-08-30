@@ -18,7 +18,7 @@ public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
         }
 
         var categories = _context.Categories
-            .Where(x => x.Name.Contains(searchText) || 
+            .Where(x => x.Name.Contains(searchText) ||
             x.Description.Contains(searchText)).ToList();
 
         return categories;

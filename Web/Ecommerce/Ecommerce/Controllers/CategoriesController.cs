@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Ecommerce.Domain.Entities;
-using Ecommerce.Infrastructure.Persistence;
+﻿using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.Category;
-using Ecommerce.Mappings;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Controllers
 {
@@ -19,7 +12,7 @@ namespace Ecommerce.Controllers
 
         public CategoriesController(ICategoryService categoryService)
         {
-            _categoryService=categoryService;
+            _categoryService = categoryService;
         }
 
         public IActionResult Index()
@@ -52,7 +45,7 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(CreateCategoryViewModel createCategoryViewModel)
@@ -79,8 +72,8 @@ namespace Ecommerce.Controllers
             {
                 return NotFound();
             }
-            
-            var viewModel=category.ToUpdateViewModel();
+
+            var viewModel = category.ToUpdateViewModel();
 
             return View(viewModel);
         }

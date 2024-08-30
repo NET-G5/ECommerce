@@ -31,10 +31,10 @@ namespace Ecommerce.Controllers
             }
 
             var product = _productService.GetById(id.Value);
-            if(product is null)
+            if (product is null)
             {
                 return NotFound();
-            }    
+            }
 
             return View(product);
         }
@@ -54,8 +54,8 @@ namespace Ecommerce.Controllers
             {
                 using (var stream = new MemoryStream())
                 {
-                     image.CopyTo(stream);
-                     product.ImageUrl = stream.ToArray(); 
+                    image.CopyTo(stream);
+                    product.ImageUrl = stream.ToArray();
                 }
             }
 

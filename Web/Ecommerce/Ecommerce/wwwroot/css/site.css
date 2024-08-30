@@ -152,48 +152,118 @@ header {
     background-color: antiquewhite;
 }
 
-.categories {
-    background-color: transparent;
-    padding: 20px 0;
-    width:100%;
+.favorite-checkbox {
+    display: none;
 }
 
-.categories ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.heart-icon {
+    border:medium;
+    font-size: 35px;
+    color: gray;
+    cursor: pointer;
+}
+
+.favorite-checkbox:checked + .heart-icon {
+    color: red;
+}
+
+a {
+    text-decoration: none
+}
+
+.btn-cart {
+    border-radius: 50%;
+    border-right-color:gray;
+    border-color: lightblue
+}
+
+.product-info.counter-wrapper {
+    text-orientation: upright
+}
+
+
+.counter-wrapper {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Counter styling */
+.counter {
     display: flex;
+    align-items: center;
+}
+
+/* Input field styling */
+.number-input {
+    width: 60px;
+    text-align: center;
+    font-size: 24px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 0 10px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+    /* Remove spinner buttons in input field */
+    .number-input::-webkit-inner-spin-button,
+    .number-input::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+/* Button styling */
+.increment-button,
+.decrement-button {
+    width: 45px;
+    height: 45px;
+    font-size: 24px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    user-select: none;
+    transition: background-color 0.3s, transform 0.1s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.categories ul li {
-    margin: 0 15px;
+    /* Hover effect for buttons */
+    .increment-button:hover,
+    .decrement-button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Active effect for buttons */
+    .increment-button:active,
+    .decrement-button:active {
+        transform: scale(0.95);
+        background-color: #004085;
+    }
+
+/* Focus effect for input field */
+.number-input:focus {
+    border-color: #0056b3;
 }
 
-.categories ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 16px;
+.btn-buy, .btn-buy:hover, .btn-buy:focus, btn-buy:active {
+    width: 300px;
+    color: white;
+    background-color: #c746be;
+    outline: 3px solid darkviolet
 }
 
-.categories ul li a:hover {
-    color: #007bff;
-}
-#container {
-    height: 100%;
-    background: coral;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    margin-left: 36.6%;
-    min-height: 100%;
-}
-span{
-    font-size:22px;
-    font-weight:bold;
-}
-a{
-    text-decoration:none;
+.btn-add, .btn-add:hover, btn-add:focus, btn-add:active {
+    width: 300px;
+    color: darkviolet;
+    font-weight: 500;
+    background-color: transparent;
+    outline: 3px solid darkviolet
 }
 

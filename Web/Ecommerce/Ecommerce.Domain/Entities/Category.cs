@@ -9,3 +9,4 @@ public class Category : AuditableEntity
 
     public virtual ICollection<Product> Products { get; set; }
 }
+ 

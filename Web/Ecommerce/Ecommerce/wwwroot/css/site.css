@@ -1,35 +1,35 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 .location a {
-    font-weight:600;
+    font-weight: 600;
     text-decoration: none;
     color: #333;
 }
 
 body {
-    margin-bottom: 60px;    
+    margin-bottom: 60px;
 }
 
 header {
     border-bottom: 1px solid #ddd;
-    width:100%;
+    width: 100%;
 }
 
 .header-top {
@@ -45,7 +45,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    
 }
 
 
@@ -54,11 +53,11 @@ header {
     width: 45px
 }
 
-    .logo p,
-    .logo p:hover {
-        color: blueviolet;
-        font-size: 20px
-    }
+.logo p,
+.logo p:hover {
+    color: blueviolet;
+    font-size: 20px
+}
 
 .search-bar {
     display: flex;
@@ -114,8 +113,8 @@ header {
     color: inherit;
     text-decoration: none
 }
-    
-    .fw-bolder:hover, 
+
+    .fw-bolder:hover,
     .fw-bolder:focus {
         color: inherit
     }
@@ -159,7 +158,7 @@ header {
 }
 
 .heart-icon {
-    border:medium;
+    border: medium;
     font-size: 35px;
     color: gray;
     cursor: pointer;
@@ -175,7 +174,7 @@ a {
 
 .btn-cart {
     border-radius: 50%;
-    border-right-color:gray;
+    border-right-color: gray;
     border-color: lightblue
 }
 
@@ -183,39 +182,35 @@ a {
     text-orientation: upright
 }
 
-        /*categories*/
+/*categories*/
 .categories {
     background-color: transparent;
     padding: 20px 0;
     width: 100%;
 }
 
-.categories ul 
-{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
+    .categories ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
 
-.categories ul li 
-{
-    margin: 0 15px;
-}
+        .categories ul li {
+            margin: 0 15px;
+        }
 
-.categories ul li a 
-{
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 16px;
-}
+            .categories ul li a {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+                font-size: 16px;
+            }
 
-.categories ul li a:hover 
-{
-    color: #007bff;
-}
+                .categories ul li a:hover {
+                    color: #007bff;
+                }
 
 #container {
     height: 100%;
@@ -227,14 +222,12 @@ a {
     min-height: 100%;
 }
 
-span 
-{
+span {
     font-size: 22px;
     font-weight: bold;
 }
 
-a
-{
+a {
     text-decoration: none;
 }
 
@@ -265,6 +258,7 @@ a
     outline: none;
     transition: border-color 0.3s;
 }
+
 
     /* Remove spinner buttons in input field */
     .number-input::-webkit-inner-spin-button,
@@ -328,18 +322,18 @@ a
 /*SideBar*/
 
 #sidebar {
-    margin-top:100px;
+    margin-top: 100px;
     background-color: white;
     padding: 10px 20px;
-    border-right:1px solid black;
-    margin-left:0px;
-    color:black;
+    border-right: 1px solid black;
+    margin-left: 0px;
+    color: black;
     overflow: hidden;
 }
 
 
-.main-content{
-    margin-left:290px;
-    overflow-y:auto;
-    height:92vh;
+.main-content {
+    margin-left: 290px;
+    overflow-y: auto;
+    height: 92vh;
 }

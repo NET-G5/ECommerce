@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Ecommerce.styles.css" asp-append-version="true" />
     @* <link href="	https://cdn.syncfusion.com/ej2/26.2.4/fabric.css" rel="stylesheet" /> *@
-    <link href="https://cdn.syncfusion.com/ej2/20.1.55/bootstrap5-dark.css" rel="stylesheet" />
+    <link href="https://cdn.syncfusion.com/ej2/20.1.55/bootstrap5.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.syncfusion.com/ej2/26.2.4/dist/ej2.min.js"></script>
 </head>
 <body>
-    <header>
-        <div class="header-main">
+    <header >
+        <div class="header-main ">
             <div class="logo d-flex">
                 <a asp-controller="Home"  asp-action="Index"> 
                     <img src="~/css/e-commerce.logo1.png" alt="Ecommerce" />
@@ -25,7 +25,7 @@
             </div>
             
             <form class="search-bar">
-                <input type="text"  placeholder="Search products and types..." >
+                <input type="text" name="searchInput" asp-controller="Products" asp-action="Index" asp-route-Id="searchInput" placeholder="Search products and categories ..." >
                     <button><i class="fas fa-search"></i></button>
                 </input>
             </form>
@@ -36,35 +36,23 @@
                 <button><i class="fas fa-shopping-cart"></i> Basket</button>
             </div>
         </div>
-        <section class="categories d-flex justify-content-between">
-            <div class="container" >
-                <ul>
-                    <li><a asp-controller="Categories" asp-action="Index">Electronics</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Books</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Office</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Household appliances</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Clothing</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Shoes</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Health</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Automotive goods</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Sports and recreation</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Beauty and care</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">More</a></li>
-                </ul>
-            </div>
-        </section>
+        
     </header>
+    <partial name="_SideBar" />
 
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Ecommerce - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <div class="main-content">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -73,3 +61,4 @@
     <ejs-scripts></ejs-scripts>
 </body>
 </html>
+

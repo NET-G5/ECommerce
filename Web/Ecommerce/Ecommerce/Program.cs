@@ -59,7 +59,7 @@ public class Program
 
         if (!app.Environment.IsDevelopment())
         {
-            app.UseExceptionHandler("/Home/Error");
+            app.UseExceptionHandler("/Products/Error");
             app.UseHsts();
         }
 
@@ -72,7 +72,7 @@ public class Program
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Home}/{action=Index}/{id?}");
+            pattern: "{controller=Products}/{action=Index}/{id?}");
 
         app.Run();
     }

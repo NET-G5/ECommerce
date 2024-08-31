@@ -15,9 +15,10 @@ namespace Ecommerce.Controllers
             _categoryService = categoryService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchInput)
         {
-            var categories = _categoryService.GetAll();
+
+            var categories = _categoryService.GetAll(searchInput);
 
             return View(categories);
         }

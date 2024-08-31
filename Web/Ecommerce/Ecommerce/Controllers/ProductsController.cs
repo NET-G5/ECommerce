@@ -17,9 +17,9 @@ namespace Ecommerce.Controllers
             _categoryService = categoryService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchText)
         {
-            var products = _productService.GetAll("");
+            var products = _productService.GetAll(searchText);
             return View(products);
         }
 

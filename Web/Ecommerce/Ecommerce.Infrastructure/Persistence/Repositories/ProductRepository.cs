@@ -1,6 +1,7 @@
 ﻿using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
 using Ecommerce.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Infrastructure.Repositories;
 
@@ -18,7 +19,9 @@ public class ProductRepository : RepositoryBase<Product>, IProductRepository
         }
 
         var products = _context.Products
-            .Where(x => x.Name.Contains(searchText!)).ToList();
+            .Include(p => p.Category)
+            .Where(x => x.Name.Contains(searchText!) ||
+            x.Category.Name.Contains(searchText)).ToList();
 
         return products;
     }

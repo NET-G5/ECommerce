@@ -12,8 +12,8 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="d-flex gap-4 mb-3">
                     <div class="form-group mt-2">
-                        <ejs-textbox id="name" placeholder="Name" ejs-for="Name" 
-                            floatLabelType="Always"></ejs-textbox>
+                        <ejs-textbox id="name" placeholder="Name" ejs-for="Name"
+                                     floatLabelType="Always"></ejs-textbox>
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -25,14 +25,14 @@
                 <div class="d-flex gap-4 mb-3">
                     <div class="form-group">
                         <div class='wrap'>
-                            <ejs-numerictextbox id="price" value="10" ejs-for="Price" validateDecimalOnType="true" decimals="3" format="n3"
+                            <ejs-numerictextbox id="price" value="10" ejs-for="Price" validateDecimalOnType="true" decimals="2" format="n2"
                                                 placeholder="Price" floatLabelType="Always" min="0"></ejs-numerictextbox>
                         </div>
                         <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <div class='wrap'>
-                            <ejs-numerictextbox id="stockQuantity" value="10" ejs-for="StockQuantity" validateDecimalOnType="true" decimals="3" format="n3"
+                            <ejs-numerictextbox id="stockQuantity" value="10" ejs-for="StockQuantity" validateDecimalOnType="true" decimals="2" format="n2"
                                                 placeholder="Stock quantity" floatLabelType="Always" min="0"></ejs-numerictextbox>
                         </div>
                         <span asp-validation-for="StockQuantity" class="text-danger"></span>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <ejs-textbox id="description" placeholder="Description" ejs-for="Description"
-                        floatLabelType="Always" multiline="true"></ejs-textbox>
+                                 floatLabelType="Always" multiline="true"></ejs-textbox>
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <div class="d-flex gap-4">
@@ -71,5 +71,7 @@
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

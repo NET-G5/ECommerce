@@ -4,53 +4,44 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StockQuantity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StockQuantity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AddedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AddedDate)
-        </dd>
-      
-    </dl>
-    
-    <form asp-action="Delete">
+<div class="d-flex row">
+    <div class="col-md-5">
+        <div class="card mb-5">
+            @if (Model.ImageUrl != null)
+            {
+                var imageBase64 = Convert.ToBase64String(Model.ImageUrl);
+                var imageSrc = $"data:image/gif;base64,{imageBase64}";
+                <img src="@imageSrc" alt="Image" class="img-thumbnail card-img-top" />
+            }
+            <div class="d-flex justify-content-between card-header">
+                <label style="font-size: 23px;color: steelblue">@Model.Name</label>
+                <input type="checkbox" id="favorite-checkbox" class="favorite-checkbox">
+                <label for="favorite-checkbox" class="heart-icon">&#x2665;</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7 product-info">
+        <div class="card mb-7 card-header">
+            <label class="mb-2" style="font-size: 22px; font-weight:500">@Model.Description</label>
+            <label class="mb-2" style="font-size: 20px;color: #a51313"><b>Price : @Model.Price</b></label>
+            <label style="font-size: 30px;">Stock quantity: @Model.StockQuantity</label>
+        </div>
+        <div class="counter-wrapper">
+            <div class="counter">
+                <button type="button" onclick="this.nextElementSibling.stepDown()" class="decrement-button">-</button>
+                <input type="number" value="0" min="0" max="@Model.StockQuantity" step="1" class="number-input">
+                <button type="button" onclick="this.previousElementSibling.stepUp()" class="increment-button">+</button>
+            </div>
+        </div>
+        <div class="mt-5">
+            <div class="d-flex justify-content-around">
+                <button type="button" class="btn btn-buy">Buy now</button>
+                <button type="button" class="btn btn-add">Add to cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+<form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>

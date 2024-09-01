@@ -343,3 +343,8 @@ a
     overflow-y:auto;
     height:92vh;
 }
+
+.row {
+    margin-left: 140px;
+    margin-right: 140px
+}

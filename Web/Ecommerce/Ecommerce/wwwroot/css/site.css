@@ -477,8 +477,38 @@ body {
 
 #content {
     flex: 1;
-
+}
 .row {
     margin-left: 140px;
-    margin-right: 140px
+    margin-right: 140px;
+}
+
+.carousel-container {
+    margin: 0 auto;
+    padding: 0 15px; 
+    max-width: 1240px; 
+    
+}
+
+.carousel-item img {
+    object-fit: cover;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    height: 400px;
+    width: 100%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 100%; 
+}
+
+.carousel-indicators button {
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-indicators .active {
+    background-color: #007bff; 
 }

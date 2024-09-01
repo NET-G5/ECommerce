@@ -11,7 +11,7 @@
             {
                 var imageBase64 = Convert.ToBase64String(Model.ImageUrl);
                 var imageSrc = $"data:image/gif;base64,{imageBase64}";
-                <img src="@imageSrc" alt="Image" class="img-thumbnail card-img-top" />
+                <img src="@imageSrc" alt="Image" class="img-thumbnail card-img-top " />
             }
             <div class="d-flex justify-content-between card-header">
                 <label style="font-size: 23px;color: steelblue">@Model.Name</label>
@@ -41,9 +41,4 @@
         </div>
     </div>
 </div>
-<div class="d-flex mt-2 align-self-baseline">
-    <div class="form-group mt-3">
-        <a asp-action="Edit" asp-for="@Model.Id" class="btn btn-warning">Edit</a> |
-        <a class="btn btn-secondary" asp-action="Index">Back to List</a>
-    </div>
-</div>
+

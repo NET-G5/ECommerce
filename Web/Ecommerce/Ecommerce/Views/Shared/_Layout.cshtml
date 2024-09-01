@@ -26,7 +26,7 @@
             </div>
             
             <form class="search-bar">
-                <input type="text" asp-action="Index" asp-controller="Products"  placeholder="Search products and categories..." >
+                <input type="text" name="searchText" asp-controller="Products" asp-action="Index" placeholder="Search products and categories...">
                     <button><i class="fas fa-search"></i></button>
                 </input>
             </form>
@@ -40,16 +40,16 @@
         <section class="categories d-flex justify-content-between">
             <div class="container" >
                 <ul>
-                    <li><a asp-controller="Categories" asp-action="Index">Electronics</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Books</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Office</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Household appliances</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Clothing</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Shoes</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Health</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Automotive goods</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Sports and recreation</a></li>
-                    <li><a asp-controller="Categories" asp-action="Index">Beauty and care</a></li>
+                    <li><a href="https://localhost:7194/Products?searchText=electronics">Electronics</a></li>
+                    <li><a href="https://localhost:7194/Products?searchText=books">Books</a></li>
+                    <li><a href="https://localhost:7194/Products?searchText=household+appliance">Household appliances</a></li>
+                    <li><a href="https://localhost:7194/Products?searchText=office">Office</a></li>
+                    <li><a href="https://localhost:7194/Products?searchText=clothing">Clothing</a></li>
+                    <li><a href="https://localhost:7194/Products?searchText=shoes">Shoes</a></li>
+                    <li><a href="https://localhost:7194/Products?searchText=health">Health</a></li>
+                    <li><a href="https://localhost:7194/Products?searchText=automotive+goods">Automotive goods</a></li>
+                    <li><a href="https://localhost:7194/Products?searchText=Sports+and+recreation">Sports and recreation</a></li>
+                    <li><a href="https://localhost:7194/Products?searchText=Beauty+and+care">Beauty and care</a></li>
                     <li><a asp-controller="Categories" asp-action="Index">More</a></li>
                 </ul>
             </div>
@@ -61,11 +61,47 @@
     </main>
 
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer bg-dark text-white py-4">
         <div class="container">
-            &copy; 2024 - Ecommerce - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <!-- Company Info -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase">Ecommerce</h5>
+                    <p>Providing quality products at the best prices.</p>
+                    <p>&copy; 2024 Ecommerce. All rights reserved.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-white">Home</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white">Privacy Policy</a></li>
+                        <li><a href="/about" class="text-white">About Us</a></li>
+                        <li><a href="/contact" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase">Follow Us</h5>
+                    <a href="https://www.facebook.com" target="_blank" class="text-white me-2">
+                        <i class="fab fa-facebook fa-lg"></i>
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" class="text-white me-2">
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="text-white me-2">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" class="text-white">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

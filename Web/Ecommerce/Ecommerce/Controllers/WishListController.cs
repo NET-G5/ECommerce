@@ -14,9 +14,11 @@ public class WishListController : Controller
         _wishListService = wishListService;
     }
     // GET: WishListController
-    public ActionResult Index()
+    public ActionResult Index(int customerId)
     {
-        var wishList = _wishListService.GetAll();
+        var wishList = _wishListService.GetAll(customerId);
+
+        ViewBag.Products=wishList.Select(x=>x.Products);   
 
         return View(wishList);
     }

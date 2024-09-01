@@ -4,12 +4,12 @@
     ViewData["Title"] = "Favourites";
 }
 
-@* <div class="row">
-    @foreach (var product in Model)
+<div class="row">
+    @foreach (var product in ViewBag.Products)
     {
         <div class="col-4">
             <div class="card mb-4">
-                <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+                <a asp-controller="WishList" asp-action="Index" asp-route-id="2">
                     @if (product.ImageUrl != null)
                     {
                         var imageBase64 = Convert.ToBase64String(product.ImageUrl);

@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Ecommerce.styles.css" asp-append-version="true" />
-    @* <link href="	https://cdn.syncfusion.com/ej2/26.2.4/fabric.css" rel="stylesheet" /> *@
     <link href="https://cdn.syncfusion.com/ej2/20.1.55/bootstrap5.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.syncfusion.com/ej2/26.2.4/dist/ej2.min.js"></script>
+
 </head>
 <body>
     <header>
         <div class="header-main">
             <div class="logo d-flex">
-                <a asp-controller="Home"  asp-action="Index"> 
+                <a asp-controller="Products"  asp-action="Index"> 
                     <img src="~/css/e-commerce.logo1.png" alt="Ecommerce" />
                     <span   >Ecommerce</span>
                 </a>
@@ -26,6 +26,7 @@
             
             <form class="search-bar">
                 <input type="text" asp-controller="Products" asp-action="Index" name="searchText" placeholder="Search products and categories..." >
+
                     <button><i class="fas fa-search"></i></button>
                 </input>
             </form>

@@ -1,4 +1,5 @@
-﻿using Ecommerce.Domain.Interfaces;
+﻿using Ecommerce.Domain.Entities;
+using Ecommerce.Domain.Interfaces;
 using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.WishList;
@@ -14,12 +15,13 @@ public class WishListService : IWishListService
         _commonRepository = commonRepository;
     }
 
-    public List<WishListViewModel> GetAll()
+    public List<WishListViewModel> GetAll(int? id)
     {
-        var wishLists = _commonRepository.WishLists.GetAll();
-        var viewModels = wishLists.Select(w => w.ToViewModel()).ToList();
+        var wishLists=_commonRepository.WishLists.GetAll(id);
 
-        return viewModels;
+        var viewModel= wishLists.Select(x=>x.ToViewModel()).ToList();
+
+        return viewModel;
     }
 
     public WishListViewModel GetById(int id)

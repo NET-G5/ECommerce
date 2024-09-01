@@ -1,24 +1,27 @@
 ﻿using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.Category;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.General;
 
 namespace Ecommerce.Controllers
 {
     public class CategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;
-
-        public CategoriesController(ICategoryService categoryService)
+        private readonly ICustomerService _customerService;
+        public CategoriesController(ICategoryService categoryService, ICustomerService customerService)
         {
             _categoryService = categoryService;
+            _customerService = customerService;
         }
 
-        public IActionResult Index(string searchInput)
+        public IActionResult Index(string searchText)
         {
 
-            var categories = _categoryService.GetAll(searchInput);
+            var categories = _categoryService.GetAll(searchText);
 
             return View(categories);
         }

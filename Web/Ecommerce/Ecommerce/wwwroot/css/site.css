@@ -337,3 +337,143 @@ a {
     overflow-y: auto;
     height: 92vh;
 }
+.product-image {
+    width: 100%;
+    height: 200px; /* Fixed height for uniform image sizes */
+    object-fit: contain; /* Ensures the entire image is visible without cropping */
+    background-color: #f8f9fa; /* Light background for images with different aspect ratios */
+    border-radius: 0.25rem; /* Adds slight rounding to the corners */
+}
+
+.product-name {
+    font-size: 23px;
+    color: steelblue;
+    font-weight: bold; /* Optional: Make the product name stand out more */
+}
+
+.product-price {
+    font-size: 20px;
+    color: #a51313;
+    font-weight: bold;
+}
+
+.favorite-checkbox {
+    display: none; /* Hide the checkbox */
+}
+
+.heart-icon {
+    font-size: 32px; /* Size of the heart icon */
+    color: lightgray; /* Default color of the heart icon */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.favorite-checkbox:checked + .heart-icon {
+    color: red; /* Color when checked */
+}
+
+.heart-icon:hover {
+    color: darkred; /* Color on hover */
+}
+
+.btn-cart {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+    .btn-cart i {
+        font-size: 32px; /* Adjust icon size */
+    }
+
+    .btn-cart:hover {
+        color: #0056b3; /* Darker blue on hover */
+    }
+
+.card {
+    border-radius: 0.25rem; /* Softens the edges of the card */
+    overflow: hidden; /* Ensures content stays within card boundaries */
+}
+
+.card-header {
+    background-color: white;
+    border-bottom: none; /* Removes border between card body and header */
+}
+
+    .card-header + .card-header {
+        border-top: 1px solid #ddd; /* Adds a subtle divider between sections */
+    }
+
+.d-flex {
+    align-items: center;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem; /* Space between cards */
+}
+
+.footer {
+    background-color: #343a40; /* Black background */
+    color: #f8f9fa; /* Light text color */
+    padding: 20px 0;
+    margin-bottom: 0; /* Ensure no space below the footer */
+}
+
+    .footer h5 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: #f8f9fa;
+    }
+
+    .footer p {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer a {
+        color: #f8f9fa;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+        .footer a:hover {
+            color: #ffc107; /* Highlight color on hover */
+        }
+
+    .footer .list-unstyled {
+        padding-left: 0;
+        list-style: none;
+    }
+
+        .footer .list-unstyled li {
+            margin-bottom: 0.5rem;
+        }
+
+    .footer .social-media a {
+        margin-right: 15px;
+        font-size: 1.5rem;
+    }
+
+        .footer .social-media a:hover {
+            color: #ffc107; /* Highlight color on hover */
+        }
+
+    .footer .container {
+        max-width: 960px;
+    }
+
+body, html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#content {
+    flex: 1;
+}

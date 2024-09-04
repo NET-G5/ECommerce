@@ -3,6 +3,7 @@ using Ecommerce.Infrastructure.Persistence;
 using Ecommerce.Infrastructure.Repositories;
 using Ecommerce.Services;
 using Ecommerce.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce;
@@ -23,6 +24,9 @@ public class Program
 
         builder.Services.AddDbContext<EcommerceDbContext>(options =>
             options.UseSqlServer(connectionString));
+
+        builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options => { options.ExpireTimeSpan = TimeSpan.FromSeconds(10); });
 
         builder.Services.AddScoped<ICommonRepository, CommonRepository>();
 
@@ -68,6 +72,8 @@ public class Program
 
         app.UseRouting();
 
+        app.UseAuthentication();
+        
         app.UseAuthorization();
 
         app.MapControllerRoute(

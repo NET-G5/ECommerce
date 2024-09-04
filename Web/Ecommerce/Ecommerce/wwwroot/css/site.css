@@ -385,13 +385,14 @@ a {
     transition: color 0.3s ease;
 }
 
-    .btn-cart i {
-        font-size: 32px; /* Adjust icon size */
-    }
+.btn-cart i {
+    font-size: 28px; /* Adjust icon size */
+    margin-right:-5px;
+}
 
-    .btn-cart:hover {
-        color: #0056b3; /* Darker blue on hover */
-    }
+.btn-cart:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
 
 .card {
     border-radius: 0.25rem; /* Softens the edges of the card */
@@ -403,9 +404,9 @@ a {
     border-bottom: none; /* Removes border between card body and header */
 }
 
-    .card-header + .card-header {
-        border-top: 1px solid #ddd; /* Adds a subtle divider between sections */
-    }
+.card-header + .card-header {
+    border-top: 1px solid #ddd; /* Adds a subtle divider between sections */
+}
 
 .d-flex {
     align-items: center;
@@ -422,48 +423,48 @@ a {
     margin-bottom: 0; /* Ensure no space below the footer */
 }
 
-    .footer h5 {
-        font-size: 1.25rem;
-        margin-bottom: 1rem;
-        color: #f8f9fa;
-    }
+.footer h5 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #f8f9fa;
+}
 
-    .footer p {
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
-    }
+.footer p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
 
-    .footer a {
-        color: #f8f9fa;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
+.footer a {
+    color: #f8f9fa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
-        .footer a:hover {
-            color: #ffc107; /* Highlight color on hover */
-        }
+.footer a:hover {
+    color: #ffc107; /* Highlight color on hover */
+}
 
-    .footer .list-unstyled {
-        padding-left: 0;
-        list-style: none;
-    }
+.footer .list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
 
-        .footer .list-unstyled li {
-            margin-bottom: 0.5rem;
-        }
+.footer .list-unstyled li {
+    margin-bottom: 0.5rem;
+}
 
-    .footer .social-media a {
-        margin-right: 15px;
-        font-size: 1.5rem;
-    }
+.footer .social-media a {
+    margin-right: 15px;
+    font-size: 1.5rem;
+}
 
-        .footer .social-media a:hover {
-            color: #ffc107; /* Highlight color on hover */
-        }
+.footer .social-media a:hover {
+    color: #ffc107; /* Highlight color on hover */
+}
 
-    .footer .container {
-        max-width: 960px;
-    }
+.footer .container {
+    max-width: 960px;
+}
 
 body, html {
     height: 100%;
@@ -478,10 +479,7 @@ body {
 #content {
     flex: 1;
 }
-.row {
-    margin-left: 140px;
-    margin-right: 140px;
-}
+
 
 .carousel-container {
     margin: 0 auto;

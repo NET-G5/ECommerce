@@ -31,18 +31,25 @@
                 </input>
             </form>
             <div class="header-icons">
-                <button><i class="fas fa-user"></i> LogIn</button>
+                @if (Context.User.Identity.Name is null)
+                {
+                    <a asp-controller="Customer" asp-action="Login"><i class="fas fa-user"></i>LogIn</a>
+                }
+                else
+                {
+                    <a asp-controller="Customer" asp-action="Index"><i class="fas fa-user"></i>  @Context.User.Identity.Name</a>
+                }
                 <button asp-controller="MyOrders" asp-action="Index"> My orders</button>
                 <button><i class="fas fa-heart"></i> Favourite</button>
                 <button><i class="fas fa-shopping-cart"></i> Basket</button>
             </div>
         </div>
-        
     </header>
+
     <partial name="_SideBar" />
 
     <div class="main-content">
-        <div class="container mt-5">
+        <div class="container ">
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <main role="main" class="pb-3">
@@ -51,8 +58,49 @@
                 </div>
             </div>
         </div>
-    </div>
+        
+        <footer class="footer bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <!-- Company Info -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase">Ecommerce</h5>
+                    <p>Providing quality products at the best prices.</p>
+                    <p>&copy; 2024 Ecommerce. All rights reserved.</p>
+                </div>
 
+                <!-- Quick Links -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-white">Home</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white">Privacy Policy</a></li>
+                        <li><a href="/about" class="text-white">About Us</a></li>
+                        <li><a href="/contact" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase">Follow Us</h5>
+                    <a href="https://www.facebook.com" target="_blank" class="text-white me-2">
+                        <i class="fab fa-facebook fa-lg"></i>
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" class="text-white me-2">
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="text-white me-2">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" class="text-white">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

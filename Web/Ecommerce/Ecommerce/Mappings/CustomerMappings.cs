@@ -26,7 +26,6 @@ namespace Ecommerce.Mappings
                 LastName = customer.LastName,
                 Email = customer.Email,
                 Password = customer.Password,
-                DateRegistered = customer.DateRegistered,
             };
         }
         public static Customer ToEntity(this CreateCustomerViewModel viewModel)
@@ -37,7 +36,7 @@ namespace Ecommerce.Mappings
                 LastName = viewModel.LastName,
                 Email = viewModel.Email,
                 Password = viewModel.Password,
-                DateRegistered = viewModel.DateRegistered,
+                DateRegistered = DateTime.UtcNow,
             };
         }
         public static Customer ToEntity(this UpdateCustomerViewModel viewModel)
@@ -49,7 +48,7 @@ namespace Ecommerce.Mappings
                 LastName = viewModel.LastName,
                 Email = viewModel.Email,
                 Password = viewModel.Password,
-                DateRegistered = viewModel.DateRegistered,
+                DateRegistered = DateTime.UtcNow
             };
         }
     }

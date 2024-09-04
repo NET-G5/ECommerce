@@ -11,19 +11,21 @@ namespace Ecommerce.Controllers
     public class CategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;
-        private readonly ICustomerService _customerService;
-        public CategoriesController(ICategoryService categoryService, ICustomerService customerService)
+        private readonly IProductService _productService;
+
+        public CategoriesController(ICategoryService categoryService,IProductService productService)
         {
             _categoryService = categoryService;
-            _customerService = customerService;
+            _productService = productService;
         }
 
         public IActionResult Index(string searchText)
         {
+            var products = _productService.GetAll(searchText);
 
-            var categories = _categoryService.GetAll(searchText);
+            ViewBag.Products = products;
 
-            return View(categories);
+            return View();
         }
 
         public IActionResult Details(int? id)

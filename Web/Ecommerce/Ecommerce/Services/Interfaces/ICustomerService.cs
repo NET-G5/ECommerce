@@ -5,7 +5,7 @@ namespace Ecommerce.Services.Interfaces;
 
 public interface ICustomerService
 {
-    List<CustomerViewModel> GetAll(string? search);
+    List<CustomerViewModel> GetAll(string? search=null);
     CustomerViewModel GetById(int id);
     CustomerViewModel Create(CreateCustomerViewModel customer);
     void Update(UpdateCustomerViewModel customer);

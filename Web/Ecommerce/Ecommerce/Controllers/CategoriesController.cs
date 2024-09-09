@@ -24,6 +24,7 @@ namespace Ecommerce.Controllers
             var products = _productService.GetAll(searchText);
 
             ViewBag.Products = products;
+            ViewBag.SearchText = searchText;
 
             return View();
         }

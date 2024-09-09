@@ -20,6 +20,9 @@ namespace Ecommerce.Controllers
         public IActionResult Index(string searchText)
         {
             var products = _productService.GetAll(searchText);
+
+            ViewBag.SearchText = searchText;
+
             return View(products);
         }
 

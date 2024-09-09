@@ -21,7 +21,6 @@ public class Program
 
         var connectionString = builder.Configuration.GetConnectionString("ConnectionStringOfBobur");
 
-
         builder.Services.AddDbContext<EcommerceDbContext>(options =>
             options.UseSqlServer(connectionString));
 

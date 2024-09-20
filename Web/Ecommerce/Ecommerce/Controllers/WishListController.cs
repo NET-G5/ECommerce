@@ -18,7 +18,7 @@ public class WishListController : Controller
     {
         var wishList = _wishListService.GetAll(customerId);
 
-        ViewBag.Products=wishList.Select(x=>x.Products);   
+        ViewBag.Products = wishList.Select(x => x.Products);
 
         return View(wishList);
     }

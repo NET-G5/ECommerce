@@ -32,11 +32,11 @@
             <div class="header-icons">
                 @if (ViewBag.Name is null)
                 {
-                    <a asp-controller="Customer" asp-action="Login"><i class="fas fa-user"></i>LogIn</a>
+                    <a asp-controller="Account" asp-action="Login"><i class="fas fa-user"></i> Log in</a>
                 }
                 else
                 {
-                    <a asp-controller="Customer" asp-action="Index"><i class="fas fa-user"></i> @ViewBag.Name</a>
+                    <a asp-controller="Account" asp-action="Index"><i class="fas fa-user"></i> @ViewBag.Name</a>
                 }
                 <button asp-controller="MyOrders" asp-action="Index"> My orders</button>
                 <button><i class="fas fa-heart"></i> Favourite</button>

@@ -1,0 +1,44 @@
+﻿@model Ecommerce.ViewModels.Customer.RegisterViewModel
+
+@{
+    ViewData["PageTitle"] = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="widget p-5" style="border:groove">
+            <h2 class="text-center mb-5">Register</h2>
+            <form asp-action="Register" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3 border-2">
+                    <ejs-textbox class="border-2" id="firstName" placeholder="FirsName" ejs-for="FirstName" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="FirstName" class="text-danger fs-6"></span>
+                </div>
+                <div class="mb-3 border-2">
+                    <ejs-textbox class="border-2" id="lastName" placeholder="LastName" ejs-for="LastName" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="LastName" class="text-danger fs-6"></span>
+                </div>
+                <div class="mb-3 border-2">
+                    <ejs-textbox class="border-2" id="email" placeholder="Email" ejs-for="Email" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Email" class="text-danger fs-6"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="password" placeholder="Password" ejs-for="Password" floatLabelType="Always" type="password"></ejs-textbox>
+                    <span asp-validation-for="Password" class="text-danger fs-6"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="confirm-password" placeholder="Confirm password" ejs-for="ConfirmPassword" floatLabelType="Always" type="password"></ejs-textbox>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger fs-6"></span>
+                </div>
+                <div class="d-grid gap-2">
+                    <ejs-button id="submit" type="submit" content="Register" cssClass="e-success"></ejs-button>
+                </div>
+            </form>
+            <div class="mt-3 text-center">
+                <span>Already have an account?</span>
+                <a asp-action="Login" class="text-info">Login</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,10 +1,11 @@
 ﻿using Ecommerce.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Ecommerce.Infrastructure.Persistence
 {
-    public class EcommerceDbContext : DbContext
+    public class EcommerceDbContext : IdentityDbContext 
     {
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }

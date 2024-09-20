@@ -1,8 +1,6 @@
-﻿using Ecommerce.Domain.Common;
+﻿namespace Ecommerce.Domain.Interfaces;
 
-namespace Ecommerce.Domain.Interfaces;
-
-public interface IRepositoryBase<TEntity> where TEntity : EntityBase
+public interface IRepositoryBase<TEntity>
 {
     List<TEntity> GetAll();
     TEntity GetById(int id);

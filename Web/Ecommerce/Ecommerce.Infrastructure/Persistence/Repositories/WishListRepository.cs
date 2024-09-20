@@ -10,12 +10,12 @@ namespace Ecommerce.Infrastructure.Repositories
 
         public List<WishList> GetAll(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return GetAll();
             }
-            
-            var wishLists=_context.WishList
+
+            var wishLists = _context.WishList
                 .Where(x => x.CustomerId == id.Value)
                 .ToList();
 

@@ -1,13 +1,12 @@
-﻿using Ecommerce.ViewModels.Customer;
-using System.Security.Claims;
+﻿using Ecommerce.Domain.Entities;
 
 namespace Ecommerce.Services.Interfaces;
 
 public interface ICustomerService
 {
-    List<CustomerViewModel> GetAll(string? search=null);
-    CustomerViewModel GetById(int id);
-    CustomerViewModel Create(CreateCustomerViewModel customer);
-    void Update(UpdateCustomerViewModel customer);
+    List<Customer> GetAll(string? search = null);
+    Customer GetById(int id);
+    Customer Create(Customer customer);
+    void Update(Customer customer);
     void Delete(int id);
 }

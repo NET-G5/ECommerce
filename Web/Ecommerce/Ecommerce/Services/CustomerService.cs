@@ -37,13 +37,11 @@ public class CustomerService : ICustomerService
         return newCustomer;
     }
 
-
     public void Delete(int id)
     {
         _commonRepository.Customers.Delete(id);
         _commonRepository.SaveChanges();
     }
-
 
     public void Update(Customer customer)
     {

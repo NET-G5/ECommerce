@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/_ErrorLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="widget p-5" style="background-color:white">
+            <div class="text-center">
+                <img src="~/images/photo_2024-09-19_18-06-42.jpg" style="margin: 0 auto; width: 150px; height: 150px;" />
+                <h1 class="text-center mb-5 text-danger"><i class="fa fa-exclamation-triangle"></i> 404</h1>
+                <h2 class="text-center mb-4">No matching products found</h2>
+                <p class="text-center mb-4">Try changing or canceling the filters.</p>
+                <div class="d-grid gap-2">
+                    <a asp-controller="Products" asp-action="Index" class="btn btn-primary">
+                        <i class="fa fa-home"></i> Cancel filters
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

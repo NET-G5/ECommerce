@@ -46,7 +46,6 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     private TEntity GetOrThrow(int id)
     {
         var entity = _context.Set<TEntity>().FirstOrDefault(x => x.Id == id);
-
         if (entity is null)
         {
             throw new EntityNotFoundException($"{typeof(TEntity)} with id: {id} not found.");

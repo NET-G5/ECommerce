@@ -13,7 +13,8 @@ namespace Ecommerce.Controllers
         {
             _service = service;
         }
-
+        public IActionResult NotFoundError() => View("NotFound");
+        public IActionResult InternalError() => View("Error");
         public IActionResult Index()
         {
             return View();

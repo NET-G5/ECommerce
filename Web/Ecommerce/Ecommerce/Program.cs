@@ -1,4 +1,5 @@
 using Ecommerce.Domain.Interfaces;
+using Ecommerce.Filters;
 using Ecommerce.Infrastructure.Persistence;
 using Ecommerce.Infrastructure.Repositories;
 using Ecommerce.Services;
@@ -15,11 +16,14 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
-
+        builder.Services.AddControllers(options =>
+        {
+            options.Filters.Add(new ExceptionHandlerFilter());
+        });
 
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXdedHRQRGRZWEV+WkQ=");
 
-        var connectionString = builder.Configuration.GetConnectionString("ConnectionStringOfBobur");
+        var connectionString = builder.Configuration.GetConnectionString("ConnectionStringOfJamshid");
 
         builder.Services.AddDbContext<EcommerceDbContext>(options =>
             options.UseSqlServer(connectionString));

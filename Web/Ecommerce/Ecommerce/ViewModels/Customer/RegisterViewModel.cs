@@ -13,6 +13,7 @@ namespace Ecommerce.ViewModels.Customer
 
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress(ErrorMessage = "Invalid email address")]
+        [DataType(DataType.EmailAddress)]
         public required string Email { get; set; }
 
         [Required(ErrorMessage = "Password is required")]

@@ -8,6 +8,7 @@ namespace Ecommerce.ViewModels.Customer
         [Required(ErrorMessage = "Email is required")]
         [MaxLength(50, ErrorMessage = "Max 50 characters allowed")]
         [DisplayName("Email")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Password is required.")]

@@ -1,9 +1,6 @@
-
+using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
-using Ecommerce.Mappings;
-
 using Ecommerce.Services.Interfaces;
-using Ecommerce.ViewModels.Customer;
 
 namespace Ecommerce.Services;
 
@@ -16,40 +13,29 @@ public class CustomerService : ICustomerService
         _commonRepository = commonRepository;
     }
 
-
-    public List<CustomerViewModel> GetAll(string? search)
-
+    public List<Customer> GetAll(string? search)
     {
         var customers = _commonRepository.Customers.GetAll(search).ToList();
 
-        var customerViewModel = customers.Select(x => x.ToViewModel()).ToList();
-
-        return customerViewModel;
+        return customers;
     }
 
-
-    public CustomerViewModel GetById(int id)
-
+    public Customer GetById(int id)
     {
         var customer = _commonRepository.Customers.GetById(id);
 
-        var customerViewModel = customer.ToViewModel();
-
-        return customerViewModel;
+        return customer;
     }
 
-
-    public CustomerViewModel Create(CreateCustomerViewModel customer)
-
+    public Customer Create(Customer customer)
     {
         ArgumentNullException.ThrowIfNull(customer);
 
-        var newCustomer = _commonRepository.Customers.Create(customer.ToEntity());
+        var newCustomer = _commonRepository.Customers.Create(customer);
         _commonRepository.SaveChanges();
 
-        return newCustomer.ToViewModel();
+        return newCustomer;
     }
-
 
     public void Delete(int id)
     {
@@ -57,14 +43,11 @@ public class CustomerService : ICustomerService
         _commonRepository.SaveChanges();
     }
 
-
-    public void Update(UpdateCustomerViewModel customer)
+    public void Update(Customer customer)
     {
         ArgumentNullException.ThrowIfNull(customer);
 
-        var customerToUpdate = customer.ToEntity();
-
-        _commonRepository.Customers.Update(customerToUpdate);
+        _commonRepository.Customers.Update(customer);
         _commonRepository.SaveChanges();
     }
 }

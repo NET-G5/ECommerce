@@ -1,10 +1,8 @@
 ﻿using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
 using Ecommerce.ViewModels.Category;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.General;
 
 namespace Ecommerce.Controllers
 {
@@ -13,7 +11,7 @@ namespace Ecommerce.Controllers
         private readonly ICategoryService _categoryService;
         private readonly IProductService _productService;
 
-        public CategoriesController(ICategoryService categoryService,IProductService productService)
+        public CategoriesController(ICategoryService categoryService, IProductService productService)
         {
             _categoryService = categoryService;
             _productService = productService;

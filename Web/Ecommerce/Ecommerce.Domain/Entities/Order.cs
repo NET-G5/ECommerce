@@ -10,8 +10,10 @@ public class Order : AuditableEntity
     public OrderStatus Status { get; set; }
 
     public virtual ICollection<OrderItem> OrderItems { get; set; }
+
     public int CustomerId { get; set; }
     public virtual Customer Customer { get; set; }
+
     public virtual PaymentDetailViewModel PaymentDetail { get; set; }
     public virtual ShippingDetail ShippingDetail { get; set; }
 }

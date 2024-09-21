@@ -4,6 +4,6 @@ namespace Ecommerce.Domain.Interfaces;
 
 public interface IWishListRepository : IRepositoryBase<WishList>
 {
-    List<WishList> GetAll(int? id=null);
+    List<WishList> GetAll(int? id = null);
 }
 

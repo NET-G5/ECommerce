@@ -2,7 +2,7 @@
 
 namespace Ecommerce.Domain.Interfaces;
 
-public interface IPaymentDetailRepository : IRepositoryBase<PaymentDetailViewModel>
+public interface IPaymentDetailRepository : IRepositoryBase<PaymentDetail>
 {
-    List<PaymentDetailViewModel> GetAll(decimal? minValue, decimal? maxValue);
+    List<PaymentDetail> GetAll(decimal? minValue, decimal? maxValue);
 }

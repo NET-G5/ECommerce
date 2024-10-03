@@ -1,4 +1,4 @@
-﻿using Ecommerce.ViewModels.Review;
+﻿using Ecommerce.Application.ViewModels.Review;
 
 namespace Ecommerce.Services.Interfaces;
 

@@ -1,8 +1,8 @@
-﻿using Ecommerce.Domain.Enums;
+﻿using Ecommerce.Application.Mappings;
+using Ecommerce.Application.ViewModels.Order;
+using Ecommerce.Domain.Enums;
 using Ecommerce.Domain.Interfaces;
-using Ecommerce.Mappings;
 using Ecommerce.Services.Interfaces;
-using Ecommerce.ViewModels.Order;
 
 namespace Ecommerce.Services;
 

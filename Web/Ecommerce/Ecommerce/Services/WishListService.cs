@@ -1,7 +1,7 @@
-﻿using Ecommerce.Domain.Interfaces;
-using Ecommerce.Mappings;
+﻿using Ecommerce.Application.ViewModels.WishList;
+using Ecommerce.Application.Mappings;
+using Ecommerce.Domain.Interfaces;
 using Ecommerce.Services.Interfaces;
-using Ecommerce.ViewModels.WishList;
 
 namespace Ecommerce.Services;
 

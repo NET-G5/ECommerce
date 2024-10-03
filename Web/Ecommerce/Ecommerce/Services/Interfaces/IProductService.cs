@@ -1,4 +1,4 @@
-﻿using Ecommerce.ViewModels.Product;
+﻿using Ecommerce.Application.ViewModels.Product;
 
 namespace Ecommerce.Services.Interfaces;
 

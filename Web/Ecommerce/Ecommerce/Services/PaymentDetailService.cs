@@ -1,13 +1,14 @@
-﻿using Ecommerce.Domain.Interfaces;
-using Ecommerce.Mappings;
+﻿using Ecommerce.Application.Mappings;
+using Ecommerce.Application.ViewModels.PaymentDetail;
+using Ecommerce.Domain.Interfaces;
 using Ecommerce.Services.Interfaces;
-using Ecommerce.ViewModels.PaymentDetail;
 
 namespace Ecommerce.Services;
 
 public class PaymentDetailService : IPaymentDetailService
 {
     private readonly ICommonRepository _commonRepository;
+
 
     public PaymentDetailService(ICommonRepository commonRepository)
     {
@@ -47,9 +48,9 @@ public class PaymentDetailService : IPaymentDetailService
 
     public PaymentDetailViewModel GetById(int id)
     {
-        var paymentDatail = _commonRepository.PaymentDetails.GetById(id);
+        var paymentDetail = _commonRepository.PaymentDetails.GetById(id);
 
-        var viewModel = paymentDatail.ToViewModel();
+        var viewModel = paymentDetail.ToViewModel();
 
         return viewModel;
     }

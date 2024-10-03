@@ -16,7 +16,7 @@ namespace Ecommerce.Infrastructure.Persistence.Configurations
 
             builder.HasOne(x => x.PaymentDetail)
                 .WithOne(p => p.Order)
-                .HasPrincipalKey<PaymentDetailViewModel>(x => x.OrderId);
+                .HasPrincipalKey<PaymentDetail>(x => x.OrderId);
 
             builder.HasOne(x => x.ShippingDetail)
                 .WithOne(s => s.Order)

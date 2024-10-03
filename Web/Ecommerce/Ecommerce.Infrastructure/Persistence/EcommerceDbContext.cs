@@ -5,13 +5,13 @@ using System.Reflection;
 
 namespace Ecommerce.Infrastructure.Persistence
 {
-    public class EcommerceDbContext : IdentityDbContext 
+    public class EcommerceDbContext : IdentityDbContext
     {
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderItem> OrderItems { get; set; }
-        public virtual DbSet<PaymentDetailViewModel> PaymentDetails { get; set; }
+        public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<ShippingDetail> ShippingDetails { get; set; }

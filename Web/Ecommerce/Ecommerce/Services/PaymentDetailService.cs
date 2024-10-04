@@ -9,7 +9,6 @@ public class PaymentDetailService : IPaymentDetailService
 {
     private readonly ICommonRepository _commonRepository;
 
-
     public PaymentDetailService(ICommonRepository commonRepository)
     {
         _commonRepository = commonRepository;
@@ -43,8 +42,6 @@ public class PaymentDetailService : IPaymentDetailService
 
         return viewModel;
     }
-
-
 
     public PaymentDetailViewModel GetById(int id)
     {

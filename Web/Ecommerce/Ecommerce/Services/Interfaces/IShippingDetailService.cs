@@ -1,4 +1,4 @@
-﻿using Ecommerce.ViewModels.ShippingDetail;
+﻿using Ecommerce.Application.ViewModels.ShippingDetail;
 
 namespace Ecommerce.Services.Interfaces;
 

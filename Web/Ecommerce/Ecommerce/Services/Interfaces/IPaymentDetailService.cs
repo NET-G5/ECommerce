@@ -1,4 +1,4 @@
-﻿using Ecommerce.ViewModels.PaymentDetail;
+﻿using Ecommerce.Application.ViewModels.PaymentDetail;
 
 namespace Ecommerce.Services.Interfaces;
 

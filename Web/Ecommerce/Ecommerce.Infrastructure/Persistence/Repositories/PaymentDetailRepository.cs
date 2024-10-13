@@ -4,13 +4,13 @@ using Ecommerce.Infrastructure.Persistence;
 
 namespace Ecommerce.Infrastructure.Repositories;
 
-public class PaymentDetailRepository : RepositoryBase<PaymentDetailViewModel>, IPaymentDetailRepository
+public class PaymentDetailRepository : RepositoryBase<PaymentDetail>, IPaymentDetailRepository
 {
     public PaymentDetailRepository(EcommerceDbContext context) : base(context)
     {
     }
 
-    public List<PaymentDetailViewModel> GetAll(decimal? minValue, decimal? maxValue)
+    public List<PaymentDetail> GetAll(decimal? minValue, decimal? maxValue)
     {
         if (minValue == null && maxValue == null)
         {

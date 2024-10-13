@@ -3,7 +3,7 @@ using Ecommerce.Domain.Enums;
 
 namespace Ecommerce.Domain.Entities;
 
-public class PaymentDetailViewModel : AuditableEntity
+public class PaymentDetail : AuditableEntity
 {
     public PaymentMethod Method { get; set; }
     public DateTime PaymentDate { get; set; }

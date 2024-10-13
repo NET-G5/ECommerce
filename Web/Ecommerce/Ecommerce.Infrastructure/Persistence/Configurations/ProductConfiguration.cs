@@ -2,18 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Ecommerce.Infrastructure.Persistence.Configurations
+namespace Ecommerce.Infrastructure.Persistence.Configurations;
+
+public class ProductConfiguration : IEntityTypeConfiguration<Product>
 {
-    public class ProductConfiguration : IEntityTypeConfiguration<Product>
+    public void Configure(EntityTypeBuilder<Product> builder)
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
-        {
-            builder.ToTable("Product");
+        builder.ToTable("Product");
 
-            builder.HasMany(x => x.OrderItems)
-                .WithOne(c => c.Product)
-                .HasForeignKey(c => c.ProductId);
+        builder.HasMany(x => x.OrderItems)
+            .WithOne(c => c.Product)
+            .HasForeignKey(c => c.ProductId);
 
-        }
     }
 }

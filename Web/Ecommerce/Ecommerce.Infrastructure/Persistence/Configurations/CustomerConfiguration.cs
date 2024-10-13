@@ -2,20 +2,19 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Ecommerce.Infrastructure.Persistence.Configurations
+namespace Ecommerce.Infrastructure.Persistence.Configurations;
+
+public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
-    public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
+    public void Configure(EntityTypeBuilder<Customer> builder)
     {
-        public void Configure(EntityTypeBuilder<Customer> builder)
-        {
-            builder.ToTable("Customer");
+        builder.ToTable("Customer");
 
-            builder.HasMany(c => c.Orders)
-                .WithOne(o => o.Customer)
-                .HasForeignKey(o => o.CustomerId)
-                .OnDelete(DeleteBehavior.Cascade);
+        builder.HasMany(c => c.Orders)
+            .WithOne(o => o.Customer)
+            .HasForeignKey(o => o.CustomerId)
+            .OnDelete(DeleteBehavior.Cascade);
 
 
-        }
     }
 }

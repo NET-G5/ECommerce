@@ -1,6 +1,6 @@
-﻿using Ecommerce.Mappings;
+﻿using Ecommerce.Application.Mappings;
+using Ecommerce.Application.ViewModels.Category;
 using Ecommerce.Services.Interfaces;
-using Ecommerce.ViewModels.Category;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

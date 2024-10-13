@@ -1,4 +1,4 @@
-﻿using Ecommerce.ViewModels.OrderItem;
+﻿using Ecommerce.Application.ViewModels.OrderItem;
 
 namespace Ecommerce.Services.Interfaces;
 

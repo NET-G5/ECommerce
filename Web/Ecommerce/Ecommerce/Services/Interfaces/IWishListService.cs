@@ -1,4 +1,4 @@
-﻿using Ecommerce.ViewModels.WishList;
+﻿using Ecommerce.Application.ViewModels.WishList;
 
 namespace Ecommerce.Services.Interfaces;
 

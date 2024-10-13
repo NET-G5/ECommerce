@@ -1,7 +1,7 @@
-﻿using Ecommerce.Domain.Interfaces;
-using Ecommerce.Mappings;
+﻿using Ecommerce.Application.Mappings;
+using Ecommerce.Application.ViewModels.Category;
+using Ecommerce.Domain.Interfaces;
 using Ecommerce.Services.Interfaces;
-using Ecommerce.ViewModels.Category;
 
 namespace Ecommerce.Services;
 

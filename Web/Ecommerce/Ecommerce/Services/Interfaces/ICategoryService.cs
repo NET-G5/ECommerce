@@ -1,4 +1,4 @@
-﻿using Ecommerce.ViewModels.Category;
+﻿using Ecommerce.Application.ViewModels.Category;
 
 namespace Ecommerce.Services.Interfaces;
 

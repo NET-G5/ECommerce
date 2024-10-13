@@ -14,6 +14,6 @@ public class Order : AuditableEntity
     public int CustomerId { get; set; }
     public virtual Customer Customer { get; set; }
 
-    public virtual PaymentDetailViewModel PaymentDetail { get; set; }
+    public virtual PaymentDetail PaymentDetail { get; set; }
     public virtual ShippingDetail ShippingDetail { get; set; }
 }

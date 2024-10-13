@@ -1,7 +1,7 @@
-﻿using Ecommerce.Domain.Interfaces;
-using Ecommerce.Mappings;
+﻿using Ecommerce.Application.Mappings;
+using Ecommerce.Application.ViewModels.PaymentDetail;
+using Ecommerce.Domain.Interfaces;
 using Ecommerce.Services.Interfaces;
-using Ecommerce.ViewModels.PaymentDetail;
 
 namespace Ecommerce.Services;
 

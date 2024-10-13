@@ -2,20 +2,19 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Ecommerce.Infrastructure.Persistence.Configurations
+namespace Ecommerce.Infrastructure.Persistence.Configurations;
+
+public class WishListConfiguration : IEntityTypeConfiguration<WishList>
 {
-    public class WishListConfiguration : IEntityTypeConfiguration<WishList>
+    public void Configure(EntityTypeBuilder<WishList> builder)
     {
-        public void Configure(EntityTypeBuilder<WishList> builder)
-        {
-            builder.ToTable("WishList");
+        builder.ToTable("WishList");
 
-            builder.HasOne(w => w.Customer)
-                .WithOne(c => c.WishList)
-                .HasForeignKey<WishList>(x => x.CustomerId);
+        builder.HasOne(w => w.Customer)
+            .WithOne(c => c.WishList)
+            .HasForeignKey<WishList>(x => x.CustomerId);
 
-            builder.HasMany(x => x.Products)
-                .WithMany();
-        }
+        builder.HasMany(x => x.Products)
+            .WithMany();
     }
 }

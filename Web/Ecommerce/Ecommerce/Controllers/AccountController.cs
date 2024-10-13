@@ -1,11 +1,9 @@
-﻿using Ecommerce.Domain.Entities;
-using Ecommerce.Services;
+﻿using Ecommerce.Application.ViewModels.Customer;
+using Ecommerce.Domain.Entities;
 using Ecommerce.Services.Interfaces;
-using Ecommerce.ViewModels.Customer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Ecommerce.Controllers
 {
@@ -87,7 +85,7 @@ namespace Ecommerce.Controllers
 
                 var customer = new Customer();
                 customer.Email = user.Email;
-                customer.PasswordHash=user.PasswordHash;
+                customer.PasswordHash = user.PasswordHash;
                 customer.FirstName = model.FirstName;
                 customer.LastName = model.LastName;
                 customer.PhoneNumber = user.PhoneNumber;
